@@ -8,12 +8,25 @@ namespace TareaFinal_parte1
 {
     public class Controlador : ISistema
     {
-        public Personaje Caracteristica { get; set; }
-
+        public Personaje Personaje { get; set; }
+        public Raza Raza { get; set; }
+        public Clase Clase { get; set; }
+        public Habilidad_Especial H_E { get; set; }
+        public Listados Listados = new Listados();
 
         public void CrearHabilidadHespecial()
         {
-
+           
+            int Id = 0;
+            H_E = new Habilidad_Especial();
+            H_E.Id = Id + 1;
+            Console.WriteLine("Ingrese Nombre de la nueva Raza");
+            H_E.Nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese Descripcion de la nueva Raza");
+            H_E.Descripcion = Console.ReadLine();
+            Listados.Habilidad_Especial_List.Add(H_E);
+            Id = Id + 1;
+            
         }
         public void ModificarHabilidadEspecial()
         {
@@ -29,11 +42,23 @@ namespace TareaFinal_parte1
         }
         public void EliminarHabilidadEspecialPorHabilidadEspecial()
         {
+         //   Listados.Habilidad_Especial_List.Remove(H_E); //Si Terminar
 
         }
-        public void CrearClase()
+        public Clase CrearClase()
         {
+            int Id = 1;
+    
+            Clase Clase = new Clase();
+            Clase.Id = Id + 1;
+            Console.WriteLine("Ingrese Nombre de la nueva Clase");
+            Clase.Nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese Descripcion de la nueva Clase");
+            Clase.Descripcion = Console.ReadLine();
+            Listados.Clase_List.Add(Clase);
+            Id = Id + 1;
 
+            return Clase;
         }
         public void ModificarClase()
         {
@@ -47,19 +72,54 @@ namespace TareaFinal_parte1
         {
 
         }
-        public void CrearRaza()
+        public Raza CrearRaza()
         {
+            int Id = 7;
+            Raza = new Raza();
+            Raza.Id = Id + 1;
+            Console.WriteLine("Ingrese Nombre de la nueva Raza");
+            Raza.Nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese Descripcion de la nueva Raza");
+            Raza.Descripcion = Console.ReadLine();
+            Listados.Raza_List.Add(Raza);
+            Id = Id + 1;
 
+            foreach (Raza Razas in Listados.Raza_List)
+            {
+                Console.Write(" -> Id: ");
+                Console.Write(Razas.Id);
+                Console.Write("{0}", Razas.Nombre);
+                Console.Write(" -> Descripcion: ");
+                Console.WriteLine(Razas.Descripcion);
+                Console.WriteLine();
+            }
+
+            return Raza;
         }
         public void ModificarRaza()
         {
-
+            Console.WriteLine("Entro");
         }
         public void ListarRazas()
         {
+            Listados.Raza_List.Add(new Raza() { Id = 9, Nombre = "Lobo", Descripcion = " oaerihgio" });
+            Listados.Raza_List.Add(new Raza() { Id = 1, Nombre = "Humanos", Descripcion = "Buenos en batalla e Inteligentes pero no tan Fuertes" });
+            Listados.Raza_List.Add(new Raza() { Id = 2, Nombre = "Ogro", Descripcion = "Poseen gran Fuerza y son abiles guerreros" });
+            Listados.Raza_List.Add(new Raza() { Id = 3, Nombre = "Throl", Descripcion = "Poseen gran Fuerza pero poca Inteligencia" });
+            Listados.Raza_List.Add(new Raza() { Id = 4, Nombre = "Elfo", Descripcion = "Baja constitucion y fuerza pero muy inteligentes" });
+            Listados.Raza_List.Add(new Raza() { Id = 5, Nombre = "Gigante", Descripcion = "Muy elevada constitucion y una descomunal fuerza fisica" });
+            Listados.Raza_List.Add(new Raza() { Id = 6, Nombre = "Hobit", Descripcion = "Iteligentes habiles y muy sabios" });
+            Listados.Raza_List.Add(new Raza() { Id = 7, Nombre = "Mago", Descripcion = "Le sobra sabiduria y por sobre todo un gran poder magico" });
 
+            foreach (Raza Razas in Listados.Raza_List)
+            {
+                Console.Write("{0}", Razas.Nombre);
+                Console.Write(" -> Descripcion: ");
+                Console.WriteLine(Razas.Descripcion);
+                Console.WriteLine();
+            }
         }
-        public void Eliminarraza()
+        public void EliminarRaza()
         {
 
         }
@@ -68,7 +128,7 @@ namespace TareaFinal_parte1
         {
 
         }
-        public void Modificarcaracteristica()
+        public void ModificarCaracteristica()
         {
 
         }
@@ -82,31 +142,109 @@ namespace TareaFinal_parte1
         }
         public void CrearPersonaje()
         {
-            
-            Personaje PersonajeX = new Personaje();
-            PersonajeX.Nivel = 3; 
-            Console.WriteLine("Ingrese Nuevo Personaje");
+            int Id = 2;
+            Personaje = new Personaje();
+            Personaje.Id = Id + 1;
+            Console.WriteLine("Complete los datos de su nuevo Personaje");
+            Console.WriteLine();
             Console.WriteLine("Ingrese Nombre del Personaje");
-            PersonajeX.Nombre = Console.ReadLine();
+            Personaje.Nombre = Console.ReadLine();
             Console.WriteLine("Ingrese Nivel del Personaje");
-            PersonajeX.Nivel = int.Parse(Console.ReadLine());
+            Personaje.Nivel = int.Parse(Console.ReadLine());
             Console.WriteLine("Ingrese Fuerza del Personaje");
-            PersonajeX.Fuerza = int.Parse(Console.ReadLine());
+            Personaje.Fuerza = int.Parse(Console.ReadLine());
             Console.WriteLine("Ingrese Desztreza del Personaje");
-            PersonajeX.Destreza = int.Parse(Console.ReadLine());
+            Personaje.Destreza = int.Parse(Console.ReadLine());
             Console.WriteLine("Ingrese Constitución del Personaje");
-            PersonajeX.Constitucion = int.Parse(Console.ReadLine());
+            Personaje.Constitucion = int.Parse(Console.ReadLine());
             Console.WriteLine("Ingrese Inteligencia del Personaje");
-            PersonajeX.Destreza = int.Parse(Console.ReadLine());
+            Personaje.Inteligencia = int.Parse(Console.ReadLine());
             Console.WriteLine("Ingrese Sabiduria del Personaje");
-            PersonajeX.Sabiduria = int.Parse(Console.ReadLine());
+            Personaje.Sabiduria = int.Parse(Console.ReadLine());
             Console.WriteLine("Ingrese Carisma del Personaje");
-            PersonajeX.Carisma = int.Parse(Console.ReadLine());
-            Console.WriteLine(PersonajeX.Nombre);
-            Console.Write("Nivel");
-            Console.Write("");
-            Console.WriteLine(PersonajeX.Nivel);
+            Personaje.Carisma = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            ListarRazas();
+            Console.WriteLine();
+            Console.WriteLine(Listados.Raza_List.Count);
+            
+            
+            Listados.Personaje_List.Add(Personaje);
+            Console.WriteLine("Se muestran las Razas Existentes en el sistema a continuacion siga las instrucciones");
+            Console.WriteLine();
 
+            ListarRazas();
+
+            Console.WriteLine();
+            Console.WriteLine("Si Elige Raza existente Ingrese el comando Existente de lo contrario ingrese Nueva");
+            string ComandoRA = Console.ReadLine();
+            if (ComandoRA.Equals("Existente"))
+            {
+                Console.WriteLine("Para escriba el nombre de la Raza Elegida");
+                Console.WriteLine();
+                string ComandoRA2 = Console.ReadLine();
+                if (ComandoRA2.Equals("ejfd"))
+                {
+                   
+                    Console.WriteLine("A elegido la Raza", ComandoRA2);
+                 //   Personaje.RazaAtributo = 
+
+                };
+                
+            }
+            else if (ComandoRA.Equals("Nueva"))
+            {
+                Personaje.RazaAtributo = CrearRaza();
+            }
+
+            Console.WriteLine("Se muestran las Clases Existentes en el sistema a continuacion siga las instrucciones");
+
+            Console.WriteLine();
+            foreach (Clase Clases in Listados.Clase_List)
+            {
+                Console.Write("{0}", Clases.Nombre);
+                Console.Write(" -> Descripcion: ");
+                Console.WriteLine(Clases.Descripcion);
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            Console.WriteLine("Si Elige Clase existente Ingrese el comando Existente de lo contrario ingrese Nueva");
+            string ComandoCL = Console.ReadLine();
+
+            if (ComandoCL.Equals("Existente"))
+            {
+              //  Personaje.ClaseAtributo =
+            }
+            else if (ComandoCL.Equals("Nueva"))
+            {
+                Personaje.ClaseAtributo = CrearClase();
+            }
+
+            Console.WriteLine();
+            foreach (Personaje Personajes in Listados.Personaje_List)
+            {
+                Console.Write("Nombre: ");
+                Console.WriteLine(Personajes.Nombre);
+                Console.Write("Nivel: ");
+                Console.WriteLine(Personajes.Nivel);
+                Console.Write("Fuerza: ");
+                Console.WriteLine(Personajes.Fuerza);
+                Console.Write("Destreza: ", Personajes.Destreza);
+                Console.WriteLine(Personajes.Destreza);
+                Console.Write("Constitucion: ");
+                Console.WriteLine(Personajes.Constitucion);
+                Console.Write("Inteligencia: ");
+                Console.WriteLine(Personajes.Inteligencia);
+                Console.Write("Sabiduria: ");
+                Console.WriteLine(Personajes.Sabiduria);
+                Console.Write("Carisma: ");
+                Console.WriteLine(Personajes.Carisma);
+                Console.Write("Raza: ");
+                Console.WriteLine(Personaje.RazaAtributo.Nombre);
+                Console.WriteLine("Clase: ");
+                Console.WriteLine(Personaje.ClaseAtributo.Nombre);
+            }
+            
         }
 
         public void ModificarPersonaje()
@@ -128,6 +266,20 @@ namespace TareaFinal_parte1
         public void EliminarPersonaje()
         {
 
+        }
+        public void SubirdeNivel()
+        {
+
+        }
+        public void Partidas()
+        {
+            Console.WriteLine("En la Partida 2 los Guerreros suven a nivel 4");
+
+        }
+
+        public Controlador()
+        {
+            
         }
     }
 }

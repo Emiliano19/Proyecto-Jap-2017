@@ -14,18 +14,18 @@ namespace TareaFinal_parte1
         void ListarHabilidadesHespecialesPorClase();
         void EliminarHabilidadEspecialPorHabilidadEspecial();
 
-        void CrearClase();
+        Clase CrearClase();
         void ModificarClase();
         void ListarClases();
         void EliminarClase();
 
-        void CrearRaza();
+        Raza CrearRaza();
         void ModificarRaza();
         void ListarRazas();
-        void Eliminarraza();
+        void EliminarRaza();
 
         void CrearCaracteristica();
-        void Modificarcaracteristica();
+        void ModificarCaracteristica();
         void ListarCaracteristicas();
         void EliminarCaracteristica();
 

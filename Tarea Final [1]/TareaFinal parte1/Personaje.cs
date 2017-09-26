@@ -8,9 +8,12 @@ namespace TareaFinal_parte1
 {
     public class Personaje
     {
-        public Raza Raza { get; set; }
-        public Clase Clase { get; set; }
-        Controlador Controlador { get; set; }
+        public List<Personaje_Caracteristica> Caracteristicas { get; set; }
+        public List<Habilidad_Especial> H_EAtributoColeccion { get; set; }
+        Listados Listados = new Listados();
+        public Raza RazaAtributo { get; set; }
+        public Clase ClaseAtributo { get; set; }
+        public Controlador Controlador { get; set; }
         public int Id { get; set; }
         public string Nombre { get; set; }
         public int Nivel { get; set; }
@@ -20,7 +23,7 @@ namespace TareaFinal_parte1
         public int Inteligencia { get; set; }
         public int Sabiduria { get; set; }
         public int Carisma { get; set; }
-        public Dictionary<int, Personaje_Caracteristica> Caracteristicas { get; set; }
+        
 
         /*public Personaje(int id, string nombre, int nivel, int fuerza, int destreza, int constitucion, int inteligencia, int sabiduria, int carisma)
         {
@@ -37,7 +40,7 @@ namespace TareaFinal_parte1
 
         public Personaje()
         {
-     
+        
         }
     }
 }
