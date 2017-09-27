@@ -62,11 +62,43 @@ namespace TareaFinal_parte1
         }
         public void ModificarClase()
         {
+            string ComandoCL = Console.ReadLine();
+            foreach (Clase Clases in Listados.Clase_List)
+            {
+                if (Clases.Nombre == ComandoCL)
+                {
+                    string ComandoCL2 = Console.ReadLine();
+                    Console.WriteLine("Sellecione que desea modificar");
+                    Console.WriteLine();
+                    Console.WriteLine("Si desea modificar el nombre de la Clase ingrese el comando Nombre");
+                    Console.WriteLine();
+                    Console.WriteLine("Si desea Modificar Descripcion e la Raza ingrese el comando Descripcion");
+                    Console.WriteLine();
+                    if (ComandoCL2.Equals("Nombre"))
+                    {
+                        Clases.Nombre = Console.ReadLine();
+                    }
+                    else if (ComandoCL2.Equals("Descripcion"))
+                    {
+                        Clases.Descripcion = Console.ReadLine();
+                    }
 
+
+                }
+            }
         }
         public void ListarClases()
         {
+            Clase Guerrero = new Clase() { Id = 1, Nombre = "Guerrero", Descripcion = "Los guerreros poseen una gran abilidad en la lucha" };
+            Listados.Clase_List.Add(Guerrero);
 
+            foreach (Clase Clases in Listados.Clase_List)
+            {
+                Console.Write("{0}", Clases.Nombre);
+                Console.Write(" -> Descripcion: ");
+                Console.WriteLine(Clases.Descripcion);
+                Console.WriteLine();
+            }
         }
         public void EliminarClase()
         {
@@ -84,21 +116,11 @@ namespace TareaFinal_parte1
             Listados.Raza_List.Add(Raza);
             Id = Id + 1;
 
-            foreach (Raza Razas in Listados.Raza_List)
-            {
-                Console.Write(" -> Id: ");
-                Console.Write(Razas.Id);
-                Console.Write("{0}", Razas.Nombre);
-                Console.Write(" -> Descripcion: ");
-                Console.WriteLine(Razas.Descripcion);
-                Console.WriteLine();
-            }
-
             return Raza;
         }
         public void ModificarRaza()
         {
-            Console.WriteLine("Entro");
+           
         }
         public void ListarRazas()
         {
@@ -177,43 +199,51 @@ namespace TareaFinal_parte1
 
             Console.WriteLine();
             Console.WriteLine("Si Elige Raza existente Ingrese el comando Existente de lo contrario ingrese Nueva");
+            Console.WriteLine();
             string ComandoRA = Console.ReadLine();
             if (ComandoRA.Equals("Existente"))
             {
-                Console.WriteLine("Para escriba el nombre de la Raza Elegida");
+                Console.WriteLine("Escriba el nombre de la Raza Elegida");
                 Console.WriteLine();
                 string ComandoRA2 = Console.ReadLine();
-                if (ComandoRA2.Equals("ejfd"))
+                foreach (Raza Razas in Listados.Raza_List)
                 {
-                   
-                    Console.WriteLine("A elegido la Raza", ComandoRA2);
-                 //   Personaje.RazaAtributo = 
+                    if (Razas.Nombre == ComandoRA2)
+                    {
+                        Personaje.RazaAtributo = Razas;
+                    }
+                }
 
-                };
-                
             }
             else if (ComandoRA.Equals("Nueva"))
             {
                 Personaje.RazaAtributo = CrearRaza();
             }
 
+
             Console.WriteLine("Se muestran las Clases Existentes en el sistema a continuacion siga las instrucciones");
 
             Console.WriteLine();
-            foreach (Clase Clases in Listados.Clase_List)
-            {
-                Console.Write("{0}", Clases.Nombre);
-                Console.Write(" -> Descripcion: ");
-                Console.WriteLine(Clases.Descripcion);
-                Console.WriteLine();
-            }
+            ListarClases();
             Console.WriteLine();
             Console.WriteLine("Si Elige Clase existente Ingrese el comando Existente de lo contrario ingrese Nueva");
+            Console.WriteLine();
             string ComandoCL = Console.ReadLine();
 
             if (ComandoCL.Equals("Existente"))
             {
-              //  Personaje.ClaseAtributo =
+                Console.WriteLine();
+                Console.WriteLine("Escriba el nombre de la Clase Elegida");
+                Console.WriteLine();
+                string ComandoCL2 = Console.ReadLine();
+                foreach (Clase Clases in Listados.Clase_List)
+                {
+                    if (Clases.Nombre == ComandoCL2)
+                    {
+                        Personaje.ClaseAtributo = Clases;
+                    }
+                }
+
             }
             else if (ComandoCL.Equals("Nueva"))
             {
@@ -241,7 +271,7 @@ namespace TareaFinal_parte1
                 Console.WriteLine(Personajes.Carisma);
                 Console.Write("Raza: ");
                 Console.WriteLine(Personaje.RazaAtributo.Nombre);
-                Console.WriteLine("Clase: ");
+                Console.Write("Clase: ");
                 Console.WriteLine(Personaje.ClaseAtributo.Nombre);
             }
             

@@ -26,8 +26,7 @@ namespace TareaFinal_parte1
         {
            
             //    PersonajeAtributoColeccion = Listados.Personaje_List;
-            Clase Guerrero = new Clase() { Id = 1, Nombre = "Guerrero", Descripcion = "Los guerreros poseen una gran abilidad en la lucha" };
-            Listados.Clase_List.Add(Guerrero);
+            
         }
     }
 }

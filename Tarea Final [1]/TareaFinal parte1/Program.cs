@@ -62,51 +62,75 @@ namespace TareaFinal_parte1
                 {
                     controlador.CrearPersonaje();
                     Console.WriteLine("Se ingresaron correctamente los datos generales del Personaje");
-
+                    Console.WriteLine();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando == "ModificarPersonaje")
                 {   
                     controlador.ModificarPersonaje();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando == "EliminarPersonaje")
                 {
                     controlador.EliminarPersonaje();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando == "CrearRaza")
                 {
                     controlador.CrearRaza();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando == "ModificarRaza")
                 {
                     controlador.ModificarRaza();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando == "EliminarRaza")
                 {
                     controlador.EliminarRaza();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando == "CrearClase")
                 {
                     controlador.CrearClase();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando == "ModificarClase")
                 {
                     controlador.ModificarClase();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando == "EliminarClase")
                 {
                     controlador.EliminarClase();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando.Equals("CrearHE"))
                 {
                     controlador.CrearHabilidadHespecial();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando == "ModificarHE")
                 {
                         controlador.ModificarHabilidadEspecial();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando == "EliminarHEPorHB")
                 {
                     controlador.EliminarHabilidadEspecialPorHabilidadEspecial();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
                 }
                 else if (Comando != "CrearPersonaje")
                 {
