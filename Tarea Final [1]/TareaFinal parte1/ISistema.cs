@@ -8,11 +8,14 @@ namespace TareaFinal_parte1
 {
     interface ISistema
     {
-        void CrearHabilidadHespecial();
+        void SimulaciondelJuego();
+        void SubirdeNivel();
+
+        Habilidad_Especial CrearHabilidadHespecial();
         void ModificarHabilidadEspecial();
-        void ListarHabilidadesHespeciales();
-        void ListarHabilidadesHespecialesPorClase();
-        void EliminarHabilidadEspecialPorHabilidadEspecial();
+        void ListarHabilidadEspecial();
+        void ListarHabilidadHespecialPorClase();
+        void EliminarHabilidadEspecial();
 
         Clase CrearClase();
         void ModificarClase();
@@ -24,12 +27,12 @@ namespace TareaFinal_parte1
         void ListarRazas();
         void EliminarRaza();
 
-        void CrearCaracteristica();
+        Caracteristica_Variable CrearCaracteristica();
         void ModificarCaracteristica();
         void ListarCaracteristicas();
         void EliminarCaracteristica();
 
-        void CrearPersonaje();
+        Personaje CrearPersonaje();
         void ModificarPersonaje();
         void ListarPersonaje();
         void ListarPersonajesPorRaza();

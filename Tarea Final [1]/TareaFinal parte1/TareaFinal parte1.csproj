@@ -48,7 +48,6 @@
     <Compile Include="Fabrica.cs" />
     <Compile Include="Habilidad Especial.cs" />
     <Compile Include="ISistema.cs" />
-    <Compile Include="Listados.cs" />
     <Compile Include="Personaje Caracteristica.cs" />
     <Compile Include="Personaje.cs" />
     <Compile Include="Program.cs" />

@@ -11,10 +11,9 @@ namespace TareaFinal_parte1
      
         static void Main(string[] args)
         {
-            Listados Listados = new Listados();
+
             Fabrica Fabric = new Fabrica();
             ISistema controlador = Fabric.ControladorPersonaje();
-            
 
             Console.WriteLine("Bienvenido al Sistema de Control de Personajes");
             Console.ReadLine();
@@ -38,19 +37,19 @@ namespace TareaFinal_parte1
             Console.WriteLine("ModificarClase");
             Console.WriteLine("Para Eliminar una Clase Ingrese:");
             Console.WriteLine("EliminarClase");
-            Console.WriteLine("Para Crear una Caracteristica Ingrese:");
+            Console.WriteLine("Para Crear una Caracteristica Variable Ingrese:");
             Console.WriteLine("CrearCaracteristica");
-            Console.WriteLine("Para Modificar una Caracteristica Ingrese:");
+            Console.WriteLine("Para Modificar una Caracteristica Variable Ingrese:");
             Console.WriteLine("ModificarCaracteristica");
-            Console.WriteLine("Para Elimina una Caracteristica Ingrese:");
+            Console.WriteLine("Para Elimina una Caracteristica Variable Ingrese:");
             Console.WriteLine("EliminarCaracteristica");
             Console.WriteLine("Para Crear una Habilidad Especial Ingrese:");
-            Console.WriteLine("CrearHabilidadEspecial");
+            Console.WriteLine("CrearHabilidadEspecialVariable");
             Console.WriteLine("Para Modificar una Habilidad Especial Ingrese:");
             Console.WriteLine("ModificarHabilidadEspecial");
             Console.WriteLine("Para Eliminar una Habilidad Especial Ingrese:");
-            Console.WriteLine("EliminarHabilidadEspecialPorHabilidadEspecial");
-            Console.ReadLine();
+            Console.WriteLine("EliminarHabilidadEspecial");
+            Console.WriteLine();
             Console.Write("Ingrese el Comando Elegido: ");
             string Comando = Console.ReadLine();
            
@@ -61,6 +60,7 @@ namespace TareaFinal_parte1
                 if (Comando == "CrearPersonaje")
                 {
                     controlador.CrearPersonaje();
+                    Console.WriteLine();
                     Console.WriteLine("Se ingresaron correctamente los datos generales del Personaje");
                     Console.WriteLine();
                     Console.Write("Ingrese el Nuevo Comando Elegido: ");
@@ -75,6 +75,18 @@ namespace TareaFinal_parte1
                 else if (Comando == "EliminarPersonaje")
                 {
                     controlador.EliminarPersonaje();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
+                }
+                else if (Comando == "ListarPersonajesPorRaza")
+                {
+                    controlador.ListarPersonajesPorRaza();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
+                }
+                else if (Comando == "ListarPersonajesPorClase")
+                {
+                    controlador.ListarPersonajesPorClase();
                     Console.Write("Ingrese el Nuevo Comando Elegido: ");
                     Comando = Console.ReadLine();
                 }
@@ -114,27 +126,47 @@ namespace TareaFinal_parte1
                     Console.Write("Ingrese el Nuevo Comando Elegido: ");
                     Comando = Console.ReadLine();
                 }
-                else if (Comando.Equals("CrearHE"))
+                else if (Comando.Equals("CrearCaracteristica"))
+                {
+                    controlador.CrearCaracteristica();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
+                }
+                else if (Comando == "ModificarCaracteristica")
+                {
+                    controlador.ModificarCaracteristica();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
+                }
+                else if (Comando == "EliminarCaracteristica")
+                {
+                    controlador.EliminarCaracteristica();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
+                }
+                else if (Comando.Equals("CrearHabilidadEspecial"))
                 {
                     controlador.CrearHabilidadHespecial();
                     Console.Write("Ingrese el Nuevo Comando Elegido: ");
                     Comando = Console.ReadLine();
                 }
-                else if (Comando == "ModificarHE")
+                else if (Comando == "ModificarHabilidadEspecial")
                 {
-                        controlador.ModificarHabilidadEspecial();
+                    controlador.ModificarHabilidadEspecial();
                     Console.Write("Ingrese el Nuevo Comando Elegido: ");
                     Comando = Console.ReadLine();
                 }
-                else if (Comando == "EliminarHEPorHB")
+                else if (Comando == "EliminarHabilidadEspecial")
                 {
-                    controlador.EliminarHabilidadEspecialPorHabilidadEspecial();
+                    controlador.EliminarHabilidadEspecial();
                     Console.Write("Ingrese el Nuevo Comando Elegido: ");
                     Comando = Console.ReadLine();
                 }
-                else if (Comando != "CrearPersonaje")
+                else
                 {
                     Console.WriteLine("Comando Erroneo vuelva a Intentar");
+                    Console.WriteLine();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
                     Comando = Console.ReadLine();
                 }
                 Console.WriteLine();

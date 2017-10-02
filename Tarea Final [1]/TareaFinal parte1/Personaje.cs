@@ -8,9 +8,10 @@ namespace TareaFinal_parte1
 {
     public class Personaje
     {
-        public List<Personaje_Caracteristica> Caracteristicas { get; set; }
+        public List<Caracteristica_Variable> C_VAtributoColeccion { get; set; }
+        public Caracteristica_Variable C_VAtributo { get; set; }
         public List<Habilidad_Especial> H_EAtributoColeccion { get; set; }
-        Listados Listados = new Listados();
+        public Habilidad_Especial H_EAtributo { get; set; }
         public Raza RazaAtributo { get; set; }
         public Clase ClaseAtributo { get; set; }
         public Controlador Controlador { get; set; }
@@ -40,7 +41,7 @@ namespace TareaFinal_parte1
 
         public Personaje()
         {
-        
+            C_VAtributoColeccion = new List<Caracteristica_Variable>();
         }
     }
 }

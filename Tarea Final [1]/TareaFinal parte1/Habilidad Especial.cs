@@ -9,7 +9,7 @@ namespace TareaFinal_parte1
     public class Habilidad_Especial
     {
         public List<Clase> ClaseAtributoColeccion { get; set; }
-        Listados Listados = new Listados();
+        public Clase ClaseAtributo { get; set; }
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
@@ -23,8 +23,7 @@ namespace TareaFinal_parte1
         }
         public Habilidad_Especial()
         {
-           
-            //   ClaseAtributoColeccion = Listados.Clase_List;
+            ClaseAtributoColeccion = new List<Clase>();
         }
     }
 }
