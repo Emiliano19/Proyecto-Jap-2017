@@ -13,7 +13,7 @@ namespace TareaFinal_parte1
 
         Habilidad_Especial CrearHabilidadHespecial();
         void ModificarHabilidadEspecial();
-        void ListarHabilidadEspecial();
+        void ListarHabilidadesEspeciales();
         void ListarHabilidadHespecialPorClase();
         void EliminarHabilidadEspecial();
 
@@ -34,7 +34,7 @@ namespace TareaFinal_parte1
 
         Personaje CrearPersonaje();
         void ModificarPersonaje();
-        void ListarPersonaje();
+        void ListarPersonajes();
         void ListarPersonajesPorRaza();
         void ListarPersonajesPorClase();
         void EliminarPersonaje();

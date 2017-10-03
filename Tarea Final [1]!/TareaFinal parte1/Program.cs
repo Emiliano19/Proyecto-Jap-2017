@@ -23,30 +23,40 @@ namespace TareaFinal_parte1
             Console.WriteLine("CrearPersonaje");
             Console.WriteLine("Para Modificar un Personaje Ingrese:");
             Console.WriteLine("ModificarPersonaje");
+            Console.WriteLine("Para Listar a los Personajes Ingrese:");
+            Console.WriteLine("ListarPersonajes");
             Console.WriteLine("Para Eliminar un Personaje Ingrese:");
             Console.WriteLine("EliminarPersonaje");
             Console.WriteLine("Para Crear una Raza Ingrese:");
             Console.WriteLine("CrearRaza");
             Console.WriteLine("Para Modificar una Raza Ingrese:");
             Console.WriteLine("ModificarRaza");
+            Console.WriteLine("Para Listar las Razas Ingrese:");
+            Console.WriteLine("ListarRazas");
             Console.WriteLine("Para Eliminar una Raza Ingrese:");
             Console.WriteLine("EliminarRaza");
             Console.WriteLine("Para Crear una nueva Clase Ingrese:");
             Console.WriteLine("CrearClase");
             Console.WriteLine("Para Modificar una Clase Ingrese:");
             Console.WriteLine("ModificarClase");
+            Console.WriteLine("Para Listar las Clases Ingrese:");
+            Console.WriteLine("ListarClases");
             Console.WriteLine("Para Eliminar una Clase Ingrese:");
             Console.WriteLine("EliminarClase");
             Console.WriteLine("Para Crear una Caracteristica Variable Ingrese:");
             Console.WriteLine("CrearCaracteristica");
             Console.WriteLine("Para Modificar una Caracteristica Variable Ingrese:");
             Console.WriteLine("ModificarCaracteristica");
+            Console.WriteLine("Para Listar las Caracteristicas Ingrese:");
+            Console.WriteLine("ListarCaracteristicas");
             Console.WriteLine("Para Elimina una Caracteristica Variable Ingrese:");
             Console.WriteLine("EliminarCaracteristica");
             Console.WriteLine("Para Crear una Habilidad Especial Ingrese:");
             Console.WriteLine("CrearHabilidadEspecialVariable");
             Console.WriteLine("Para Modificar una Habilidad Especial Ingrese:");
             Console.WriteLine("ModificarHabilidadEspecial");
+            Console.WriteLine("Para Listar las Habilidades Especiales Ingrese:");
+            Console.WriteLine("ListarHabilidadesEspeciales");
             Console.WriteLine("Para Eliminar una Habilidad Especial Ingrese:");
             Console.WriteLine("EliminarHabilidadEspecial");
             Console.WriteLine();
@@ -69,6 +79,12 @@ namespace TareaFinal_parte1
                 else if (Comando == "ModificarPersonaje")
                 {   
                     controlador.ModificarPersonaje();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
+                }
+                if (Comando == "ListarPersonajes")
+                {
+                    controlador.ListarPersonajes();
                     Console.Write("Ingrese el Nuevo Comando Elegido: ");
                     Comando = Console.ReadLine();
                 }
@@ -102,6 +118,12 @@ namespace TareaFinal_parte1
                     Console.Write("Ingrese el Nuevo Comando Elegido: ");
                     Comando = Console.ReadLine();
                 }
+                if (Comando == "ListarRazas")
+                {
+                    controlador.ListarRazas();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
+                }
                 else if (Comando == "EliminarRaza")
                 {
                     controlador.EliminarRaza();
@@ -117,6 +139,12 @@ namespace TareaFinal_parte1
                 else if (Comando == "ModificarClase")
                 {
                     controlador.ModificarClase();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
+                }
+                if (Comando == "ListarClases")
+                {
+                    controlador.ListarClases();
                     Console.Write("Ingrese el Nuevo Comando Elegido: ");
                     Comando = Console.ReadLine();
                 }
@@ -138,6 +166,12 @@ namespace TareaFinal_parte1
                     Console.Write("Ingrese el Nuevo Comando Elegido: ");
                     Comando = Console.ReadLine();
                 }
+                if (Comando == "ListarCaracteristicas")
+                {
+                    controlador.ListarCaracteristicas();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
+                }
                 else if (Comando == "EliminarCaracteristica")
                 {
                     controlador.EliminarCaracteristica();
@@ -153,6 +187,12 @@ namespace TareaFinal_parte1
                 else if (Comando == "ModificarHabilidadEspecial")
                 {
                     controlador.ModificarHabilidadEspecial();
+                    Console.Write("Ingrese el Nuevo Comando Elegido: ");
+                    Comando = Console.ReadLine();
+                }
+                if (Comando == "ListarHabilidadesEspeciales")
+                {
+                    controlador.ListarHabilidadesEspeciales();
                     Console.Write("Ingrese el Nuevo Comando Elegido: ");
                     Comando = Console.ReadLine();
                 }

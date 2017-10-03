@@ -8,7 +8,7 @@ namespace TareaFinal_parte1
 {
     public class Personaje
     {
-        public List<Caracteristica_Variable> C_VAtributoColeccion { get; set; }
+        public List<Caracteristica_Variable> C_VAtributoColeccion = new List<Caracteristica_Variable>();
         public Caracteristica_Variable C_VAtributo { get; set; }
         public List<Habilidad_Especial> H_EAtributoColeccion { get; set; }
         public Habilidad_Especial H_EAtributo { get; set; }
