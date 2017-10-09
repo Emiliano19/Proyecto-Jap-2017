@@ -8,7 +8,6 @@ namespace TareaFinal_parte1
 {
     interface ISistema
     {
-        void SimulaciondelJuego();
         void SubirdeNivel();
 
         Habilidad_Especial CrearHabilidadHespecial();

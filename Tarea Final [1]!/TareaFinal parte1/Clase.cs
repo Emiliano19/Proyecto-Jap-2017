@@ -14,16 +14,9 @@ namespace TareaFinal_parte1
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
 
-        public Clase(int id, string nombre, string descripcion)
-        {
-            this.Id = id;
-            this.Nombre = nombre;
-            this.Descripcion = descripcion;
-        }
-
         public Clase()
         {
-             PersonajeAtributoColeccion = new List<Personaje>();
+            PersonajeAtributoColeccion = new List<Personaje>();
             HE_AtributoColeccion = new List<Habilidad_Especial>();
 
         }

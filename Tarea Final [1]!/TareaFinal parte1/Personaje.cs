@@ -8,9 +8,9 @@ namespace TareaFinal_parte1
 {
     public class Personaje
     {
-        public List<Caracteristica_Variable> C_VAtributoColeccion = new List<Caracteristica_Variable>();
-        public Caracteristica_Variable C_VAtributo { get; set; }
+        public List<Personaje_Caracteristica> C_VAtributoColeccion { get; set; }
         public List<Habilidad_Especial> H_EAtributoColeccion { get; set; }
+        public Personaje_Caracteristica Persona_Carac { get; set; }
         public Habilidad_Especial H_EAtributo { get; set; }
         public Raza RazaAtributo { get; set; }
         public Clase ClaseAtributo { get; set; }
@@ -26,22 +26,10 @@ namespace TareaFinal_parte1
         public int Carisma { get; set; }
         
 
-        /*public Personaje(int id, string nombre, int nivel, int fuerza, int destreza, int constitucion, int inteligencia, int sabiduria, int carisma)
-        {
-            this.Id = id;
-            this.Nombre = nombre;
-            this.Nivel = nivel;
-            this.Fuerza = fuerza;
-            this.Destreza = destreza;
-            this.Constitucion = constitucion;
-            this.Inteligencia = inteligencia;
-            this.Sabiduria = sabiduria;
-            this.Carisma = carisma;
-        }*/
-
         public Personaje()
         {
-            C_VAtributoColeccion = new List<Caracteristica_Variable>();
+            C_VAtributoColeccion = new List<Personaje_Caracteristica>();
+            H_EAtributoColeccion = new List<Habilidad_Especial>();
         }
     }
 }
