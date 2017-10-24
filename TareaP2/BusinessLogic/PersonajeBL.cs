@@ -10,7 +10,7 @@ namespace BusinessLogic
 {
     public class PersonajeBL
     {
-        public static int Add(Personaje Personaje)
+        public static int Agregar(Personaje Personaje)
         {
             int result = -1;
 

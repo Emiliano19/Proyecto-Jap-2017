@@ -236,12 +236,14 @@ namespace ConsoleApplication.Controladores
         }
         public void ListarClases()
         {
-            IEnumerable<Clase> NClase_List = Clase_List.OrderBy(Clas => Clas.Id);
-            foreach (Clase Clases in NClase_List)
+            foreach (Clase ClaseLI in BusinessLogic.ClaseBL.Listar())
             {
-                Console.Write("{0}", Clases.Nombre);
-                Console.Write(" -> Descripcion: ");
-                Console.WriteLine(Clases.Descripcion);
+                Console.Write("Id = ");
+                Console.Write(ClaseLI.Id);
+                Console.Write(", Nombre : ");
+                Console.Write(ClaseLI.Nombre);
+                Console.Write(", Descripcion : ");
+                Console.WriteLine(ClaseLI.Descripcion);
                 Console.WriteLine();
             }
         }

@@ -10,5 +10,47 @@ namespace BusinessLogic
 {
     public class ClaseBL
     {
+        public static int Agregar(Clase Clase)
+        {
+            int result = -1;
+
+            result = DataAccess.ClaseDA.Agregar(Clase);
+
+            return result;
+        }
+
+        public static List<Clase> Listar()
+        {
+            List<Clase> result = null;
+
+            result = DataAccess.ClaseDA.Listar();
+
+            return result;
+        }
+
+        public static Clase Obtener(int id)
+        {
+            return DataAccess.ClaseDA.Obtener(id);
+        }
+
+        public static int Modificar(Clase Clase)
+        {
+            int result = -1;
+
+            result = DataAccess.ClaseDA.Modificar(Clase);
+
+            return result;
+        }
+
+        public static int Eliminar(Clase Clase)
+        {
+            int result = -1;
+
+            result = DataAccess.ClaseDA.Eliminar(Clase);
+
+            return result;
+        }
+
     }
+
 }
