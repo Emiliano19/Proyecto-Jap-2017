@@ -53,11 +53,24 @@ namespace ConsoleApplication.Controladores
                         Console.WriteLine();
                         foreach (Habilidad_Especial HE in PerNivel.ClaseAtributo.HE_AtributoColeccion)
                         {
-                            Console.Write(HE.Nombre);
-                            Console.Write(" -> Descripcion: ");
-                            Console.WriteLine(HE.Descripcion);
-                            Console.WriteLine();
+                            foreach (Habilidad_Especial HEP in PerNivel.H_EAtributoColeccion)
+                            {
+                                if (HE.Id != HEP.Id)
+                                {
+                                    Console.Write("Id: ");
+                                    Console.WriteLine(HE.Id);
+                                    Console.Write(" -> Nombre: ");
+                                    Console.Write(HE.Nombre);
+                                    Console.Write(", Descripcion: ");
+                                    Console.WriteLine(HE.Descripcion);
+                                    Console.WriteLine();
+                                }
+
+                            }
+                            
                         }
+                        
+                        
                         Console.Write("Ingrese nombre de la habilidad elegida: ");
                         string HABELEG = Console.ReadLine();
                         foreach (Habilidad_Especial HE in PerNivel.ClaseAtributo.HE_AtributoColeccion)

@@ -39,7 +39,7 @@ namespace ConsoleApplication.Controladores
             Console.WriteLine();
             Console.Write("Elija de la siguiente lista la caracteristica asociada a la nueva Raza: ");
             Console.WriteLine();
-         //   CaracteristicasControlador.ListarCaracteristicas();
+            CaracteristicasControlador.ListarCaracteristicas();
             Console.Write("Ingrese el Id de la Caracteristica elejida: ");
             int ValorPluss = int.Parse(Console.ReadLine());
             bool Entra4 = true;

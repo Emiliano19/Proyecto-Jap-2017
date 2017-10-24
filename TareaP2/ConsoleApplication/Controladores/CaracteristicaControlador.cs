@@ -14,7 +14,7 @@ namespace ConsoleApplication.Controladores
         public Raza Raza { get; set; }
         public Clase Clase { get; set; }
         public Habilidad_Especial H_E { get; set; }
-        public Caracteristica P_C { get; set; }
+        public Caracteristica Caracteristica { get; set; }
         public PersonajeControlador PersonajeControlador { get; set; }
         public RazaControlador RazaControlador { get; set; }
         public ClaseControlador ClaseControlador { get; set; }
@@ -30,17 +30,28 @@ namespace ConsoleApplication.Controladores
 
         public Caracteristica CrearCaracteristica()
         {
-            P_C = new Caracteristica();
-            Console.WriteLine("Ingrese Nombre de la nueva Caracteristica Variable");
-            Console.WriteLine();
-            P_C.Nombre = Console.ReadLine();
-            Caracteristica_Variable_List.Add(P_C);
-            foreach (Personaje Pers in Personaje_List)
-            {
-                Pers.C_VAtributoColeccion.Add(new Personaje_Caracteristica() { valor = 1, CaracteristicaV = P_C });
-            }
+            Caracteristica = new Caracteristica();
+            Console.Write("Ingrese Nombre de la nueva Caracteristica: ");
+            Caracteristica.Nombre = Console.ReadLine();
+            /*Aca hay que agregarle la caracteristica a todos los personajes
+            Personaje_Caracteristica PerCAR = new Personaje_Caracteristica() { valor = 1, CaracteristicaV = Caracteristica };*/
 
-            return P_C;
+            int idRazaGenerada = BusinessLogic.CaracteristicaBL.Add(Caracteristica);
+
+            if (idRazaGenerada > 0)
+            {
+                Console.WriteLine("La Raza se agregao correctamente en la BD");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("No se agrega la Raza en la BD");
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            ListarCaracteristicas();
+
+            return Caracteristica;
         }
         public void ModificarCaracteristica()
         {
@@ -88,14 +99,14 @@ namespace ConsoleApplication.Controladores
         }
         public void ListarCaracteristicas()
         {
-            foreach (Caracteristica CV in Caracteristica_Variable_List)
+            foreach (Caracteristica CaracteristicaLI in BusinessLogic.CaracteristicaBL.Listar())
             {
-                Console.Write(CV.Nombre);
-                Console.Write(" -> Valor: ");
-                Console.WriteLine("No asignado porque varia para cada Personaje ");
+                Console.Write("Id = ");
+                Console.Write(CaracteristicaLI.Id);
+                Console.Write(", Nombre : ");
+                Console.WriteLine(CaracteristicaLI.Nombre);
                 Console.WriteLine();
             }
-            Console.WriteLine();
         }
         public void EliminarCaracteristica()
         {

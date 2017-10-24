@@ -8,22 +8,21 @@ using Domain;
 
 namespace DataAccess
 {
-    public class RazaDA
+    public class CaracteristicaDA
     {
         static string _ConnectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=TareaParte2;Data Source=DESKTOP-JU5V3V1\\SQLEXPRESS01";
 
-        public static int Agregar(Raza Raza)
+        public static int Agregar(Caracteristica Caracteristica)
         {
             int result;
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "INSERT INTO Raza(Nombre, Descripcion, ValorPluss) VALUES (@Nombre, @Descripcion)";
+                string query = "INSERT INTO Caracteristica(Nombre, IdPeCa) VALUES (@Nombre, @IdPeCa)";
                 SqlCommand com = new SqlCommand(query, connection);
 
-                com.Parameters.AddWithValue("@Nombre", Raza.Nombre);
-                com.Parameters.AddWithValue("@Descripcion", Raza.Descripcion);
-              /*  com.Parameters.AddWithValue("@ValorPluss", Raza.ValorPluss);*/
+                com.Parameters.AddWithValue("@Nombre", Caracteristica.Nombre);
+                //Falta ingresar el valor que es el valor de Personaje caracteristica
 
                 connection.Open();
 
@@ -34,13 +33,13 @@ namespace DataAccess
             return result;
         }
 
-        public static List<Raza> Listar()
+        public static List<Caracteristica> Listar()
         {
-            List<Raza> result = null;
+            List<Caracteristica> result = null;
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "SELECT IdRaza, Nombre, Descripción FROM Raza";
+                string query = "SELECT IdCar, Nombre FROM Caracteristica";
                 SqlCommand com = new SqlCommand(query, connection);
 
                 connection.Open();
@@ -50,17 +49,17 @@ namespace DataAccess
                 {
                     if (result == null)
                     {
-                        result = new List<Raza>();
+                        result = new List<Caracteristica>();
                     }
 
-                    Domain.Raza R = new Raza();
+                    Domain.Caracteristica C = new Caracteristica();
 
-                    R.Id = (int)Reader["IdRaza"];
-                    R.Nombre = Reader["Nombre"].ToString();
-                    R.Descripcion = Reader["Descripción"].ToString();
-                   // R.ValorPluss = (int)Reader["ValorPluss"];
+                    C.Id = (int)Reader["IdCar"];
+                    C.Nombre = Reader["Nombre"].ToString();
+                    //Falta listar el valor que es el de Personaje caracteristica
+                    // R.ValorPluss = (int)Reader["ValorPluss"];
 
-                    result.Add(R);
+                    result.Add(C);
                 }
 
             }
@@ -68,13 +67,13 @@ namespace DataAccess
             return result;
         }
 
-        public static Raza Obtener(int id)
+        public static Caracteristica Obtener(int id)
         {
-            Raza result = null;
+            Caracteristica result = null;
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "SELECT IdRaza, Nombre, Descripción FROM Raza WHERE IdRaza = @id";
+                string query = "SELECT IdCar, Nombre, Valor FROM Caracteristica WHERE IdCar = @id";
                 SqlCommand com = new SqlCommand(query, connection);
                 com.Parameters.AddWithValue("@id", id);
 
@@ -83,11 +82,11 @@ namespace DataAccess
 
                 if (Reader.Read())
                 {
-                    result = new Raza();
+                    result = new Caracteristica();
 
                     result.Id = (int)Reader["IdRaza"];
                     result.Nombre = Reader["Nombre"].ToString();
-                    result.Descripcion = Reader["Descripción"].ToString();
+                    //Falta obtener el valor
                     //result.ValorPluss = (int)Reader["ValorPluss"];
                 }
             }
@@ -95,40 +94,19 @@ namespace DataAccess
             return result;
         }
 
-        public static int Modificar(Raza Raza)
+        public static int Modificar(Caracteristica C)
         {
             int result;
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
                 connection.Open();
-                string query = "UPDATE Raza SET [Nombre] = @Nombre, [Descripcion] = @Descripcion WHERE [IdRaza] = @IdRaza";
+                string query = "UPDATE Caracteristica SET [Nombre] = @Nombre, [Descripcion] = @Descripcion WHERE [IdRaza] = @IdRaza";
 
                 SqlCommand com = new SqlCommand(query, connection);
-                com.Parameters.AddWithValue("@Nombre", Raza.Nombre);
-                com.Parameters.AddWithValue("@IdRaza", Raza.Id);
-                com.Parameters.AddWithValue("@Descripcion", Raza.Descripcion);
-
-                result = com.ExecuteNonQuery();
-
-                connection.Close();
-                
-            }
-
-            return result;
-            
-        }
-
-        public static int Eliminar(Raza Raza)
-        {
-            int result;
-
-            using (SqlConnection connection = new SqlConnection(_ConnectionString))
-            {
-                connection.Open();
-                string query = "Clear Raza WHERE [IdRaza] = @id";
-
-                SqlCommand com = new SqlCommand(query, connection);
+                com.Parameters.AddWithValue("@Nombre", C.Nombre);
+                com.Parameters.AddWithValue("@IdRaza", C.Id);
+                //Falta modificar el valor
 
                 result = com.ExecuteNonQuery();
 
@@ -141,5 +119,4 @@ namespace DataAccess
         }
 
     }
-
 }

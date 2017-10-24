@@ -14,7 +14,7 @@ namespace BusinessLogic
         {
             int result = -1;
 
-            result = DataAccess.RazaDA.Add(Raza);
+            result = DataAccess.RazaDA.Agregar(Raza);
 
             return result;
         }
@@ -38,6 +38,15 @@ namespace BusinessLogic
             int result = -1;
 
             result = DataAccess.RazaDA.Modificar(Raza);
+
+            return result;
+        }
+
+        public static int Eliminar(Raza Raza)
+        {
+            int result = -1;
+
+            result = DataAccess.RazaDA.Eliminar(Raza);
 
             return result;
         }

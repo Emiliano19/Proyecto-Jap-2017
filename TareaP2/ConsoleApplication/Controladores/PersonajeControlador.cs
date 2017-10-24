@@ -777,7 +777,7 @@ namespace ConsoleApplication.Controladores
         }
         public void ListarPersonajes()
         {
-            foreach (Personaje Personajess in Personaje_List)
+            foreach (Personaje Personajess in BusinessLogic.PersonajeBL.Listar())
             {
                 Console.Write("Nombre: ");
                 Console.WriteLine(Personajess.Nombre);
@@ -799,9 +799,9 @@ namespace ConsoleApplication.Controladores
                 Console.WriteLine(Personajess.Carisma);
                 Console.Write("Raza: ");
                 Console.WriteLine(Personajess.RazaAtributo.Nombre);
-                Console.Write("Clase: ");
-                Console.WriteLine(Personajess.ClaseAtributo.Nombre);
-                Console.Write("Caracteristica Variable: ");
+               // Console.Write("Clase: ");
+                //Console.WriteLine(Personajess.ClaseAtributo.Nombre);
+                /*Console.Write("Caracteristica Variable: ");
                 Console.WriteLine();
                 foreach (Personaje_Caracteristica CVLISTA in Personajess.C_VAtributoColeccion)
                 {
@@ -817,7 +817,7 @@ namespace ConsoleApplication.Controladores
                     Console.Write(HES.Nombre);
                     Console.Write(" -> Descripcion: ");
                     Console.WriteLine(HES.Descripcion);
-                }
+                }*/
                 Console.WriteLine();
 
             }

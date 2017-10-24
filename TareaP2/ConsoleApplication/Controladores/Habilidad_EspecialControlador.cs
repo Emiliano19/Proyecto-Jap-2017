@@ -127,7 +127,7 @@ namespace ConsoleApplication.Controladores
 
             }
             Console.WriteLine();
-            Console.WriteLine("Se a modificado con exito la Habilidad Especial para serciorarse valla a ListarHabilidadEspecial");
+            Console.WriteLine("Se a modificado con exito la Habilidad Especial para serciorarse valla a ListarHabilidadesEspeciales");
             Console.WriteLine();
         }
         public void ListarHabilidadesEspeciales()
@@ -144,17 +144,37 @@ namespace ConsoleApplication.Controladores
         }
         public void ListarHabilidadHespecialPorClase()
         {
+            Console.WriteLine("Se enlistan a continuacion las Clases");
+            Console.WriteLine();
             foreach (Clase Clases in Clase_List)
             {
-                Console.Write(Clases.Nombre);
-                Console.WriteLine(":");
-                foreach (Habilidad_Especial HECLASE in Clases.HE_AtributoColeccion)
+                Console.Write("Id = ");
+                Console.Write(Clases.Id);
+                Console.Write(" -> ");
+                Console.Write("Nombre: ");
+                Console.WriteLine(Clases.Nombre);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Para ver la lista de Habilidades de una Clase escriba el Id de la Clase a continuación");
+            Console.WriteLine();
+            Console.Write("Ingrese el Id de la Clase elejida: ");
+            int Idelejido = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            foreach (Clase Clases in Clase_List)
+            {
+                if (Clases.Id == Idelejido)
                 {
-                    Console.Write(HECLASE.Nombre);
-                    Console.Write(" -> Descripcion: ");
-                    Console.WriteLine(HECLASE.Descripcion);
+                    Console.Write(Clases.Nombre);
+                    Console.WriteLine(":");
+                    foreach (Habilidad_Especial HECLASE in Clases.HE_AtributoColeccion)
+                    {
+                        Console.Write(HECLASE.Nombre);
+                        Console.Write(" -> Descripcion: ");
+                        Console.WriteLine(HECLASE.Descripcion);
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
+                
             }
         }
         public void EliminarHabilidadEspecial()

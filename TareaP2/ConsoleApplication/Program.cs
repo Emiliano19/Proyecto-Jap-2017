@@ -20,6 +20,7 @@ namespace ConsoleApplication
             CaracteristicaControlador CaracteristicasControlador = new CaracteristicaControlador();
             SubirdeNivel SubirdeNivelControlador = new SubirdeNivel();
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("        |-----------------------------------------------------------------------------|                      ");
             Console.WriteLine("        |   ___________      ___         ________      _________         ___          |                      ");
             Console.WriteLine("        |  |           -    -   -       |   ___   -   |   ______|       -   -         |                      ");
@@ -30,10 +31,13 @@ namespace ConsoleApplication
             Console.WriteLine("        |      |___-   -__-       -__-  |___|   -__-  |_________|  -__-       -__-    |                      ");
             Console.WriteLine("        |-----------------------------------------------------------------------------|                      ");
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("                       Bienvenido al Sistema de Control de Personajes                                        ");
             Console.WriteLine();
             Console.WriteLine("A continuación se muestran los comandos de control de Sistema precione Enter para que aparescan");
             Console.ReadLine();
+            Console.Beep();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(" ___________________________________________________________________________________________________________ ");
             Console.WriteLine("|-Para Crear un Nuevo Personaje Ingrese:        |-Para Crear una Caracteristica Ingrese:                    |");
             Console.WriteLine("|-CrearPersonaje                                |-CrearCaracteristica                                       |");
@@ -79,6 +83,7 @@ namespace ConsoleApplication
             Console.WriteLine("|-EliminarClase                                 |                                                           |");
             Console.WriteLine("-------------------------------------------------------------------------------------------------------------");
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Ingrese el Comando Elegido: ");
             string Comando = Console.ReadLine();
             Console.WriteLine();
