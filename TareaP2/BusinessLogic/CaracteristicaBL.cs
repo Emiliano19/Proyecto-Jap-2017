@@ -41,5 +41,15 @@ namespace BusinessLogic
 
             return result;
         }
+
+
+        public static int Eliminar(Caracteristica Caracteristica)
+        {
+            int result = -1;
+
+            result = DataAccess.CaracteristicaDA.Eliminar(Caracteristica);
+
+            return result;
+        }
     }
 }

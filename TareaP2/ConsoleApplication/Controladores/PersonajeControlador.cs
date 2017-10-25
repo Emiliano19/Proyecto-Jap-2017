@@ -799,18 +799,22 @@ namespace ConsoleApplication.Controladores
                 Console.WriteLine(Personajess.Carisma);
                 Console.Write("Raza: ");
                 Console.WriteLine(Personajess.RazaAtributo.Nombre);
-               // Console.Write("Clase: ");
-                //Console.WriteLine(Personajess.ClaseAtributo.Nombre);
-                /*Console.Write("Caracteristica Variable: ");
+                Console.Write("Clase: ");
+                Console.WriteLine(Personajess.ClaseAtributo.Nombre);
+                Console.Write("Caracteristica Variable: ");
                 Console.WriteLine();
                 foreach (Personaje_Caracteristica CVLISTA in Personajess.C_VAtributoColeccion)
                 {
-                    Console.Write("{0}", CVLISTA.CaracteristicaV.Nombre);
-                    Console.Write(" -> Valor: ");
+                    Console.Write("Id: ");
+                    Console.Write(CVLISTA.CaracteristicaV.Id);
+                    Console.Write(" -> ");
+                    Console.Write(CVLISTA.CaracteristicaV.Nombre);
+                    //No me imprime ni nombre ni Id Pero si Valor
+                    Console.Write(", Valor: ");
                     Console.WriteLine(CVLISTA.valor);
 
                 }
-                Console.Write("Habilidades Especiales: ");
+               /* Console.Write("Habilidades Especiales: ");
                 Console.WriteLine();
                 foreach (Habilidad_Especial HES in Personajess.H_EAtributoColeccion)
                 {

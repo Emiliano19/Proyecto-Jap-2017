@@ -49,7 +49,7 @@ namespace DataAccess
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
  
-                string query = "SELECT IdPer, Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdRaza, IdClase FROM Personaje";
+                string query = "SELECT IdPer, Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdRaza, IdClase, IdPerCar FROM Personaje";
                 SqlCommand com = new SqlCommand(query, connection);
 
                 connection.Open();
@@ -63,7 +63,7 @@ namespace DataAccess
                     }
 
                     Domain.Personaje P = new Personaje();
-                    id = (int)Reader["Idraza"];
+                   
                     P.Id = (int)Reader["IdPer"];
                     P.Nombre = Reader["Nombre"].ToString();
                     P.Nivel = (int)Reader["Nivel"];
@@ -73,9 +73,10 @@ namespace DataAccess
                     P.Inteligencia = (int)Reader["Inteligencia"];
                     P.Sabiduria = (int)Reader["Sabiduria"];
                     P.Carisma = (int)Reader["Carisma"];
-                    P.RazaAtributo = RazaDA.Obtener(id);
-                    //  P.ClaseAtributo = ClaseDA.Obtener(IdClase);
-
+                    P.RazaAtributo = RazaDA.Obtener((int)Reader["Idraza"]);
+                    P.ClaseAtributo = ClaseDA.Obtener((int)Reader["IdClase"]);
+                    P.C_VAtributoColeccion.Add(Personaje_CaracteristicaDA.Obtener((int)Reader["IdPerCar"]));
+                  //  P.H_EAtributoColeccion.Add(HabilidadEspecialDA.Obtener((int)Reader["IdHE"]));
 
                     result.Add(P);
                 }
@@ -91,7 +92,7 @@ namespace DataAccess
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "SELECT IdPer, Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdRaza, IdClase FROM Personaje FROM Personaje WHERE IdPersonaje = @id";
+                string query = "SELECT IdPer, Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdRaza, IdClase FROM Personaje WHERE IdPersonaje = @id";
                 SqlCommand com = new SqlCommand(query, connection);
                 com.Parameters.AddWithValue("@id", id);
 
@@ -170,7 +171,7 @@ namespace DataAccess
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
                 connection.Open();
-                string query = "Clear Personaje WHERE [IdPer] = @id";
+                string query = "Delete Personaje WHERE [IdPer] = @id";
 
                 SqlCommand com = new SqlCommand(query, connection);
 

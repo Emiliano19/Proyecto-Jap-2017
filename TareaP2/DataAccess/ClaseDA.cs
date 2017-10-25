@@ -124,7 +124,7 @@ namespace DataAccess
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
                 connection.Open();
-                string query = "Clear Clase WHERE [IdClase] = @id";
+                string query = "Delete Clase WHERE [IdClase] = @id";
 
                 SqlCommand com = new SqlCommand(query, connection);
 

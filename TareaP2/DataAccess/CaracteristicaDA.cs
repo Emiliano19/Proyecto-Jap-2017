@@ -118,5 +118,26 @@ namespace DataAccess
 
         }
 
+        public static int Eliminar(Caracteristica Caracteristica)
+        {
+            int result;
+
+            using (SqlConnection connection = new SqlConnection(_ConnectionString))
+            {
+                connection.Open();
+                string query = "Delete Caracteristica WHERE [IdCar] = @id";
+
+                SqlCommand com = new SqlCommand(query, connection);
+
+                result = com.ExecuteNonQuery();
+
+                connection.Close();
+
+            }
+
+            return result;
+
+        }
+
     }
 }

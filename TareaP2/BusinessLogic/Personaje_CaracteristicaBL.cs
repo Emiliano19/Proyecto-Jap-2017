@@ -8,11 +8,11 @@ using Domain;
 
 namespace BusinessLogic
 {
-    public class HabilidadEspecialBL
+    class Personaje_CaracteristicaBL
     {
-        public static Habilidad_Especial Obtener(int id)
+        public static Personaje_Caracteristica Obtener(int id)
         {
-            return DataAccess.HabilidadEspecialDA.Obtener(id);
+            return DataAccess.Personaje_CaracteristicaDA.Obtener(id);
         }
     }
 }
