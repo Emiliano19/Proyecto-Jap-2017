@@ -25,10 +25,7 @@ namespace Domain
 
         public ControladordeCarga()
         {
-            Raza R1 = new Raza(){ Id = 1, Nombre = "Humanos", Descripcion = "Buenos en batalla e Inteligentes pero no tan Fuertes" };
-            BusinessLogic.RazaBL.Add(R1);
-            Raza R2 = new Raza(){ Id = 2, Nombre = "Ogro", Descripcion = "Poseen gran Fuerza y son abiles guerreros"};
-            BusinessLogic.RazaBL.Add(R2);
+           
             /* Raza_List.Add(new Raza() { Id = 3, Nombre = "Throl", Descripcion = "Poseen gran Fuerza pero poca Inteligencia", ValorPluss = 2 });
              Raza_List.Add(new Raza() { Id = 4, Nombre = "Elfo", Descripcion = "Baja constitucion y fuerza pero muy inteligentes", ValorPluss = 4 });
              Raza_List.Add(new Raza() { Id = 5, Nombre = "Gigante", Descripcion = "Muy elevada constitucion y una descomunal fuerza fisica", ValorPluss = 3 });

@@ -10,7 +10,7 @@ namespace BusinessLogic
 {
     public class CaracteristicaBL
     {
-        public static int Add(Caracteristica Caracteristica)
+        public static int Agregar(Caracteristica Caracteristica)
         {
             int result = -1;
 
@@ -41,7 +41,6 @@ namespace BusinessLogic
 
             return result;
         }
-
 
         public static int Eliminar(Caracteristica Caracteristica)
         {

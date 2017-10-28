@@ -9,6 +9,7 @@ namespace Domain
     public class Personaje_Caracteristica
     {
         public Caracteristica CaracteristicaV { get; set; }
+        public int Id { get; set; }
         public int valor { get; set; }
 
         public Personaje_Caracteristica()

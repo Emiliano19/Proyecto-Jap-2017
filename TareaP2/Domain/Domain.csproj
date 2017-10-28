@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Entidades\Caracteristica.cs" />
     <Compile Include="Entidades\Clase.cs" />
+    <Compile Include="Entidades\Clase_HE.cs" />
     <Compile Include="Entidades\Habilidad_Especial.cs" />
     <Compile Include="Entidades\Personaje.cs" />
     <Compile Include="Entidades\Personaje_Caracteristica.cs" />

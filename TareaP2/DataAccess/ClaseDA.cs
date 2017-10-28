@@ -18,11 +18,11 @@ namespace DataAccess
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "INSERT INTO Clase(Nombre, Descripcion) VALUES (@Nombre, @Descripcion)";
+                string query = "INSERT INTO Clase(Nombre, Descripción) VALUES (@Nombre, @Descripción)";
                 SqlCommand com = new SqlCommand(query, connection);
 
                 com.Parameters.AddWithValue("@Nombre", Clase.Nombre);
-                com.Parameters.AddWithValue("@Descripcion", Clase.Descripcion);
+                com.Parameters.AddWithValue("@Descripción", Clase.Descripcion);
                 
                 connection.Open();
 

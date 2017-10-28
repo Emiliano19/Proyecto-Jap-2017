@@ -17,7 +17,7 @@ namespace ConsoleApplication.Controladores
         public PersonajeControlador PersonajeControlador { get; set; }
         public ClaseControlador ClaseControlador { get; set; }
         public Habilidad_EspecialControlador HEControlador { get; set; }
-        public CaracteristicaControlador CaracteristicasControlador { get; set; }
+        public CaracteristicaControlador CarCont { get; set; }
         public SubirdeNivel SubirdeNivelControlador { get; set; }
 
 
@@ -31,34 +31,47 @@ namespace ConsoleApplication.Controladores
         public Raza CrearRaza()
         {
             Raza Raza = new Raza();
-            Console.Write("Ingrese Nombre de la nueva Raza: ");
+            Console.WriteLine("Ingrese los datos de su nueva Raza");
+            Console.WriteLine();
+            Console.Write("Nombre: ");
             Raza.Nombre = Console.ReadLine();
             Console.WriteLine();
-            Console.Write("Ingrese Descripcion de la nueva Raza: ");
+            Console.Write("Descripció: ");
             Raza.Descripcion = Console.ReadLine();
             Console.WriteLine();
-            Console.Write("Elija de la siguiente lista la caracteristica asociada a la nueva Raza: ");
-            Console.WriteLine();
-            CaracteristicasControlador.ListarCaracteristicas();
-            Console.Write("Ingrese el Id de la Caracteristica elejida: ");
-            int ValorPluss = int.Parse(Console.ReadLine());
-            bool Entra4 = true;
-            while (Entra4)
+            bool Plusentra = true;
+            while (Plusentra)
             {
+                Console.Write("Valor Plus: ");
+                int Valor = int.Parse(Console.ReadLine());
+                if(Valor > 5 || Valor <= 0)
+                {
+                    Console.WriteLine("Error el Valor Plus no puede ser mayor a 5 o menor igual a 0, intente de nuevo");
+                }
+                if(Valor <= 5 && Valor > 0)
+                {
+                    Raza.ValorPlus = Valor;
+                    Plusentra = false;
+                }
                 Console.WriteLine();
-                if (ValorPluss > 5)
-                {
-                    Console.WriteLine("Error el Valor Plus no puede se mayor a 5 intente denuevo con un valor menor  u igual a 5");
-                    ValorPluss = int.Parse(Console.ReadLine());
-                }
-                else
-                {
-                    Entra4 = false;
-                    
-                }
-            }
-            int idRazaGenerada = BusinessLogic.RazaBL.Add(Raza);
 
+            }
+            Console.WriteLine("Elija de la siguiente lista la caracteristica asociada a la nueva Raza");
+            Console.WriteLine();
+            foreach (Caracteristica CaracteristicaLI in BusinessLogic.CaracteristicaBL.Listar())
+            {
+                Console.Write("Id = ");
+                Console.Write(CaracteristicaLI.Id);
+                Console.Write(", Nombre : ");
+                Console.WriteLine(CaracteristicaLI.Nombre);
+                Console.WriteLine();
+            }
+            Console.Write("Ingrese el Id de la Caracteristica elejida: ");
+            int IdCar = int.Parse(Console.ReadLine());
+            Caracteristica C = CaracteristicaBL.Obtener(IdCar);
+            Raza.Caract_VarRazaAtributo = C;
+            int idRazaGenerada = BusinessLogic.RazaBL.Agregar(Raza);
+            Console.WriteLine();
             if (idRazaGenerada > 0)
             {
                 Console.WriteLine("La Raza se agregao correctamente en la BD");
@@ -69,8 +82,6 @@ namespace ConsoleApplication.Controladores
                 Console.WriteLine("No se agrega la Raza en la BD");
                 Console.WriteLine();
             }
-            Console.WriteLine();
-            ListarRazas();
 
             return Raza;
         }
@@ -84,13 +95,6 @@ namespace ConsoleApplication.Controladores
             int id = Convert.ToInt32(ComandoRA);
             Raza R = RazaBL.Obtener(id);
             bool Entra1 = true;
-            // LISTO RAZAS
-            //SOLICITO ID
-            // Raza r = BL.Obtener(id)
-            // SI ENCUENTRO UNA RAZA r CON ESE ID, PREGUNTAS DE QUE SE DESEA MODIFICAR.
-                // r.Atributo A modificar = lo que ingresa.
-                // BL.ModificarRaza(r)
-            // SI NO, SOLICITAR NUEVAMENE ID.
             while (Entra1)
             {
                 if (R != null)
@@ -120,7 +124,6 @@ namespace ConsoleApplication.Controladores
                             Console.WriteLine();
                             Console.Write("Ingrese el nuevo Nombre de la Raza: ");
                             string NuevoNombre = Console.ReadLine();
-                            Console.WriteLine();
                             R.Nombre = NuevoNombre;
                             int idRazaGenerada = BusinessLogic.RazaBL.Modificar(R);
                             Console.WriteLine();
@@ -140,28 +143,61 @@ namespace ConsoleApplication.Controladores
                         else if (ComandoCL2.Equals("Descripcion"))
                         {
                             Console.WriteLine();
-                            R.Descripcion = null;
-                            Console.Write("Escriba la nueva Descripcion de la Raza: ");
-                            R.Descripcion = Console.ReadLine();
+                            Console.Write("Ingrese la nueva Descripción de la Raza: ");
+                            string NuevaDescripcion = Console.ReadLine();
+                            Console.WriteLine();
+                            R.Descripcion = NuevaDescripcion;
+                            int idRazaGenerada = BusinessLogic.RazaBL.Modificar(R);
+                            Console.WriteLine();
+                            if (idRazaGenerada > 0)
+                            {
+                                Console.WriteLine("La Raza se Modifico correctamente en la BD");
+                                Console.WriteLine();
+                            }
+                            else
+                            {
+                                Console.WriteLine("No se pudo Modifico la Raza en la BD");
+                                Console.WriteLine();
+                            }
                             Entra = false;
-
                         }
                         else if (ComandoCL2.Equals("Todo"))
                         {
                             Console.WriteLine();
-                            R.Nombre = null;
-                            Console.Write("Escriba el nuevo Nombre de la Raza: ");
-                            R.Nombre = Console.ReadLine();
+                            Console.Write("Ingrese el nuevo Nombre de la Raza: ");
+                            string NuevoNombre = Console.ReadLine();
                             Console.WriteLine();
-                            R.Descripcion = null;
-                            Console.Write("Escriba la nueva Descripcion de la Raza: ");
-                            R.Descripcion = Console.ReadLine();
+                            R.Nombre = NuevoNombre;
+                            Console.Write("Ingrese la nueva Descripción de la Raza: ");
+                            string NuevaDescripcion = Console.ReadLine();
+                            R.Descripcion = NuevaDescripcion;
+                            int idRazaGenerada = BusinessLogic.RazaBL.Modificar(R);
+                            Console.WriteLine();
+                            if (idRazaGenerada > 0)
+                            {
+                                Console.WriteLine("La Raza se Modifico correctamente en la BD");
+                                Console.WriteLine();
+                            }
+                            else
+                            {
+                                Console.WriteLine("No se pudo Modifico la Raza en la BD");
+                                Console.WriteLine();
+                            }
                             Entra = false;
-
                         }
 
                     }
                     Entra1 = false;
+                }
+                else
+                {
+                    Console.WriteLine("No se a encontrado una raza con ese Id en el sistema intente ingresando un nuevo Id");
+                    Console.WriteLine();
+                    Console.Write("Ingrese el Id de la Raza que desea modificar: ");
+                    int Comando = int.Parse(Console.ReadLine());
+                    int id1 = Convert.ToInt32(ComandoRA);
+                    Raza Ra = RazaBL.Obtener(id);
+
                 }
             }
             Console.WriteLine();
@@ -175,7 +211,7 @@ namespace ConsoleApplication.Controladores
                 Console.Write(RazaLI.Id);
                 Console.Write(", Nombre : ");
                 Console.Write(RazaLI.Nombre);
-                Console.Write(", Descripcion : ");
+                Console.Write(", Descripción : ");
                 Console.WriteLine(RazaLI.Descripcion);
                 Console.WriteLine();
             }
@@ -183,29 +219,43 @@ namespace ConsoleApplication.Controladores
         }
         public void EliminarRaza()
         {
-            Console.WriteLine("Lista de las Razas existentes en el sistema");
+            Console.WriteLine("Elija la Raza que desea eliminar de la siguiente lista");
             Console.WriteLine();
             ListarRazas();
-            Console.WriteLine();
-            Console.WriteLine("Escriba el nombre de la Raza que desea Eliminar");
-            Console.WriteLine();
-            string Comando = Console.ReadLine();
-            foreach (Raza Razas in Raza_List)
+            bool entra = true;
+            while (entra)
             {
-                if (Razas.Nombre == Comando)
+                Console.Write("Ingrese el Id de la Raza que desea Eliminar: ");
+                string comando = Console.ReadLine();
+                int idr;
+                bool result = Int32.TryParse(comando, out idr);
+                Raza R = RazaBL.Obtener(idr);
+
+                if (R == null || R.Id == 10 || result == false)
                 {
-                    foreach (Personaje Peri in Personaje_List)
+                    Console.WriteLine();
+                    Console.WriteLine("Ingreso un Id de Raza que no se puede eliminar o un Id inexistente en el sistema intente ingresar otro Id");
+                    Console.WriteLine();
+ 
+                }
+                else if(R != null && R.Id != 10)
+                {
+                    foreach (Personaje Pe in PersonajeBL.Listar())
                     {
-                        if (Peri.RazaAtributo == Razas)
+                        if (Pe.RazaAtributo.Id == R.Id)
                         {
-                            Peri.RazaAtributo = null;
-                            Peri.RazaAtributo = Raza_List.ElementAt(0);
+                            int Idr = 10;
+                            Pe.RazaAtributo = RazaBL.Obtener(Idr);
+                            int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(Pe);
+                            BusinessLogic.PersonajeBL.Modificar(Pe);
+
                         }
                     }
-                    Raza_List.Remove(Razas);
-                    break;
+                    RazaBL.Eliminar(R);
+                    entra = false;
                 }
             }
+          
             Console.WriteLine();
             Console.WriteLine("Su Raza a sido eliminada con exito para serceorarse valla a ListarRazas");
             Console.WriteLine();

@@ -12,7 +12,7 @@ namespace ConsoleApplication.Controladores
     {
         public Personaje PersonajeV { get; set; }
         public Raza Raza { get; set; }
-        public Clase Clase { get; set; }
+        public Clase Clase = new Clase();
         public Habilidad_Especial H_E { get; set; }
         public Caracteristica P_C { get; set; }
         public PersonajeControlador PersonajeControlador { get; set; }
@@ -31,14 +31,16 @@ namespace ConsoleApplication.Controladores
 
         public Habilidad_Especial CrearHabilidadHespecial()
         {
-            H_E = new Habilidad_Especial();
-            Console.Write("Ingrese Nombre de la nueva Habilidad Especial: ");
-            H_E.Nombre = Console.ReadLine();
+            Habilidad_Especial HES = new Habilidad_Especial();
+            Console.WriteLine("Ingrese los datos de su nueva Habilidad");
             Console.WriteLine();
-            Console.Write("Ingrese Descripcion de la nueva Habilidad Especial: ");
-            H_E.Descripcion = Console.ReadLine();
-            Habilidad_Especial_List.Add(H_E);
-
+            Console.Write("Nombre: ");
+            HES.Nombre = Console.ReadLine();
+            Console.WriteLine();
+            Console.Write("Descripción: ");
+            HES.Descripcion = Console.ReadLine();
+            BusinessLogic.HabilidadEspecialBL.Agregar(HES);
+            
             return H_E;
         }
         public void ModificarHabilidadEspecial()
@@ -132,13 +134,14 @@ namespace ConsoleApplication.Controladores
         }
         public void ListarHabilidadesEspeciales()
         {
-            IEnumerable<Habilidad_Especial> NHabilidad_Especial_List = Habilidad_Especial_List.OrderBy(HaEs => HaEs.Id);
-
-            foreach (Habilidad_Especial HabiEspec in Habilidad_Especial_List)
+            foreach (Habilidad_Especial HESLI in HabilidadEspecialBL.Listar())
             {
-                Console.Write(HabiEspec.Nombre);
-                Console.Write(" -> Descripcion: ");
-                Console.WriteLine(HabiEspec.Descripcion);
+                Console.Write("Id = ");
+                Console.Write(HESLI.Id);
+                Console.Write(", Nombre : ");
+                Console.Write(HESLI.Nombre);
+                Console.Write(", Descripción : ");
+                Console.WriteLine(HESLI.Descripcion);
                 Console.WriteLine();
             }
         }
@@ -146,7 +149,7 @@ namespace ConsoleApplication.Controladores
         {
             Console.WriteLine("Se enlistan a continuacion las Clases");
             Console.WriteLine();
-            foreach (Clase Clases in Clase_List)
+            foreach (Clase Clases in BusinessLogic.ClaseBL.Listar())
             {
                 Console.Write("Id = ");
                 Console.Write(Clases.Id);
@@ -160,19 +163,29 @@ namespace ConsoleApplication.Controladores
             Console.Write("Ingrese el Id de la Clase elejida: ");
             int Idelejido = int.Parse(Console.ReadLine());
             Console.WriteLine();
-            foreach (Clase Clases in Clase_List)
+            foreach (Clase_HE CH in BusinessLogic.Clase_HEBL.Listar())
             {
-                if (Clases.Id == Idelejido)
+                if (CH.IdC == Idelejido)
                 {
-                    Console.Write(Clases.Nombre);
+                    Clase C = ClaseBL.Obtener(CH.IdC);
+                    Console.Write(C.Nombre);
                     Console.WriteLine(":");
-                    foreach (Habilidad_Especial HECLASE in Clases.HE_AtributoColeccion)
+                    foreach (Habilidad_Especial CH2 in BusinessLogic.HabilidadEspecialBL.Listar())
                     {
-                        Console.Write(HECLASE.Nombre);
-                        Console.Write(" -> Descripcion: ");
-                        Console.WriteLine(HECLASE.Descripcion);
+                        Clase_HE CH5 = BusinessLogic.Clase_HEBL.Obtener(C.Id, CH2.Id);
+                        if(CH5 != null)
+                        {
+                            Habilidad_Especial H = HabilidadEspecialBL.Obtener(CH5.IdH);
+                            Console.Write("Id = ");
+                            Console.Write(H.Id);
+                            Console.Write(" -> ");
+                            Console.Write("Nombre: ");
+                            Console.WriteLine(H.Nombre);
+                        }
+                        
                     }
                     Console.WriteLine();
+                    break;
                 }
                 
             }

@@ -42,9 +42,11 @@
   <ItemGroup>
     <Compile Include="CaracteristicaBL.cs" />
     <Compile Include="ClaseBL.cs" />
+    <Compile Include="Clase_HEBL.cs" />
     <Compile Include="HabilidadEspecialBL.cs" />
     <Compile Include="PersonajeBL.cs" />
     <Compile Include="Personaje_CaracteristicaBL.cs" />
+    <Compile Include="Personaje_HEBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RazaBL.cs" />
   </ItemGroup>

@@ -15,11 +15,11 @@ namespace ConsoleApplication.Controladores
         public Clase Clase { get; set; }
         public Habilidad_Especial H_E { get; set; }
         public Caracteristica P_C { get; set; }
-        public RazaControlador RazaControlador { get; set; }
-        public ClaseControlador ClaseControlador { get; set; }
-        public Habilidad_EspecialControlador HEControlador { get; set; }
-        public CaracteristicaControlador CaracteristicasControlador { get; set; }
-        public SubirdeNivel SubirdeNivelControlador { get; set; }
+        public RazaControlador RazaControlador = new RazaControlador();
+        public ClaseControlador ClaseControlador = new ClaseControlador();
+        public Habilidad_EspecialControlador HEControlador = new Habilidad_EspecialControlador();
+        public CaracteristicaControlador CaracteristicasControlador = new CaracteristicaControlador();
+        public SubirdeNivel SubirdeNivelControlador = new SubirdeNivel();
 
 
         public List<Personaje> Personaje_List = new List<Personaje>();
@@ -30,151 +30,288 @@ namespace ConsoleApplication.Controladores
 
         public Personaje CrearPersonaje()
         {
-            IEnumerable<Personaje> NPersonaje_List = Personaje_List.OrderBy(Per => Per.Id);
-            int z = 1;
             Personaje PersonajeX = new Personaje();
-
-            if (Personaje_List.Count == 0)
-            {
-                PersonajeX.Id = 1;
-            }
-            else if (Personaje_List.Count > 0)
-            {
-                foreach (Personaje Per in NPersonaje_List)
-                {
-                    if (Per.Id == z)
-                    {
-                        z = z + 1;
-                    }
-                    else if (Per.Id != z)
-                    {
-                        PersonajeX.Id = z;
-                        break;
-                    }
-                }
-                if (PersonajeX.Id == 0)
-                {
-                    PersonajeX.Id = Personaje_List.Count + 1;
-                }
-            }
-            Console.WriteLine("Complete los datos de su nuevo Personaje");
+            Console.WriteLine("Ingrese los datos de su nuevo Personaje");
             Console.WriteLine();
-            Console.Write("Ingrese Nombre del Personaje: ");
+            Console.Write("Nombre: ");
             PersonajeX.Nombre = Console.ReadLine();
             Console.WriteLine();
-            Console.Write("Ingrese Nivel del Personaje: ");
-            PersonajeX.Nivel = int.Parse(Console.ReadLine());
-            while (PersonajeX.Nivel > 10 || PersonajeX.Nivel <= 0)
+            bool Nivelentra = true;
+            while (Nivelentra)
             {
-                Console.WriteLine("Error el Nivel no puede ser menor o igual a 0 ni mayor a 10, intente denuevo");
+                Console.Write("Nivel: ");
+                string CNivel = Console.ReadLine();
+                int Nivel;
+                bool result = Int32.TryParse(CNivel, out Nivel);
                 Console.WriteLine();
-                Console.Write("Ingrese Nivel del Personaje: ");
-                PersonajeX.Nivel = int.Parse(Console.ReadLine());
+
+                if(result == false)
+                {
+                    Console.WriteLine("Error lo que a ingresado no es un valor de tipo entero, intente de nuevo");
+                    Console.WriteLine();
+                }
+                else if(result == true)
+                {
+                    if(Nivel > 10 || Nivel <= 0)
+                    {
+                        Console.WriteLine("Error el Nivel no puede ser menor o igual a 0 ni mayor a 10, intente de nuevo");
+                        Console.WriteLine();
+                    }
+                    else if(Nivel > 0 && Nivel <= 10)
+                    {
+                        PersonajeX.Nivel = Nivel;
+                        Nivelentra = false;
+                    }
+                    
+                }
+              
             }
-            Console.WriteLine();
-            Console.Write("Ingrese Fuerza del Personaje: ");
-            PersonajeX.Fuerza = int.Parse(Console.ReadLine());
-            while (PersonajeX.Fuerza > 10 || PersonajeX.Fuerza <= 0)
+            bool Fuerzaentra = true;
+            while (Fuerzaentra)
             {
-                Console.WriteLine("Error el Nivel no puede ser menor o igual a 0 ni mayor a 10, intente denuevo");
+                Console.Write("Fuerza: ");
+                string CFuerza = Console.ReadLine();
+                int Fuerza;
+                bool result = Int32.TryParse(CFuerza, out Fuerza);
                 Console.WriteLine();
-                Console.Write("Ingrese Fuerza del Personaje: ");
-                PersonajeX.Fuerza = int.Parse(Console.ReadLine());
+
+                if (result == false)
+                {
+                    Console.WriteLine("Error lo que a ingresado no es un valor de tipo entero, intente de nuevo");
+                    Console.WriteLine();
+                }
+                else if (result == true)
+                {
+                    if (Fuerza > 10 || Fuerza <= 0)
+                    {
+                        Console.WriteLine("Error la Fuerza no puede ser menor o igual a 0 ni mayor a 10, intente de nuevo");
+                        Console.WriteLine();
+                    }
+                    else if (Fuerza > 0 && Fuerza <= 10)
+                    {
+                        PersonajeX.Fuerza = Fuerza;
+                        Fuerzaentra = false;
+                    }
+
+                }
+
             }
-            Console.WriteLine();
-            Console.Write("Ingrese Desztreza del Personaje: ");
-            PersonajeX.Destreza = int.Parse(Console.ReadLine());
-            while (PersonajeX.Destreza > 10 || PersonajeX.Destreza <= 0)
+            bool Destrezaentra = true;
+            while (Destrezaentra)
             {
-                Console.WriteLine("Error el Nivel no puede ser menor o igual a 0 ni mayor a 10, intente denuevo");
+                Console.Write("Destreza: ");
+                string CDestreza = Console.ReadLine();
+                int Destreza;
+                bool result = Int32.TryParse(CDestreza, out Destreza);
                 Console.WriteLine();
-                Console.Write("Ingrese Desztreza del Personaje: ");
-                PersonajeX.Destreza = int.Parse(Console.ReadLine());
+
+                if (result == false)
+                {
+                    Console.WriteLine("Error lo que a ingresado no es un valor de tipo entero, intente de nuevo");
+                    Console.WriteLine();
+                }
+                else if (result == true)
+                {
+                    if (Destreza > 10 || Destreza <= 0)
+                    {
+                        Console.WriteLine("Error la Destreza no puede ser menor o igual a 0 ni mayor a 10, intente de nuevo");
+                        Console.WriteLine();
+                    }
+                    else if (Destreza > 0 && Destreza <= 10)
+                    {
+                        PersonajeX.Destreza = Destreza;
+                        Destrezaentra = false;
+                    }
+
+                }
+
             }
-            Console.WriteLine();
-            Console.Write("Ingrese Constitución del Personaje: ");
-            PersonajeX.Constitucion = int.Parse(Console.ReadLine());
-            while (PersonajeX.Constitucion > 10 || PersonajeX.Constitucion <= 0)
+            bool Constitucionentra = true;
+            while (Constitucionentra)
             {
-                Console.WriteLine("Error el Nivel no puede ser menor o igual a 0 ni mayor a 10, intente denuevo");
+                Console.Write("Constitucion: ");
+                string CConstitucion = Console.ReadLine();
+                int Constitucion;
+                bool result = Int32.TryParse(CConstitucion, out Constitucion);
                 Console.WriteLine();
-                Console.Write("Ingrese Constitución del Personaje: ");
-                PersonajeX.Constitucion = int.Parse(Console.ReadLine());
+
+                if (result == false)
+                {
+                    Console.WriteLine("Error lo que a ingresado no es un valor de tipo entero, intente de nuevo");
+                    Console.WriteLine();
+                }
+                else if (result == true)
+                {
+                    if (Constitucion > 10 || Constitucion <= 0)
+                    {
+                        Console.WriteLine("Error la Constitución no puede ser menor o igual a 0 ni mayor a 10, intente de nuevo");
+                        Console.WriteLine();
+                    }
+                    else if (Constitucion > 0 && Constitucion <= 10)
+                    {
+                        PersonajeX.Constitucion = Constitucion;
+                        Constitucionentra = false;
+                    }
+
+                }
+
             }
-            Console.WriteLine();
-            Console.Write("Ingrese Inteligencia del Personaje: ");
-            PersonajeX.Inteligencia = int.Parse(Console.ReadLine());
-            while (PersonajeX.Inteligencia > 10 || PersonajeX.Inteligencia <= 0)
+            bool Inteligenciaentra = true;
+            while (Inteligenciaentra)
             {
-                Console.WriteLine("Error el Nivel no puede ser menor o igual a 0 ni mayor a 10, intente denuevo");
+                Console.Write("Inteligencia: ");
+                string CInteligencia = Console.ReadLine();
+                int Inteligencia;
+                bool result = Int32.TryParse(CInteligencia, out Inteligencia);
                 Console.WriteLine();
-                Console.Write("Ingrese Inteligencia del Personaje: ");
-                PersonajeX.Inteligencia = int.Parse(Console.ReadLine());
+
+                if (result == false)
+                {
+                    Console.WriteLine("Error lo que a ingresado no es un valor de tipo entero, intente de nuevo");
+                    Console.WriteLine();
+                }
+                else if (result == true)
+                {
+                    if (Inteligencia > 10 || Inteligencia <= 0)
+                    {
+                        Console.WriteLine("Error la Inteligencia no puede ser menor o igual a 0 ni mayor a 10, intente de nuevo");
+                        Console.WriteLine();
+                    }
+                    else if (Inteligencia > 0 && Inteligencia <= 10)
+                    {
+                        PersonajeX.Inteligencia = Inteligencia;
+                        Inteligenciaentra = false;
+                    }
+
+                }
+
             }
-            Console.WriteLine();
-            Console.Write("Ingrese Sabiduria del Personaje: ");
-            PersonajeX.Sabiduria = int.Parse(Console.ReadLine());
-            while (PersonajeX.Sabiduria > 10 || PersonajeX.Sabiduria <= 0)
+            bool Sabiduriaentra = true;
+            while (Sabiduriaentra)
             {
-                Console.WriteLine("Error el Nivel no puede ser menor o igual a 0 ni mayor a 10, intente denuevo");
+                Console.Write("Sabiduria: ");
+                string CSabiduria = Console.ReadLine();
+                int Sabiduria;
+                bool result = Int32.TryParse(CSabiduria, out Sabiduria);
                 Console.WriteLine();
-                Console.Write("Ingrese Sabiduria del Personaje: ");
-                PersonajeX.Sabiduria = int.Parse(Console.ReadLine());
+
+                if (result == false)
+                {
+                    Console.WriteLine("Error lo que a ingresado no es un valor de tipo entero, intente de nuevo");
+                    Console.WriteLine();
+                }
+                else if (result == true)
+                {
+                    if (Sabiduria > 10 || Sabiduria <= 0)
+                    {
+                        Console.WriteLine("Error la Sabiduria no puede ser menor o igual a 0 ni mayor a 10, intente de nuevo");
+                        Console.WriteLine();
+                    }
+                    else if (Sabiduria > 0 && Sabiduria <= 10)
+                    {
+                        PersonajeX.Sabiduria = Sabiduria;
+                        Sabiduriaentra = false;
+                    }
+
+                }
+
             }
-            Console.WriteLine();
-            Console.Write("Ingrese Carisma del Personaje: ");
-            PersonajeX.Carisma = int.Parse(Console.ReadLine());
-            while (PersonajeX.Carisma > 10 || PersonajeX.Carisma <= 0)
+            bool Carismaentra = true;
+            while (Carismaentra)
             {
-                Console.WriteLine("Error el Nivel no puede ser menor o igual a 0 ni mayor a 10, intente denuevo");
+                Console.Write("Carisma: ");
+                string CCarisma = Console.ReadLine();
+                int Carisma;
+                bool result = Int32.TryParse(CCarisma, out Carisma);
                 Console.WriteLine();
-                Console.Write("Ingrese Carisma del Personaje: ");
-                PersonajeX.Carisma = int.Parse(Console.ReadLine());
+
+                if (result == false)
+                {
+                    Console.WriteLine("Error lo que a ingresado no es un valor de tipo entero, intente de nuevo");
+                    Console.WriteLine();
+                }
+                else if (result == true)
+                {
+                    if (Carisma > 10 || Carisma <= 0)
+                    {
+                        Console.WriteLine("Error el Carisma no puede ser menor o igual a 0 ni mayor a 10, intente de nuevo");
+                        Console.WriteLine();
+                    }
+                    else if (Carisma > 0 && Carisma <= 10)
+                    {
+                        PersonajeX.Carisma = Carisma;
+                        Carismaentra = false;
+                    }
+
+                }
+
             }
             Console.WriteLine("___________________________________________________________________________________________________________________");
             Console.WriteLine();
             Console.WriteLine("Se muestran las Razas Existentes en el sistema a continuacion siga las instrucciones");
             Console.WriteLine();
-            foreach (Raza Razas in Raza_List)
+            foreach (Raza RazaLI in BusinessLogic.RazaBL.Listar())
             {
-                Console.Write("{0}", Razas.Nombre);
-                Console.Write(" -> Descripcion: ");
-                Console.WriteLine(Razas.Descripcion);
+                Console.Write("Id = ");
+                Console.Write(RazaLI.Id);
+                Console.Write(", Nombre : ");
+                Console.Write(RazaLI.Nombre);
+                Console.Write(", Descripción : ");
+                Console.WriteLine(RazaLI.Descripcion);
                 Console.WriteLine();
             }
+            Console.WriteLine("Si Elige una Raza de la lista Ingrese: 1");
             Console.WriteLine();
-            Console.WriteLine("Si Elige Raza existente Ingrese el comando Existente de lo contrario ingrese Nueva");
+            Console.WriteLine("Si desean crear una nueva Raza Ingrese: 2");
             Console.WriteLine();
-            Console.Write("Ingrese comando: ");
-            string ComandoRA = Console.ReadLine();
             bool EntraRa = true;
             while (EntraRa)
             {
-                if (!ComandoRA.Equals("Existente") && !ComandoRA.Equals("Nueva"))
-                {
-                    Console.WriteLine("Comando Erroneo intente denuevo");
-                    ComandoRA = Console.ReadLine();
-                }
-                if (ComandoRA.Equals("Existente"))
+                Console.Write("Ingrese Comando: ");
+                string comando = Console.ReadLine();
+                int ComandoRA;
+                bool result = Int32.TryParse(comando, out ComandoRA);
+
+                if (ComandoRA != 1 && ComandoRA != 2 || result == false)
                 {
                     Console.WriteLine();
-                    Console.Write("Escriba el nombre de la Raza Elegida: ");
-                    string ComandoRA2 = Console.ReadLine();
-                    foreach (Raza Razas in Raza_List)
+                    Console.WriteLine("Comando erroneo intente de nuevo");
+                    Console.WriteLine();
+                }
+                else if (ComandoRA == 1)
+                {
+                    Console.WriteLine();
+                    bool EntraRa2 = true;
+                    while (EntraRa2)
                     {
-                        if (Razas.Nombre == ComandoRA2)
+                        Console.Write("Escriba el Id de la Raza elejida: ");
+                        string comando2 = Console.ReadLine();
+                        int ComandoRA2;
+                        bool result2 = Int32.TryParse(comando2, out ComandoRA2);
+                        Raza R = RazaBL.Obtener(ComandoRA);
+
+                        if (R == null || result2 == false)
                         {
-                            PersonajeX.RazaAtributo = Razas;
-                            EntraRa = false;
                             Console.WriteLine();
+                            Console.WriteLine("Ingreso un Id de Raza que no se puede eliminar o un Id inexistente en el sistema intente ingresar otro Id");
+                            Console.WriteLine();
+
+                        }
+                        else if(R != null)
+                        {
+                            PersonajeX.RazaAtributo = R;
+                            EntraRa = false;
+                            EntraRa2 = false;
                         }
 
-                    }
+                    }             
 
                 }
-                else if (ComandoRA.Equals("Nueva"))
+                else if (ComandoRA == 2)
                 {
-                    PersonajeX.RazaAtributo = RazaControlador.CrearRaza();
+                    Console.WriteLine();
+                    Raza RA = RazaControlador.CrearRaza();
+                    PersonajeX.RazaAtributo = RA;
                     EntraRa = false;
                 }
 
@@ -183,49 +320,73 @@ namespace ConsoleApplication.Controladores
             Console.WriteLine();
             Console.WriteLine("Se muestran las Clases Existentes en el sistema a continuacion siga las instrucciones");
             Console.WriteLine();
-            foreach (Clase Clases in Clase_List)
+            foreach (Clase ClaseLI in BusinessLogic.ClaseBL.Listar())
             {
-                Console.Write("{0}", Clases.Nombre);
-                Console.Write(" -> Descripcion: ");
-                Console.WriteLine(Clases.Descripcion);
+                Console.Write("Id = ");
+                Console.Write(ClaseLI.Id);
+                Console.Write(", Nombre : ");
+                Console.Write(ClaseLI.Nombre);
+                Console.Write(", Descripción : ");
+                Console.WriteLine(ClaseLI.Descripcion);
                 Console.WriteLine();
             }
+            Console.WriteLine("Si Elige una Clase de la lista Ingrese: 1");
             Console.WriteLine();
-            Console.WriteLine("Si Elige Clase existente Ingrese el comando Existente de lo contrario ingrese Nueva");
+            Console.WriteLine("Si desean crear una nueva Clase Ingrese: 2");
             Console.WriteLine();
-            Console.Write("Ingrese comando: ");
-            string ComandoCL = Console.ReadLine();
-            Console.WriteLine();
-            bool EntraCla = true;
-            while (EntraCla)
+            bool EntraCLA = true;
+            while (EntraCLA)
             {
-                if (!ComandoCL.Equals("Existente") && !ComandoCL.Equals("Nueva"))
+                Console.Write("Ingrese Comando: ");
+                string comando = Console.ReadLine();
+                int ComandoCLA;
+                bool result = Int32.TryParse(comando, out ComandoCLA);
+
+                if (ComandoCLA != 1 && ComandoCLA != 2 || result == false)
                 {
-                    Console.WriteLine("Comando Erroneo intente denuevo");
-                    ComandoCL = Console.ReadLine();
+                    Console.WriteLine();
+                    Console.WriteLine("Comando erroneo intente de nuevo");
+                    Console.WriteLine();
                 }
-                if (ComandoCL.Equals("Existente"))
+                else if (ComandoCLA == 1)
                 {
-                    Console.Write("Escriba el nombre de la Clase Elegida: ");
-                    string ComandoCL2 = Console.ReadLine();
-                    foreach (Clase Clases in Clase_List)
+                    Console.WriteLine();
+                    bool EntraCLA2 = true;
+                    while (EntraCLA2)
                     {
-                        if (Clases.Nombre == ComandoCL2)
+                        Console.Write("Escriba el Id de la Clase elejida: ");
+                        string comando2 = Console.ReadLine();
+                        int idc;
+                        bool result2 = Int32.TryParse(comando2, out idc);
+                        Clase C = ClaseBL.Obtener(idc);
+
+                        if (C == null || result2 == false)
                         {
-                            PersonajeX.ClaseAtributo = Clases;
-                            EntraCla = false;
                             Console.WriteLine();
+                            Console.WriteLine("Ingreso un Id de Clase que no se puede eliminar o un Id inexistente en el sistema intente ingresar otro Id");
+                            Console.WriteLine();
+
                         }
+                        else if (C != null)
+                        {
+                            PersonajeX.ClaseAtributo = C;
+                            EntraCLA = false;
+                            EntraCLA2 = false;
+                        }
+
                     }
 
                 }
-                else if (ComandoCL.Equals("Nueva"))
+                else if (ComandoCLA == 2)
                 {
-                    PersonajeX.ClaseAtributo = ClaseControlador.CrearClase();
-                    EntraCla = false;
+                    Console.WriteLine();
+                    Clase CL = ClaseControlador.CrearClase();
+                    PersonajeX.ClaseAtributo = CL;
+                    EntraCLA = false;
                 }
 
             }
+            Personaje_List.Add(PersonajeX);
             Console.WriteLine("___________________________________________________________________________________________________________________");
             Console.WriteLine();
             Console.WriteLine("Se muestran las Caracteristicas Variables Existentes en el sistema a continuacion siga las instrucciones");
@@ -233,596 +394,636 @@ namespace ConsoleApplication.Controladores
             CaracteristicasControlador.ListarCaracteristicas();
             Console.WriteLine("Todas se agregaran al Personaje con los valores que usted le debe cargar a Continuacion");
             Console.WriteLine();
-            foreach (Caracteristica CVLIST in Caracteristica_Variabli_List)
-            {
-                PersonajeX.C_VAtributoColeccion.Add(new Personaje_Caracteristica() { valor = 1, CaracteristicaV = CVLIST });
-            }
-            foreach (Personaje_Caracteristica PerCarac in PersonajeX.C_VAtributoColeccion)
-            {
-                PerCarac.valor = 0;
-                Console.Write("{0}", PerCarac.CaracteristicaV.Nombre);
-                Console.Write(" -> Valor: ");
-                PerCarac.valor = int.Parse(Console.ReadLine());
-                Console.WriteLine();
-            }
-            Console.WriteLine();
-            Console.WriteLine("Si desea crear una nueva Caracteristica para su Personaje ingrese el comando Nueva de lo contrario ingrese Siguiente");
-            Console.WriteLine();
-            Console.Write("Ingrese comando: ");
-            string ComandoCV = Console.ReadLine();
-            Console.WriteLine();
-            bool EntraCV = true;
-            while (EntraCV)
-            {
-                if (!ComandoCV.Equals("Siguiente") && !ComandoCV.Equals("Nueva"))
+            Personaje_Caracteristica PeC = new Personaje_Caracteristica();
+            foreach (Caracteristica C in BusinessLogic.CaracteristicaBL.Listar())
+            {             
+                PeC.CaracteristicaV = C;
+                Console.Write(C.Nombre);
+                Console.Write(" => Valor: ");
+                PeC.valor = int.Parse(Console.ReadLine());
+                foreach(Personaje P in PersonajeBL.Listar())
                 {
-                    Console.WriteLine("Comando Erroneo intente denuevo");
-                    Console.WriteLine();
-                    Console.Write("Ingrese comando: ");
-                    ComandoCV = Console.ReadLine();
-                }
-                if (ComandoCV.Equals("Siguiente"))
-                {
-                    if (Caracteristica_Variabli_List.Count == 0)
+                    int con = 0;
+                    int Id1 = 0;
+                    int Id2 = P.Id;
+                    int IdMax = Math.Max(Id1, Id2);
+                    Id1 = Id2;
+                    con = con + 1;
+                    if(con == PersonajeBL.Listar().Count)
                     {
-                        Console.WriteLine("No existen Caracteristicas Variables en el Sistema debe crear alguna nueva ingresando el comando Nueva");
+                        Personaje PER = PersonajeBL.Obtener(IdMax);
+                        BusinessLogic.Personaje_CaracteristicaBL.Agregar(PER, C, PeC.valor);
+                        
+                    }
+
+                }
+                Console.WriteLine();
+               
+            }
+            Console.WriteLine();
+            Console.WriteLine("Si desea crear una nueva Caracteristica y agregarla ingrese: 1");
+            Console.WriteLine();
+            Console.WriteLine("Si desea finalisar el proceso ingrese: 2");
+            Console.WriteLine();
+            bool Entra = true;
+            while (Entra)
+            {
+                Console.Write("Ingrese comando: ");
+                string comando = Console.ReadLine();
+                int com;
+                bool result = Int32.TryParse(comando, out com);
+
+                if (com != 1 && com != 2)
+                {
+                    Console.WriteLine("Comando erroneo intente de nuevo");
+                    Console.WriteLine();
+                   
+                }
+                else if (com == 1)
+                {
+                    Caracteristica C1 = CaracteristicasControlador.CrearCaracteristica();
+                    Console.WriteLine();
+                    Console.WriteLine("Si desea crear una nueva Caracteristica y agregarla ingrese: 1");
+                    Console.WriteLine();
+                    Console.WriteLine("Si desea finalisar el proceso ingrese: 2");
+                    Console.WriteLine();
+                }
+                else if (com == 2)
+                {
+                    if (CaracteristicaBL.Listar().Count == 0)
+                    {
                         Console.WriteLine();
-                        Console.Write("Ingrese comando: ");
-                        ComandoCV = Console.ReadLine();
+                        Console.WriteLine("No existen Caracteristicas en el Sistema debe crear alguna nueva");
+                        Console.WriteLine();
+                        Console.WriteLine("Para crear nueva caracteristica ingrese: 1");
+                        Console.WriteLine();
                     }
-                    else if (Caracteristica_Variabli_List.Count > 0)
+                    else if (CaracteristicaBL.Listar().Count > 0)
                     {
-                        EntraCV = false;
+                        Entra = false;
                     }
 
                 }
-                if (ComandoCV.Equals("Nueva"))
-                {
-                    Caracteristica aux = CaracteristicasControlador.CrearCaracteristica();
-                    PersonajeX.C_VAtributoColeccion.Add(new Personaje_Caracteristica() { valor = 1, CaracteristicaV = aux });
-                    Console.WriteLine();
-                    Console.WriteLine("Escriba Siguiente si desea terminar el proceso o Nueva para agregar mas caracteristicas");
-                    Console.WriteLine();
-                    Console.Write("Ingrese comando: ");
-                    ComandoCV = Console.ReadLine();
-                    Console.WriteLine();
-
-                }
 
             }
-            /*Console.WriteLine("___________________________________________________________________________________________________________________");
-            Console.WriteLine();
-            Console.WriteLine("Su Raza le permite mejorar el valor de una de las siguientes caracteristica, elija una");
-            Console.WriteLine();
-            foreach (Personaje_Caracteristica CVLIST in PersonajeX.C_VAtributoColeccion)
+            
+            foreach (Personaje P in PersonajeBL.Listar())
             {
-                Console.Write("{0}", CVLIST.CaracteristicaV.Nombre);
-                Console.Write(" -> Valor: ");
-                Console.WriteLine(CVLIST.valor);
-                Console.WriteLine();
-            }
-            Console.WriteLine();
-            Console.Write("Ingrese Comando: ");
-            string ComandoLE = Console.ReadLine();
-            foreach (Personaje_Caracteristica PersoCar in PersonajeX.C_VAtributoColeccion)
-            {
-                if (PersoCar.CaracteristicaV.Nombre == ComandoLE)
+                int con = 0;
+                int Id1 = 0;
+                int Id2 = P.Id;
+                int IdMax = Math.Max(Id1, Id2);
+                Id1 = Id2;
+                con = con + 1;             
+                if (con == PersonajeBL.Listar().Count)
                 {
-                    PersoCar.valor = PersoCar.valor + PersonajeX.RazaAtributo.ValorPluss;
+                    int Plus = P.RazaAtributo.ValorPlus;
+                    int IdCR = P.RazaAtributo.Caract_VarRazaAtributo.Id;
+                    int IdP = P.Id;
+                    Personaje_Caracteristica PCA = Personaje_CaracteristicaBL.Obtener(IdMax, IdCR);
+                    int suma = PCA.valor + Plus;
+                    if(suma <= 15)
+                    {
+                        Personaje_CaracteristicaBL.Modificar(IdMax, IdCR, Plus);
+                        Console.WriteLine();
+                        break;
+                    }
                 }
-            }*/
-            Personaje_List.Add(PersonajeX);
-            Console.WriteLine();
+            }
 
             return PersonajeV;
 
         }
         public void ModificarPersonaje()
         {
-            IEnumerable<Personaje> N2Personaje_List = Personaje_List.OrderBy(Per => Per.Id);
-            Console.Write("Elija el Personaje que desea modificar de la siguiente lista");
+            Console.WriteLine("Elija el Personaje que desa modificar de la siguiente lista");
             Console.WriteLine();
-            foreach (Personaje PerImprime in N2Personaje_List)
+            foreach(Personaje Per in BusinessLogic.PersonajeBL.Listar())
             {
-                Console.Write(PerImprime.Nombre);
-                Console.Write(" -> Nivel: ");
-                Console.WriteLine(PerImprime.Nivel);
+                Console.Write("Id: ");
+                Console.Write(Per.Id);
+                Console.Write(" -> ");
+                Console.WriteLine(Per.Nombre);
+                Console.WriteLine();
             }
+            Console.Write("Ingrese el Id del Personaje que desea modificar: ");
+            int ComandoId = int.Parse(Console.ReadLine());
+            int id = Convert.ToInt32(ComandoId);
+            Personaje P = PersonajeBL.Obtener(id);
             Console.WriteLine();
-            Console.Write("Ingrese el Nombre del Personaje elejido: ");
-            string ComandoCL = Console.ReadLine();
-            Console.WriteLine();
-            foreach (Personaje PerModi in N2Personaje_List)
-            {
-                if (ComandoCL == PerModi.Nombre)
-                {
-                    Console.Write("Nombre: ");
-                    Console.WriteLine(PerModi.Nombre);
-                    Console.Write("Id: ");
-                    Console.WriteLine(PerModi.Id);
-                    Console.Write("Nivel: ");
-                    Console.WriteLine(PerModi.Nivel);
-                    Console.Write("Fuerza: ");
-                    Console.WriteLine(PerModi.Fuerza);
-                    Console.Write("Destreza: ");
-                    Console.WriteLine(PerModi.Destreza);
-                    Console.Write("Constitucion: ");
-                    Console.WriteLine(PerModi.Constitucion);
-                    Console.Write("Inteligencia: ");
-                    Console.WriteLine(PerModi.Inteligencia);
-                    Console.Write("Sabiduria: ");
-                    Console.WriteLine(PerModi.Sabiduria);
-                    Console.Write("Carisma: ");
-                    Console.WriteLine(PerModi.Carisma);
-                    Console.Write("Raza: ");
-                    Console.WriteLine(PerModi.RazaAtributo.Nombre);
-                    Console.Write("Clase: ");
-                    Console.WriteLine(PerModi.ClaseAtributo.Nombre);
-                    Console.Write("Caracteristica Variable: ");
-                    foreach (Personaje_Caracteristica CVLIST in PerModi.C_VAtributoColeccion)
-                    {
-                        Console.Write("{0}", CVLIST.CaracteristicaV.Nombre);
-                        Console.Write(" -> Valor: ");
-                        Console.WriteLine(CVLIST.valor);
-                    }
-                    break;
-                }
-            }
+                    
             bool Entra1 = true;
             while (Entra1)
             {
-                int Contador = 0;
-
-                foreach (Personaje PersonajeModi in Personaje_List)
+                Console.WriteLine();
+                Console.WriteLine("Selecione que desea modificar ingresando el numero de la opción: ");
+                Console.WriteLine();
+                Console.WriteLine(" 1 - Nombre");
+                Console.WriteLine(" 2 - Nivel");
+                Console.WriteLine(" 3 - Fuerza");
+                Console.WriteLine(" 4 - Destreza");
+                Console.WriteLine(" 5 - Constitucion");
+                Console.WriteLine(" 6 - Inteligencia");
+                Console.WriteLine(" 7 - Sabiduria");
+                Console.WriteLine(" 8 - Carisma");
+                Console.WriteLine(" 9 - Raza");
+                Console.WriteLine("10 - Clase");
+                Console.WriteLine("11 - Caracteristica");
+                Console.WriteLine("12 - Modificar Todo");
+                Console.WriteLine();
+                Console.Write("Ingrese el comando elegido: ");
+                int ComandoCL2 = int.Parse(Console.ReadLine());
+                bool Entra = true;
+                Console.WriteLine();
+                while (Entra)
                 {
-                    if (PersonajeModi.Nombre == ComandoCL)
+
+                    if (ComandoCL2 != 1 && ComandoCL2 != 2 && ComandoCL2 != 3 && ComandoCL2 != 4 && ComandoCL2 != 5 && ComandoCL2 != 6 && ComandoCL2 != 7 && ComandoCL2 != 8
+                        && ComandoCL2 != 9 && ComandoCL2 != 10 && ComandoCL2 != 11 && ComandoCL2 != 12)
                     {
-                        Contador = Contador + 1;
-                        Console.WriteLine();
-                        Console.WriteLine("Selecione que desea modificar: ");
-                        Console.WriteLine();
-                        Console.WriteLine("Nombre");
-                        Console.WriteLine("Nivel");
-                        Console.WriteLine("Fuerza");
-                        Console.WriteLine("Destreza");
-                        Console.WriteLine("Constitucion");
-                        Console.WriteLine("Inteligencia");
-                        Console.WriteLine("Sabiduria");
-                        Console.WriteLine("Carisma");
-                        Console.WriteLine("Raza");
-                        Console.WriteLine("Clase");
-                        Console.WriteLine("Caracteristica");
-                        Console.WriteLine();
-                        Console.WriteLine("Si desea modificar todo los atributos ingrese el Comando Todo");
-                        Console.WriteLine();
-                        Console.Write("Ingrese el comando elegido: ");
-                        string ComandoCL2 = Console.ReadLine();
-                        bool Entra = true;
-                        Console.WriteLine();
-                        while (Entra)
-                        {
-
-                            if (!ComandoCL2.Equals("Nombre") && !ComandoCL2.Equals("Nivel") && !ComandoCL2.Equals("Fuerza") && !ComandoCL2.Equals("Destreza") && !ComandoCL2.Equals("Constitucion") && !ComandoCL2.Equals("Inteligencia") && !ComandoCL2.Equals("Sabiduria") && !ComandoCL2.Equals("Carisma")
-                                && !ComandoCL2.Equals("Raza") && !ComandoCL2.Equals("Clase") && !ComandoCL2.Equals("Caracteristica") && !ComandoCL2.Equals("Todo"))
-                            {
-                                Console.WriteLine("Comando Erroneo intente denuevo");
-                                ComandoCL2 = Console.ReadLine();
-                            }
-                            else if (ComandoCL2.Equals("Nombre"))
-                            {
-                                Console.WriteLine();
-                                PersonajeModi.Nombre = null;
-                                Console.Write("Escriba el nuevo Nombre del Personaje: ");
-                                PersonajeModi.Nombre = Console.ReadLine();
-                                Entra = false;
-                            }
-                            else if (ComandoCL2.Equals("Nivel"))
-                            {
-                                Console.WriteLine();
-                                PersonajeModi.Nivel = 0;
-                                Console.Write("Escriba el nuevo valor del Nilve: ");
-                                PersonajeModi.Nivel = int.Parse(Console.ReadLine());
-                                Entra = false;
-                            }
-                            else if (ComandoCL2.Equals("Fuerza"))
-                            {
-                                Console.WriteLine();
-                                PersonajeModi.Fuerza = 0;
-                                Console.Write("Escriba el nuevo valor de la Fuerza: ");
-                                PersonajeModi.Fuerza = int.Parse(Console.ReadLine());
-                                Entra = false;
-                            }
-                            else if (ComandoCL2.Equals("Destreza"))
-                            {
-                                Console.WriteLine();
-                                PersonajeModi.Destreza = 0;
-                                Console.Write("Escriba el nuevo valor de la Destreza: ");
-                                PersonajeModi.Destreza = int.Parse(Console.ReadLine());
-                                Entra = false;
-                            }
-                            else if (ComandoCL2.Equals("Constitucion"))
-                            {
-                                Console.WriteLine();
-                                PersonajeModi.Constitucion = 0;
-                                Console.Write("Escriba el nuevo valor de la Constitucion: ");
-                                PersonajeModi.Constitucion = int.Parse(Console.ReadLine());
-                                Entra = false;
-                            }
-                            else if (ComandoCL2.Equals("Inteligencia"))
-                            {
-                                Console.WriteLine();
-                                PersonajeModi.Inteligencia = 0;
-                                Console.WriteLine("Escriba el nuevo valor de la Inteligencia: ");
-                                Console.WriteLine();
-                                PersonajeModi.Inteligencia = int.Parse(Console.ReadLine());
-                                Entra = false;
-                            }
-                            else if (ComandoCL2.Equals("Sabiduria"))
-                            {
-                                Console.WriteLine();
-                                PersonajeModi.Sabiduria = 0;
-                                Console.WriteLine("Escriba el nuevo valor de la Sabiduria: ");
-                                Console.WriteLine();
-                                PersonajeModi.Sabiduria = int.Parse(Console.ReadLine());
-                                Entra = false;
-                            }
-                            else if (ComandoCL2.Equals("Carisma"))
-                            {
-                                Console.WriteLine();
-                                PersonajeModi.Carisma = 0;
-                                Console.WriteLine("Escriba el nuevo valor del Carisma: ");
-                                Console.WriteLine();
-                                PersonajeModi.Carisma = int.Parse(Console.ReadLine());
-                                Entra = false;
-                            }
-                            else if (ComandoCL2.Equals("Raza"))
-                            {
-                                Console.WriteLine();
-                                PersonajeModi.RazaAtributo = null;
-                                Console.WriteLine("Escoja la nueva Raza para su Personaje de la siguiente lista");
-                                Console.WriteLine();
-                                foreach (Raza Razas in Raza_List)
-                                {
-                                    Console.Write("{0}", Razas.Nombre);
-                                    Console.Write(" -> Descripcion: ");
-                                    Console.WriteLine(Razas.Descripcion);
-                                    Console.WriteLine();
-                                }
-                                Console.WriteLine();
-                                Console.Write("Escriba el Nombre de la Raza elegida: ");
-                                string ComandoEleccion = Console.ReadLine();
-                                foreach (Raza RazaElegida in Raza_List)
-                                {
-                                    if (ComandoEleccion == RazaElegida.Nombre)
-                                    {
-                                        PersonajeModi.RazaAtributo = RazaElegida;
-                                    }
-                                }
-                                Entra = false;
-                            }
-                            else if (ComandoCL2.Equals("Clase"))
-                            {
-                                Console.WriteLine();
-                                PersonajeModi.ClaseAtributo = null;
-                                Console.WriteLine("Escoja la nueva Clase para su Personaje de la siguiente lista");
-                                Console.WriteLine();
-                                foreach (Clase Clases in Clase_List)
-                                {
-                                    Console.Write("{0}", Clases.Nombre);
-                                    Console.Write(" -> Descripcion: ");
-                                    Console.WriteLine(Clases.Descripcion);
-                                    Console.WriteLine();
-                                }
-                                Console.WriteLine();
-                                Console.Write("Escriba el Nombre de la Clase elegida: ");
-                                string ComandoEleccion = Console.ReadLine();
-                                foreach (Clase ClaseElegida in Clase_List)
-                                {
-                                    if (ComandoEleccion == ClaseElegida.Nombre)
-                                    {
-                                        PersonajeModi.ClaseAtributo = ClaseElegida;
-                                    }
-                                }
-                                Entra = false;
-                            }
-                            else if (ComandoCL2.Equals("Caracteristica"))
-                            {
-                                Console.WriteLine();
-                                bool EntraGeneral = true;
-                                while (EntraGeneral)
-                                {
-                                    Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
-                                    string ComandoCL3 = Console.ReadLine();
-                                    bool Entra3 = true;
-                                    int Contador3 = 0;
-                                    while (Entra3)
-                                    {
-                                        foreach (Personaje_Caracteristica CARVARIA in PersonajeModi.C_VAtributoColeccion)
-                                        {
-                                            if (CARVARIA.CaracteristicaV.Nombre == ComandoCL3)
-                                            {
-                                                Contador3 = Contador3 + 1;
-                                                Console.WriteLine();
-                                                Console.WriteLine("En esta instancia solo puede modificar el valor de la Caracteristica para este Presonaje");
-                                                Console.WriteLine();
-                                                Console.WriteLine("Si desea Modificar el nombre valla al Procedimiento modificar Caracteristica, y el nombre cambiara para cada Personaje");
-                                                bool Entra4 = true;
-                                                while (Entra4)
-                                                {
-                                                    Console.WriteLine();
-                                                    CARVARIA.valor = 0;
-                                                    Console.WriteLine("Escriba el nuevo valor de la Caracteristica ");
-                                                    Console.WriteLine();
-                                                    CARVARIA.valor = int.Parse(Console.ReadLine());
-                                                    Entra4 = false;
-
-                                                }
-                                                Entra3 = false;
-                                                Entra = false;
-                                            }
-
-                                        }
-                                        if (Contador3 == 0)
-                                        {
-                                            Console.WriteLine();
-                                            Console.WriteLine("Error la Caracteristica que a elegido no se encuentra en el Sistema, serciorese de haber ingresado bien el nombre");
-                                            Console.WriteLine();
-                                            Console.WriteLine(PersonajeModi.C_VAtributoColeccion.Count);
-                                            Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
-                                            ComandoCL3 = Console.ReadLine();
-                                        }
-
-                                    }
-                                    Console.WriteLine();
-                                    Console.WriteLine("Si desea modificar el valor de otra de las caracteristicas ingrese SI de lo contrario ingrese NO");
-                                    Console.WriteLine();
-                                    string Eleccion = Console.ReadLine();
-                                    if (Eleccion == "SI")
-                                    {
-                                        Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
-                                        ComandoCL3 = Console.ReadLine();
-                                    }
-                                    else if (Eleccion == "NO")
-                                    {
-                                        EntraGeneral = false;
-                                        Entra = false;
-                                    }
-                                }
-                                Console.WriteLine();
-                                foreach (Personaje_Caracteristica CarVarPerso in PersonajeModi.C_VAtributoColeccion)
-                                {
-                                    Console.Write(CarVarPerso.CaracteristicaV.Nombre);
-                                    Console.Write(" -> Valor: ");
-                                    Console.WriteLine(CarVarPerso.valor);
-                                }
-
-                            }
-                            else if (ComandoCL2.Equals("Todo"))
-                            {
-                                Console.WriteLine();
-                                PersonajeModi.Nombre = null;
-                                Console.Write("Escriba el nuevo Nombre del Personaje: ");
-                                PersonajeModi.Nombre = Console.ReadLine();
-                                Console.WriteLine();
-                                PersonajeModi.Nivel = 0;
-                                Console.Write("Escriba el nuevo valor del Nilve: ");
-                                PersonajeModi.Nivel = int.Parse(Console.ReadLine());
-                                Console.WriteLine();
-                                PersonajeModi.Fuerza = 0;
-                                Console.Write("Escriba el nuevo valor de la Fuerza: ");
-                                PersonajeModi.Fuerza = int.Parse(Console.ReadLine());
-                                Console.WriteLine();
-                                PersonajeModi.Destreza = 0;
-                                Console.Write("Escriba el nuevo valor de la Destreza: ");
-                                PersonajeModi.Destreza = int.Parse(Console.ReadLine());
-                                Console.WriteLine();
-                                PersonajeModi.Constitucion = 0;
-                                Console.Write("Escriba el nuevo valor de la Constitucion: ");
-                                PersonajeModi.Constitucion = int.Parse(Console.ReadLine());
-                                Console.WriteLine();
-                                PersonajeModi.Inteligencia = 0;
-                                Console.Write("Escriba el nuevo valor de la Inteligencia: ");
-                                PersonajeModi.Inteligencia = int.Parse(Console.ReadLine());
-                                Console.WriteLine();
-                                PersonajeModi.Sabiduria = 0;
-                                Console.Write("Escriba el nuevo valor de la Sabiduria: ");
-                                PersonajeModi.Sabiduria = int.Parse(Console.ReadLine());
-                                Console.WriteLine();
-                                PersonajeModi.Carisma = 0;
-                                Console.Write("Escriba el nuevo valor del Carisma: ");
-                                PersonajeModi.Carisma = int.Parse(Console.ReadLine());
-                                Console.WriteLine();
-                                PersonajeModi.RazaAtributo = null;
-                                Console.WriteLine("Escoja la nueva Raza para su Personaje de la siguiente lista");
-                                Console.WriteLine();
-                                foreach (Raza Razas in Raza_List)
-                                {
-                                    Console.Write("{0}", Razas.Nombre);
-                                    Console.Write(" -> Descripcion: ");
-                                    Console.WriteLine(Razas.Descripcion);
-                                    Console.WriteLine();
-                                }
-                                Console.WriteLine();
-                                Console.Write("Escriba el Nombre de la Raza elegida: ");
-                                string ComandoEleccion = Console.ReadLine();
-                                foreach (Raza RazaElegida in Raza_List)
-                                {
-                                    if (ComandoEleccion == RazaElegida.Nombre)
-                                    {
-                                        PersonajeModi.RazaAtributo = RazaElegida;
-                                    }
-                                }
-                                Console.WriteLine();
-                                PersonajeModi.ClaseAtributo = null;
-                                Console.WriteLine("Escoja la nueva Clase para su Personaje de la siguiente lista");
-                                Console.WriteLine();
-                                foreach (Clase Clases in Clase_List)
-                                {
-                                    Console.Write("{0}", Clases.Nombre);
-                                    Console.Write(" -> Descripcion: ");
-                                    Console.WriteLine(Clases.Descripcion);
-                                    Console.WriteLine();
-                                }
-                                Console.WriteLine();
-                                Console.Write("Escriba el Nombre de la Clase elegida: ");
-                                string ComandoElec = Console.ReadLine();
-                                foreach (Clase ClaseElegida in Clase_List)
-                                {
-                                    if (ComandoElec == ClaseElegida.Nombre)
-                                    {
-                                        PersonajeModi.ClaseAtributo = ClaseElegida;
-                                    }
-                                }
-                                Entra = false;
-                                Console.WriteLine();
-                                Console.WriteLine("Caracteristicas Existentes en la coleccion de caracteristicas del actual Personaje");
-                                Console.WriteLine();
-                                foreach (Personaje_Caracteristica CarVarPerso in PersonajeModi.C_VAtributoColeccion)
-                                {
-                                    Console.Write(CarVarPerso.CaracteristicaV.Nombre);
-                                    Console.Write(" -> Valor: ");
-                                    Console.WriteLine(CarVarPerso.valor);
-
-                                }
-                                Console.WriteLine();
-                                Console.WriteLine("Caracteristicas Existentes en la coleccion de caracteristicas del actual Personaje");
-                                Console.WriteLine();
-                                foreach (Personaje_Caracteristica CarVarPerso in PersonajeModi.C_VAtributoColeccion)
-                                {
-                                    Console.Write(CarVarPerso.CaracteristicaV.Nombre);
-                                    Console.Write(" -> Valor: ");
-                                    Console.WriteLine(CarVarPerso.valor);
-
-                                }
-                                Console.WriteLine();
-                                bool EntraGeneral = true;
-                                while (EntraGeneral)
-                                {
-                                    Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
-                                    string ComandoCL3 = Console.ReadLine();
-                                    bool Entra3 = true;
-                                    int Contador3 = 0;
-                                    while (Entra3)
-                                    {
-                                        foreach (Personaje_Caracteristica CARVARIA in PersonajeModi.C_VAtributoColeccion)
-                                        {
-                                            if (CARVARIA.CaracteristicaV.Nombre == ComandoCL3)
-                                            {
-                                                Contador3 = Contador3 + 1;
-                                                Console.WriteLine();
-                                                Console.WriteLine("En esta instancia solo puede modificar el valor de la Caracteristica para este presonaje");
-                                                Console.WriteLine();
-                                                Console.WriteLine("Si desea Modificar el nombre valla al Procedimiento odificar Caracteristica, y el nombre cambiara para cada Personaje");
-                                                bool Entra4 = true;
-                                                while (Entra4)
-                                                {
-                                                    Console.WriteLine();
-                                                    CARVARIA.valor = 0;
-                                                    Console.WriteLine("Escriba el nuevo valor de la Caracteristica ");
-                                                    Console.WriteLine();
-                                                    CARVARIA.valor = int.Parse(Console.ReadLine());
-                                                    Entra4 = false;
-
-                                                }
-                                                Entra3 = false;
-                                                Entra = false;
-                                            }
-
-                                        }
-                                        if (Contador3 == 0)
-                                        {
-                                            Console.WriteLine();
-                                            Console.WriteLine("Error la Caracteristica que a elegido no se encuentra en el Sistema, serciorese de haber ingresado bien el nombre");
-                                            Console.WriteLine();
-                                            Console.WriteLine(PersonajeModi.C_VAtributoColeccion.Count);
-                                            Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
-                                            ComandoCL3 = Console.ReadLine();
-                                        }
-
-                                    }
-                                    Console.WriteLine();
-                                    Console.WriteLine("Si desea modificar el valor de otra de las caracteristicas ingrese SI de lo contrario ingrese NO");
-                                    Console.WriteLine();
-                                    string Eleccion = Console.ReadLine();
-                                    if (Eleccion == "SI")
-                                    {
-                                        Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
-                                        ComandoCL3 = Console.ReadLine();
-                                    }
-                                    else if (Eleccion == "NO")
-                                    {
-                                        EntraGeneral = false;
-                                    }
-                                }
-                                Console.WriteLine();
-                                foreach (Personaje_Caracteristica CarVarPerso in PersonajeModi.C_VAtributoColeccion)
-                                {
-                                    Console.Write(CarVarPerso.CaracteristicaV.Nombre);
-                                    Console.Write(" -> Valor: ");
-                                    Console.WriteLine(CarVarPerso.valor);
-                                }
-
-                            }
-
-                        }
-                        Entra1 = false;
+                        Console.WriteLine("Comando Erroneo intente denuevo");
+                        ComandoCL2 = int.Parse(Console.ReadLine());
                     }
+                    else if (ComandoCL2 == 1)
+                    {
+                        Console.WriteLine();
+                        Console.Write("Ingrese el nuevo Nombre del Personaje: ");
+                        string NuevoNombre = Console.ReadLine();
+                        Console.WriteLine();
+                        P.Nombre = NuevoNombre;
+                        int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
+                        Console.WriteLine();
+                        if (idRazaGenerada > 0)
+                        {
+                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
+                            Console.WriteLine();
+                        }
+                        Entra = false;
+                    }
+                    else if (ComandoCL2 == 2)
+                    {
+                        Console.WriteLine();
+                        Console.Write("Ingrese el nuevo valor del Nivel para el Personaje: ");
+                        int NuevoNivel = int.Parse(Console.ReadLine());
+                        Console.WriteLine();
+                        P.Nivel = NuevoNivel;
+                        int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
+                        Console.WriteLine();
+                        if (idRazaGenerada > 0)
+                        {
+                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
+                            Console.WriteLine();
+                        }
+                        Entra = false;
+                    }
+                    else if (ComandoCL2 == 3)
+                    {
+                        Console.WriteLine();
+                        Console.Write("Ingrese el nuevo valor de Fuerza para el Personaje: ");
+                        int NuevaFuerza = int.Parse(Console.ReadLine());
+                        Console.WriteLine();
+                        P.Fuerza = NuevaFuerza;
+                        int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
+                        Console.WriteLine();
+                        if (idRazaGenerada > 0)
+                        {
+                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
+                            Console.WriteLine();
+                        }
+                        Entra = false;
+                    }
+                    else if (ComandoCL2 == 4)
+                    {
+                        Console.WriteLine();
+                        Console.Write("Ingrese el nuevo valor de Destreza para el Personaje: ");
+                        int NuevaDestreza = int.Parse(Console.ReadLine());
+                        Console.WriteLine();
+                        P.Destreza = NuevaDestreza;
+                        int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
+                        Console.WriteLine();
+                        if (idRazaGenerada > 0)
+                        {
+                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
+                            Console.WriteLine();
+                        }
+                        Entra = false;
+                    }
+                    else if (ComandoCL2 == 5)
+                    {
+                        Console.WriteLine();
+                        Console.Write("Ingrese el nuevo valor de Constitución para el Personaje: ");
+                        int NuevaConstitucion = int.Parse(Console.ReadLine());
+                        Console.WriteLine();
+                        P.Constitucion = NuevaConstitucion;
+                        int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
+                        Console.WriteLine();
+                        if (idRazaGenerada > 0)
+                        {
+                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
+                            Console.WriteLine();
+                        }
+                        Entra = false;
+                    }
+                    else if (ComandoCL2 == 6)
+                    {
+                        Console.WriteLine();
+                        Console.Write("Ingrese el nuevo valor de Inteligencia para el Personaje: ");
+                        int NuevaInteligencia = int.Parse(Console.ReadLine());
+                        Console.WriteLine();
+                        P.Inteligencia = NuevaInteligencia;
+                        int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
+                        Console.WriteLine();
+                        if (idRazaGenerada > 0)
+                        {
+                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
+                            Console.WriteLine();
+                        }
+                        Entra = false;
+                    }
+                    else if (ComandoCL2 == 7)
+                    {
+                        Console.WriteLine();
+                        Console.Write("Ingrese el nuevo valor de Sabiduria para el Personaje: ");
+                        int NuevaSabiduria = int.Parse(Console.ReadLine());
+                        Console.WriteLine();
+                        P.Sabiduria = NuevaSabiduria;
+                        int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
+                        Console.WriteLine();
+                        if (idRazaGenerada > 0)
+                        {
+                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
+                            Console.WriteLine();
+                        }
+                        Entra = false;
+                    }
+                    else if (ComandoCL2 == 8)
+                    {
+                        Console.WriteLine();
+                        Console.Write("Ingrese el nuevo valor de Carisma para el Personaje: ");
+                        int NuevoCarisma = int.Parse(Console.ReadLine());
+                        Console.WriteLine();
+                        P.Carisma = NuevoCarisma;
+                        int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
+                        Console.WriteLine();
+                        if (idRazaGenerada > 0)
+                        {
+                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
+                            Console.WriteLine();
+                        }
+                        Entra = false;
+                    }
+                    else if (ComandoCL2 == 9)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Elija la nueva Raza de su Personaje de la siguiente lista");
+                        Console.WriteLine();
+                        foreach(Raza Ra in BusinessLogic.RazaBL.Listar())
+                        {
+                            Console.Write("Id: ");
+                            Console.Write(Ra.Id);
+                            Console.Write(" -> ");
+                            Console.WriteLine(Ra.Nombre);
+                            Console.WriteLine();
+                        }
+                        Console.Write("Escriba el Id de la Raza elegida: ");
+                        int idr = int.Parse(Console.ReadLine());
+                        P.RazaAtributo = RazaBL.Obtener(idr);
+                        int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
+                        Console.WriteLine();
+                        if (idRazaGenerada > 0)
+                        {
+                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
+                            Console.WriteLine();
+                        }
+                        Entra = false;
+                    }
+                    else if (ComandoCL2 == 10)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Elija la nueva Clase de su Personaje de la siguiente lista");
+                        Console.WriteLine();
+                        ClaseControlador.ListarClases();
+                        Console.Write("Escriba el Id de la Clase elegida: ");
+                        int idc = int.Parse(Console.ReadLine());
+                        P.RazaAtributo = RazaBL.Obtener(idc);
+                        int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
+                        Console.WriteLine();
+                        if (idRazaGenerada > 0)
+                        {
+                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
+                            Console.WriteLine();
+                        }
+                        Entra = false;
+                    }
+                    /* else if (ComandoCL2 == 11)
+                     {
+                         Console.WriteLine();
+                         bool EntraGeneral = true;
+                         while (EntraGeneral)
+                         {
+                             Console.Write("Elija la Caracteristica que desea modificar de la lista de Caracteristicas de su Personaje");
+                             //Aca tengo que llamar a la coleccion de caracteristicas de mi personaje
+                             string ComandoCL3 = Console.ReadLine();
+                             bool Entra3 = true;
+                             int Contador3 = 0;
+                             while (Entra3)
+                             {
+                                 foreach (Personaje_Caracteristica CARVARIA in 
+                                 {
+                                     if (CARVARIA.CaracteristicaV.Nombre == ComandoCL3)
+                                     {
+                                         Contador3 = Contador3 + 1;
+                                         Console.WriteLine();
+                                         Console.WriteLine("En esta instancia solo puede modificar el valor de la Caracteristica para este Presonaje");
+                                         Console.WriteLine();
+                                         Console.WriteLine("Si desea Modificar el nombre valla al Procedimiento modificar Caracteristica, y el nombre cambiara para cada Personaje");
+                                         bool Entra4 = true;
+                                         while (Entra4)
+                                         {
+                                             Console.WriteLine();
+                                             CARVARIA.valor = 0;
+                                             Console.WriteLine("Escriba el nuevo valor de la Caracteristica ");
+                                             Console.WriteLine();
+                                             CARVARIA.valor = int.Parse(Console.ReadLine());
+                                             Entra4 = false;
 
-                }
+                                         }
+                                         Entra3 = false;
+                                         Entra = false;
+                                     }
+
+                                 }
+                                 if (Contador3 == 0)
+                                 {
+                                     Console.WriteLine();
+                                     Console.WriteLine("Error la Caracteristica que a elegido no se encuentra en el Sistema, serciorese de haber ingresado bien el nombre");
+                                     Console.WriteLine();
+                                     Console.WriteLine(PersonajeModi.C_VAtributoColeccion.Count);
+                                     Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
+                                     ComandoCL3 = Console.ReadLine();
+                                 }
+
+                             }
+                             Console.WriteLine();
+                             Console.WriteLine("Si desea modificar el valor de otra de las caracteristicas ingrese SI de lo contrario ingrese NO");
+                             Console.WriteLine();
+                             string Eleccion = Console.ReadLine();
+                             if (Eleccion == "SI")
+                             {
+                                 Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
+                                 ComandoCL3 = Console.ReadLine();
+                             }
+                             else if (Eleccion == "NO")
+                             {
+                                 EntraGeneral = false;
+                                 Entra = false;
+                             }
+                         }
+                         Console.WriteLine();
+                         foreach (Personaje_Caracteristica CarVarPerso in PersonajeModi.C_VAtributoColeccion)
+                         {
+                             Console.Write(CarVarPerso.CaracteristicaV.Nombre);
+                             Console.Write(" -> Valor: ");
+                             Console.WriteLine(CarVarPerso.valor);
+                         }
+
+                     }
+                     else if (ComandoCL2 == 12)
+                     {
+                         Console.WriteLine();
+                         PersonajeModi.Nombre = null;
+                         Console.Write("Escriba el nuevo Nombre del Personaje: ");
+                         PersonajeModi.Nombre = Console.ReadLine();
+                         Console.WriteLine();
+                         PersonajeModi.Nivel = 0;
+                         Console.Write("Escriba el nuevo valor del Nilve: ");
+                         PersonajeModi.Nivel = int.Parse(Console.ReadLine());
+                         Console.WriteLine();
+                         PersonajeModi.Fuerza = 0;
+                         Console.Write("Escriba el nuevo valor de la Fuerza: ");
+                         PersonajeModi.Fuerza = int.Parse(Console.ReadLine());
+                         Console.WriteLine();
+                         PersonajeModi.Destreza = 0;
+                         Console.Write("Escriba el nuevo valor de la Destreza: ");
+                         PersonajeModi.Destreza = int.Parse(Console.ReadLine());
+                         Console.WriteLine();
+                         PersonajeModi.Constitucion = 0;
+                         Console.Write("Escriba el nuevo valor de la Constitucion: ");
+                         PersonajeModi.Constitucion = int.Parse(Console.ReadLine());
+                         Console.WriteLine();
+                         PersonajeModi.Inteligencia = 0;
+                         Console.Write("Escriba el nuevo valor de la Inteligencia: ");
+                         PersonajeModi.Inteligencia = int.Parse(Console.ReadLine());
+                         Console.WriteLine();
+                         PersonajeModi.Sabiduria = 0;
+                         Console.Write("Escriba el nuevo valor de la Sabiduria: ");
+                         PersonajeModi.Sabiduria = int.Parse(Console.ReadLine());
+                         Console.WriteLine();
+                         PersonajeModi.Carisma = 0;
+                         Console.Write("Escriba el nuevo valor del Carisma: ");
+                         PersonajeModi.Carisma = int.Parse(Console.ReadLine());
+                         Console.WriteLine();
+                         PersonajeModi.RazaAtributo = null;
+                         Console.WriteLine("Escoja la nueva Raza para su Personaje de la siguiente lista");
+                         Console.WriteLine();
+                         foreach (Raza Razas in Raza_List)
+                         {
+                             Console.Write("{0}", Razas.Nombre);
+                             Console.Write(" -> Descripcion: ");
+                             Console.WriteLine(Razas.Descripcion);
+                             Console.WriteLine();
+                         }
+                         Console.WriteLine();
+                         Console.Write("Escriba el Nombre de la Raza elegida: ");
+                         string ComandoEleccion = Console.ReadLine();
+                         foreach (Raza RazaElegida in Raza_List)
+                         {
+                             if (ComandoEleccion == RazaElegida.Nombre)
+                             {
+                                 PersonajeModi.RazaAtributo = RazaElegida;
+                             }
+                         }
+                         Console.WriteLine();
+                         PersonajeModi.ClaseAtributo = null;
+                         Console.WriteLine("Escoja la nueva Clase para su Personaje de la siguiente lista");
+                         Console.WriteLine();
+                         foreach (Clase Clases in Clase_List)
+                         {
+                             Console.Write("{0}", Clases.Nombre);
+                             Console.Write(" -> Descripcion: ");
+                             Console.WriteLine(Clases.Descripcion);
+                             Console.WriteLine();
+                         }
+                         Console.WriteLine();
+                         Console.Write("Escriba el Nombre de la Clase elegida: ");
+                         string ComandoElec = Console.ReadLine();
+                         foreach (Clase ClaseElegida in Clase_List)
+                         {
+                             if (ComandoElec == ClaseElegida.Nombre)
+                             {
+                                 PersonajeModi.ClaseAtributo = ClaseElegida;
+                             }
+                         }
+                         Entra = false;
+                         Console.WriteLine();
+                         Console.WriteLine("Caracteristicas Existentes en la coleccion de caracteristicas del actual Personaje");
+                         Console.WriteLine();
+                         foreach (Personaje_Caracteristica CarVarPerso in PersonajeModi.C_VAtributoColeccion)
+                         {
+                             Console.Write(CarVarPerso.CaracteristicaV.Nombre);
+                             Console.Write(" -> Valor: ");
+                             Console.WriteLine(CarVarPerso.valor);
+
+                         }
+                         Console.WriteLine();
+                         Console.WriteLine("Caracteristicas Existentes en la coleccion de caracteristicas del actual Personaje");
+                         Console.WriteLine();
+                         foreach (Personaje_Caracteristica CarVarPerso in PersonajeModi.C_VAtributoColeccion)
+                         {
+                             Console.Write(CarVarPerso.CaracteristicaV.Nombre);
+                             Console.Write(" -> Valor: ");
+                             Console.WriteLine(CarVarPerso.valor);
+
+                         }
+                         Console.WriteLine();
+                         bool EntraGeneral = true;
+                         while (EntraGeneral)
+                         {
+                             Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
+                             string ComandoCL3 = Console.ReadLine();
+                             bool Entra3 = true;
+                             int Contador3 = 0;
+                             while (Entra3)
+                             {
+                                 foreach (Personaje_Caracteristica CARVARIA in PersonajeModi.C_VAtributoColeccion)
+                                 {
+                                     if (CARVARIA.CaracteristicaV.Nombre == ComandoCL3)
+                                     {
+                                         Contador3 = Contador3 + 1;
+                                         Console.WriteLine();
+                                         Console.WriteLine("En esta instancia solo puede modificar el valor de la Caracteristica para este presonaje");
+                                         Console.WriteLine();
+                                         Console.WriteLine("Si desea Modificar el nombre valla al Procedimiento odificar Caracteristica, y el nombre cambiara para cada Personaje");
+                                         bool Entra4 = true;
+                                         while (Entra4)
+                                         {
+                                             Console.WriteLine();
+                                             CARVARIA.valor = 0;
+                                             Console.WriteLine("Escriba el nuevo valor de la Caracteristica ");
+                                             Console.WriteLine();
+                                             CARVARIA.valor = int.Parse(Console.ReadLine());
+                                             Entra4 = false;
+
+                                         }
+                                         Entra3 = false;
+                                         Entra = false;
+                                     }
+
+                                 }
+                                 if (Contador3 == 0)
+                                 {
+                                     Console.WriteLine();
+                                     Console.WriteLine("Error la Caracteristica que a elegido no se encuentra en el Sistema, serciorese de haber ingresado bien el nombre");
+                                     Console.WriteLine();
+                                     Console.WriteLine(PersonajeModi.C_VAtributoColeccion.Count);
+                                     Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
+                                     ComandoCL3 = Console.ReadLine();
+                                 }
+
+                             }
+                             Console.WriteLine();
+                             Console.WriteLine("Si desea modificar el valor de otra de las caracteristicas ingrese SI de lo contrario ingrese NO");
+                             Console.WriteLine();
+                             string Eleccion = Console.ReadLine();
+                             if (Eleccion == "SI")
+                             {
+                                 Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
+                                 ComandoCL3 = Console.ReadLine();
+                             }
+                             else if (Eleccion == "NO")
+                             {
+                                 EntraGeneral = false;
+                             }
+                         }
+                         Console.WriteLine();
+                         foreach (Personaje_Caracteristica CarVarPerso in PersonajeModi.C_VAtributoColeccion)
+                         {
+                             Console.Write(CarVarPerso.CaracteristicaV.Nombre);
+                             Console.Write(" -> Valor: ");
+                             Console.WriteLine(CarVarPerso.valor);
+                         }
+
+                     }*/
+                    Entra1 = false;
+                } 
 
             }
+
             Console.WriteLine();
             Console.WriteLine("Su Personaje se a modificado con exito para serceorarse valla a ListarPersonajes");
             Console.WriteLine();
+
         }
         public void ListarPersonajes()
         {
-            foreach (Personaje Personajess in BusinessLogic.PersonajeBL.Listar())
+            foreach (Personaje P in BusinessLogic.PersonajeBL.Listar())
             {
-                Console.Write("Nombre: ");
-                Console.WriteLine(Personajess.Nombre);
                 Console.Write("Id: ");
-                Console.WriteLine(Personajess.Id);
-                Console.Write("Nivel: ");
-                Console.WriteLine(Personajess.Nivel);
-                Console.Write("Fuerza: ");
-                Console.WriteLine(Personajess.Fuerza);
-                Console.Write("Destreza: ");
-                Console.WriteLine(Personajess.Destreza);
-                Console.Write("Constitucion: ");
-                Console.WriteLine(Personajess.Constitucion);
-                Console.Write("Inteligencia: ");
-                Console.WriteLine(Personajess.Inteligencia);
-                Console.Write("Sabiduria: ");
-                Console.WriteLine(Personajess.Sabiduria);
-                Console.Write("Carisma: ");
-                Console.WriteLine(Personajess.Carisma);
-                Console.Write("Raza: ");
-                Console.WriteLine(Personajess.RazaAtributo.Nombre);
-                Console.Write("Clase: ");
-                Console.WriteLine(Personajess.ClaseAtributo.Nombre);
-                Console.Write("Caracteristica Variable: ");
+                Console.Write(P.Id);
+                Console.Write("Nombre: ");
+                Console.WriteLine(P.Nombre);
                 Console.WriteLine();
-                foreach (Personaje_Caracteristica CVLISTA in Personajess.C_VAtributoColeccion)
-                {
-                    Console.Write("Id: ");
-                    Console.Write(CVLISTA.CaracteristicaV.Id);
-                    Console.Write(" -> ");
-                    Console.Write(CVLISTA.CaracteristicaV.Nombre);
-                    //No me imprime ni nombre ni Id Pero si Valor
-                    Console.Write(", Valor: ");
-                    Console.WriteLine(CVLISTA.valor);
-
-                }
-               /* Console.Write("Habilidades Especiales: ");
-                Console.WriteLine();
-                foreach (Habilidad_Especial HES in Personajess.H_EAtributoColeccion)
-                {
-                    Console.Write(HES.Nombre);
-                    Console.Write(" -> Descripcion: ");
-                    Console.WriteLine(HES.Descripcion);
-                }*/
-                Console.WriteLine();
+                foreach(Personaje_Caracteristica PC in Personaje_CaracteristicaBL)
 
             }
 
@@ -888,6 +1089,16 @@ namespace ConsoleApplication.Controladores
         }
         public void EliminarPersonaje()
         {
+            Console.Write("Para ver la lista de Personajes de una Clase elija la Clase de la siguiente lista");
+            Console.WriteLine();
+            foreach (Clase C in BusinessLogic.ClaseBL.Listar())
+            {
+                Console.Write("Id = ");
+                Console.Write(C.Id);
+                Console.Write(", Nombre : ");
+                Console.Write(C.Nombre);
+            }
+
             Console.WriteLine("Lista de los Personajes existentes en el sistema");
             Console.WriteLine();
             foreach (Personaje Personajes in Personaje_List)

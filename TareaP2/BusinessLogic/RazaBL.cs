@@ -10,7 +10,7 @@ namespace BusinessLogic
 {
     public class RazaBL
     {
-        public static int Add(Raza Raza)
+        public static int Agregar(Raza Raza)
         {
             int result = -1;
 

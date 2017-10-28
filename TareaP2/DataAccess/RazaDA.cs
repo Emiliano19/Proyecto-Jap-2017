@@ -18,13 +18,14 @@ namespace DataAccess
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "INSERT INTO Raza(Nombre, Descripcion, ValorPluss) VALUES (@Nombre, @Descripcion)";
+                string query = "INSERT INTO Raza(IdCar, Nombre, Descripción, ValorPlus) VALUES (@IdCar, @Nombre, @Descripción, @ValorPlus)";
                 SqlCommand com = new SqlCommand(query, connection);
 
+                com.Parameters.AddWithValue("@IdCar", Raza.Caract_VarRazaAtributo.Id);
                 com.Parameters.AddWithValue("@Nombre", Raza.Nombre);
-                com.Parameters.AddWithValue("@Descripcion", Raza.Descripcion);
-              /*  com.Parameters.AddWithValue("@ValorPluss", Raza.ValorPluss);*/
-
+                com.Parameters.AddWithValue("@Descripción", Raza.Descripcion);
+                com.Parameters.AddWithValue("@ValorPlus", Raza.ValorPlus);
+                
                 connection.Open();
 
                 result = com.ExecuteNonQuery();
@@ -40,7 +41,7 @@ namespace DataAccess
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "SELECT IdRaza, Nombre, Descripción FROM Raza";
+                string query = "SELECT IdRaza, IdCar, Nombre, Descripción, ValorPlus FROM Raza";
                 SqlCommand com = new SqlCommand(query, connection);
 
                 connection.Open();
@@ -56,9 +57,10 @@ namespace DataAccess
                     Domain.Raza R = new Raza();
 
                     R.Id = (int)Reader["IdRaza"];
+                    R.Caract_VarRazaAtributo = CaracteristicaDA.Obtener((int)Reader["IdCar"]);
                     R.Nombre = Reader["Nombre"].ToString();
                     R.Descripcion = Reader["Descripción"].ToString();
-                   // R.ValorPluss = (int)Reader["ValorPluss"];
+                    R.ValorPlus = (int)Reader["ValorPlus"];
 
                     result.Add(R);
                 }
@@ -74,7 +76,7 @@ namespace DataAccess
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "SELECT IdRaza, Nombre, Descripción FROM Raza WHERE IdRaza = @id";
+                string query = "SELECT IdRaza, IdCar, Nombre, Descripción, ValorPlus FROM Raza WHERE IdRaza = @id";
                 SqlCommand com = new SqlCommand(query, connection);
                 com.Parameters.AddWithValue("@id", id);
 
@@ -86,9 +88,10 @@ namespace DataAccess
                     result = new Raza();
 
                     result.Id = (int)Reader["IdRaza"];
+                    result.Caract_VarRazaAtributo = CaracteristicaDA.Obtener((int)Reader["IdCar"]);
                     result.Nombre = Reader["Nombre"].ToString();
                     result.Descripcion = Reader["Descripción"].ToString();
-                    //result.ValorPluss = (int)Reader["ValorPluss"];
+                    result.ValorPlus = (int)Reader["ValorPlus"];
                 }
             }
 
@@ -102,12 +105,14 @@ namespace DataAccess
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
                 connection.Open();
-                string query = "UPDATE Raza SET [Nombre] = @Nombre, [Descripcion] = @Descripcion WHERE [IdRaza] = @IdRaza";
+                string query = "UPDATE Raza SET [IdCar] = @IdCar, [Nombre] = @Nombre, [Descripción] = @Descripción, [ValorPlus] = @ValorPlus WHERE [IdRaza] = @IdRaza";
 
                 SqlCommand com = new SqlCommand(query, connection);
-                com.Parameters.AddWithValue("@Nombre", Raza.Nombre);
                 com.Parameters.AddWithValue("@IdRaza", Raza.Id);
-                com.Parameters.AddWithValue("@Descripcion", Raza.Descripcion);
+                com.Parameters.AddWithValue("@IdCar", Raza.Caract_VarRazaAtributo.Id);
+                com.Parameters.AddWithValue("@Nombre", Raza.Nombre);
+                com.Parameters.AddWithValue("@Descripción", Raza.Descripcion);
+                com.Parameters.AddWithValue("@ValorPlus", Raza.ValorPlus);
 
                 result = com.ExecuteNonQuery();
 
@@ -129,9 +134,10 @@ namespace DataAccess
                 string query = "Delete Raza WHERE [IdRaza] = @id";
 
                 SqlCommand com = new SqlCommand(query, connection);
+                com.Parameters.AddWithValue("@id", Raza.Id);
 
                 result = com.ExecuteNonQuery();
-
+ 
                 connection.Close();
 
             }

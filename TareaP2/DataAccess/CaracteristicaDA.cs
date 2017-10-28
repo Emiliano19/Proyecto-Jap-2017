@@ -18,11 +18,10 @@ namespace DataAccess
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "INSERT INTO Caracteristica(Nombre, IdPeCa) VALUES (@Nombre, @IdPeCa)";
+                string query = "INSERT INTO Caracteristica(Nombre) VALUES (@Nombre)";
                 SqlCommand com = new SqlCommand(query, connection);
 
                 com.Parameters.AddWithValue("@Nombre", Caracteristica.Nombre);
-                //Falta ingresar el valor que es el valor de Personaje caracteristica
 
                 connection.Open();
 
@@ -56,9 +55,6 @@ namespace DataAccess
 
                     C.Id = (int)Reader["IdCar"];
                     C.Nombre = Reader["Nombre"].ToString();
-                    //Falta listar el valor que es el de Personaje caracteristica
-                    // R.ValorPluss = (int)Reader["ValorPluss"];
-
                     result.Add(C);
                 }
 
@@ -73,7 +69,7 @@ namespace DataAccess
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "SELECT IdCar, Nombre, Valor FROM Caracteristica WHERE IdCar = @id";
+                string query = "SELECT IdCar, Nombre FROM Caracteristica WHERE IdCar = @id";
                 SqlCommand com = new SqlCommand(query, connection);
                 com.Parameters.AddWithValue("@id", id);
 
@@ -84,10 +80,9 @@ namespace DataAccess
                 {
                     result = new Caracteristica();
 
-                    result.Id = (int)Reader["IdRaza"];
+                    result.Id = (int)Reader["IdCar"];
                     result.Nombre = Reader["Nombre"].ToString();
-                    //Falta obtener el valor
-                    //result.ValorPluss = (int)Reader["ValorPluss"];
+                    
                 }
             }
 

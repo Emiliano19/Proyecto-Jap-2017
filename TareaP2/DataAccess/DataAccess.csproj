@@ -42,9 +42,11 @@
   <ItemGroup>
     <Compile Include="CaracteristicaDA.cs" />
     <Compile Include="ClaseDA.cs" />
+    <Compile Include="Clase_HEDA.cs" />
     <Compile Include="HabilidadEspecialDA.cs" />
     <Compile Include="PersonajeDA.cs" />
     <Compile Include="Personaje_CaracteristicaDA.cs" />
+    <Compile Include="Personaje_HEDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RazaDA.cs" />
   </ItemGroup>

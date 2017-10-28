@@ -45,15 +45,15 @@ namespace DataAccess
         public static List<Personaje> Listar()
         {
             List<Personaje> result = null;
-            int id = 0;
+            
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
  
-                string query = "SELECT IdPer, Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdRaza, IdClase, IdPerCar FROM Personaje";
+                string query = "SELECT IdPer, Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdR, IdC FROM Personaje";
                 SqlCommand com = new SqlCommand(query, connection);
 
                 connection.Open();
-                SqlDataReader Reader = com.ExecuteReader();
+               SqlDataReader Reader = com.ExecuteReader();
                
                 while (Reader.Read())
                 {
@@ -73,10 +73,9 @@ namespace DataAccess
                     P.Inteligencia = (int)Reader["Inteligencia"];
                     P.Sabiduria = (int)Reader["Sabiduria"];
                     P.Carisma = (int)Reader["Carisma"];
-                    P.RazaAtributo = RazaDA.Obtener((int)Reader["Idraza"]);
-                    P.ClaseAtributo = ClaseDA.Obtener((int)Reader["IdClase"]);
-                    P.C_VAtributoColeccion.Add(Personaje_CaracteristicaDA.Obtener((int)Reader["IdPerCar"]));
-                  //  P.H_EAtributoColeccion.Add(HabilidadEspecialDA.Obtener((int)Reader["IdHE"]));
+                    P.RazaAtributo = RazaDA.Obtener((int)Reader["IdR"]);
+                    P.ClaseAtributo = ClaseDA.Obtener((int)Reader["IdC"]);
+          
 
                     result.Add(P);
                 }
@@ -92,7 +91,7 @@ namespace DataAccess
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "SELECT IdPer, Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdRaza, IdClase FROM Personaje WHERE IdPersonaje = @id";
+                string query = "SELECT IdPer, Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdRaza, IdClase FROM Personaje WHERE IdPer = @id";
                 SqlCommand com = new SqlCommand(query, connection);
                 com.Parameters.AddWithValue("@id", id);
 
@@ -106,14 +105,14 @@ namespace DataAccess
                     result.Id = (int)Reader["IdPer"];
                     result.Nombre = Reader["Nombre"].ToString();
                     result.Nivel = (int)Reader["Nivel"];
-                    result.Nivel = (int)Reader["Fuerza"];
-                    result.Nivel = (int)Reader["Destreza"];
-                    result.Nivel = (int)Reader["Constitución"];
-                    result.Nivel = (int)Reader["Inteligencia"];
-                    result.Nivel = (int)Reader["Sabiduria"];
-                    result.Nivel = (int)Reader["Carisma"];
-                    result.Nivel = (int)Reader["IdRaza"];
-                    result.Nivel = (int)Reader["IdClase"];
+                    result.Fuerza = (int)Reader["Fuerza"];
+                    result.Destreza= (int)Reader["Destreza"];
+                    result.Constitucion = (int)Reader["Constitución"];
+                    result.Inteligencia = (int)Reader["Inteligencia"];
+                    result.Sabiduria = (int)Reader["Sabiduria"];
+                    result.Carisma = (int)Reader["Carisma"];
+                    result.RazaAtributo.Id = (int)Reader["IdRaza"];
+                    result.ClaseAtributo.Id = (int)Reader["IdClase"];
 
                 }
             }
@@ -121,26 +120,27 @@ namespace DataAccess
             return result;
         }
 
-        public static int Modificar(Personaje Personaje)
+        public static int Modificar(Personaje P)
         {
             int result;
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
                 connection.Open();
-                string query = "UPDATE Raza SET [Nombre] = @Nombre, [Nivel] = @Nivel, [Fuerza] = @Fuerza, [Destreza] = @Destreza, [Constitución] = @Constitución, [Inteligencia] = @Inteligencia, [Sabiduria] = @Sabiduria, [Carisma] = @Carisma, [IdRaza] = @IdRaza, [IdClase] = @IdClase";
+                string query = "UPDATE Personaje SET [Nombre] = @Nombre, [Nivel] = @Nivel, [Fuerza] = @Fuerza, [Destreza] = @Destreza, [Constitución] = @Constitución, [Inteligencia] = @Inteligencia, [Sabiduria] = @Sabiduria, [Carisma] = @Carisma, [IdRaza] = @IdRaza WHERE [IdPer] = @IdPer";//, [IdClase] = @IdClase";
 
                 SqlCommand com = new SqlCommand(query, connection);
-                com.Parameters.AddWithValue("@Nombre", Personaje.Nombre);
-                com.Parameters.AddWithValue("@Nombre", Personaje.Nombre);
-                com.Parameters.AddWithValue("@Nombre", Personaje.Nombre);
-                com.Parameters.AddWithValue("@Nombre", Personaje.Nombre);
-                com.Parameters.AddWithValue("@Nombre", Personaje.Nombre);
-                com.Parameters.AddWithValue("@Nombre", Personaje.Nombre);
-                com.Parameters.AddWithValue("@Nombre", Personaje.Nombre);
-                com.Parameters.AddWithValue("@Nombre", Personaje.Nombre);
-                com.Parameters.AddWithValue("@Nombre", Personaje.Nombre);
-                com.Parameters.AddWithValue("@Nombre", Personaje.Nombre);
+                com.Parameters.AddWithValue("@IdPer", P.Id);
+                com.Parameters.AddWithValue("@Nombre", P.Nombre);
+                com.Parameters.AddWithValue("@Nivel", P.Nivel);
+                com.Parameters.AddWithValue("@Fuerza", P.Fuerza);
+                com.Parameters.AddWithValue("@Destreza", P.Destreza);
+                com.Parameters.AddWithValue("@Constitución", P.Constitucion);
+                com.Parameters.AddWithValue("@Inteligencia", P.Inteligencia);
+                com.Parameters.AddWithValue("@Sabiduria", P.Sabiduria);
+                com.Parameters.AddWithValue("@Carisma", P.Carisma);
+                com.Parameters.AddWithValue("@IdRaza", P.RazaAtributo.Id);
+                //com.Parameters.AddWithValue("@IdClase", P.ClaseAtributo.Id);
 
                /* result.Id = (int)Reader["IdPer"];
                 result.Nombre = Reader["Nombre"].ToString();

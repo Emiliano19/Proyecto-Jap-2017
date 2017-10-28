@@ -13,11 +13,11 @@ namespace ConsoleApplication.Controladores
         public Personaje PersonajeV { get; set; }
         public Raza Raza { get; set; }
         public Clase Clase { get; set; }
-        public Habilidad_Especial H_E { get; set; }
+        public Habilidad_Especial H_E = new Habilidad_Especial();
         public Caracteristica P_C { get; set; }
         public PersonajeControlador PersonajeControlador { get; set; }
         public RazaControlador RazaControlador { get; set; }
-        public Habilidad_EspecialControlador HEControlador { get; set; }
+        public Habilidad_EspecialControlador HEControlador = new Habilidad_EspecialControlador();
         public CaracteristicaControlador CaracteristicasControlador { get; set; }
         public SubirdeNivel SubirdeNivelControlador { get; set; }
 
@@ -31,117 +31,110 @@ namespace ConsoleApplication.Controladores
 
         public Clase CrearClase()
         {
-            Clase Clase = new Clase();
-            IEnumerable<Clase> NClase_List = Clase_List.OrderBy(Clas => Clas.Id);
-            int z = 1;
-            if (Clase_List.Count == 0)
+            Clase C = new Clase();
+            Console.WriteLine("Ingrese los datos de su nueva Clase");
+            Console.WriteLine();
+            Console.Write("Nombre: ");
+            C.Nombre = Console.ReadLine();
+            Console.WriteLine();
+            Console.Write("Descripción: ");
+            C.Descripcion = Console.ReadLine();
+            ClaseBL.Agregar(C);
+            foreach(Clase CLASE in ClaseBL.Listar())
             {
-                Clase.Id = 1;
-            }
-            else if (Clase_List.Count > 0)
-            {
-                foreach (Clase Clas in NClase_List)
+                if(CLASE.Nombre == C.Nombre && CLASE.Descripcion == C.Descripcion)
                 {
-                    if (Clas.Id == z)
-                    {
-                        z = z + 1;
-                    }
-                    else if (Clas.Id != z)
-                    {
-                        Clase.Id = z;
-                        break;
-                    }
-                }
-                if (Clase.Id == 0)
-                {
-                    Clase.Id = Clase_List.Count + 1;
-                }
-            }
-            Console.Write("Ingrese Nombre de la nueva Clase: ");
-            Clase.Nombre = Console.ReadLine();
-            Console.WriteLine();
-            Console.Write("Ingrese Descripcion de la nueva Clase: ");
-            Clase.Descripcion = Console.ReadLine();
-            Console.WriteLine("___________________________________________________________________________________________________________________");
-            Console.WriteLine();
-            Console.WriteLine("Para finalizar de la siguiente lista elija las Habilidades Especiales que desee que tenga la nueva Clase");
-            Console.WriteLine();
-            HEControlador.ListarHabilidadesEspeciales();
-            Console.WriteLine();
-            Console.Write("Ingrese Nombre de la Habilidad Elejida: ");
-            string HEElegi = Console.ReadLine();
-            bool EntraClash = true;
-            while (EntraClash)
-            {
-                Console.WriteLine();
-                foreach (Habilidad_Especial HESS in Habilidad_Especial_List)
-                {
-                    if (HESS.Nombre == HEElegi)
-                    {
-                        Clase.HE_AtributoColeccion.Add(HESS);
-                    }
-                }
-                Console.Write("Si desea agregar mas Habilidades ingrese SI de lo contrario NO: ");
-                string SiNo = Console.ReadLine();
-                Console.WriteLine();
-                Console.WriteLine();
-                if (SiNo == "SI")
-                {
-                    Console.Write("Ingrese Nombre de la Habilidad Elegida: ");
-                    Console.WriteLine();
-                    HEElegi = Console.ReadLine();
-                }
-                else if (SiNo == "NO")
-                {
-                    EntraClash = false;
-                }
-            }
-            Console.WriteLine("Si desea agregar otra habilidad Especial que no exista en el sistema ingrese Nueva de lo contrario Siguiente");
-            Console.WriteLine();
-            Console.Write("Ingrese comando: ");
-            string ComandoHE = Console.ReadLine();
-            Console.WriteLine();
-            bool EntraHE = true;
-            while (EntraHE)
-            {
+                    int IDN = CLASE.Id;
+                    Clase CLA = ClaseBL.Obtener(IDN);
 
-                if (!ComandoHE.Equals("Siguiente") && !ComandoHE.Equals("Nueva"))
-                {
-                    Console.WriteLine("Comando Erroneo intente denuevo");
+                    Console.WriteLine("___________________________________________________________________________________________________________________");
                     Console.WriteLine();
-                    Console.Write("Ingrese comando: ");
-                    ComandoHE = Console.ReadLine();
-                }
-                if (ComandoHE.Equals("Siguiente"))
-                {
-                    if (Habilidad_Especial_List.Count == 0)
+                    Console.WriteLine("Seleccione las Habilidades Especiales que desee que tenga la nueva Clase ingresando su Id");
+                    Console.WriteLine();
+                    HEControlador.ListarHabilidadesEspeciales();
+                    Console.Write("Ingrese Id de la Habilidad elejida: ");
+                    string comando = Console.ReadLine();
+                    int IdC;
+                    bool result = Int32.TryParse(comando, out IdC);
+                    Habilidad_Especial H = HabilidadEspecialBL.Obtener(IdC);
+                    bool EntraCLH = true;
+                    while (EntraCLH)
                     {
-                        Console.WriteLine("No existen  Habilidades Especiales en el Sistema debe crear alguna nueva ingresando el comando Nueva");
-                        Console.WriteLine();
-                        Console.Write("Ingrese comando: ");
-                        ComandoHE = Console.ReadLine();
-                    }
-                    else if (Habilidad_Especial_List.Count > 0)
-                    {
-                        EntraHE = false;
-                    }
+                        if (H == null || result == false)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Ingreso un Id de Habilidad inexistente en el sistema intente ingresar otro Id");
+                            Console.WriteLine();
+                        }
+                        else if (H != null)
+                        {
+                            Clase_HEBL.Agregar(CLA, H);
+                            Console.WriteLine();
+                        }
+                        bool Entra3 = true;
+                        while (Entra3)
+                        {
+                            Console.WriteLine("Para agregar otra Habilidad ingrese: 1");
+                            Console.WriteLine();
+                            Console.WriteLine("Para crear nueva Habilidad y agregarla ingrese: 2");
+                            Console.WriteLine();
+                            Console.WriteLine("Para finalisar ingrese: 3");
+                            Console.WriteLine();
+                            Console.Write("Ingrese Comando: ");
+                            string comandox = Console.ReadLine();
+                            int com;
+                            bool result3 = Int32.TryParse(comandox, out com);
+                            Console.WriteLine();
+                            if(com != 1 && com != 2 && com != 3 || result3 == false)
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("El comando ingresado no es correcto, intente de nuevo");
+                                Console.WriteLine();
+                            }
+                            if (com == 1)
+                            {
+                                Console.Write("Ingrese Id de la Habilidad elejida: ");
+                                string comando2 = Console.ReadLine();
+                                int IdC2;
+                                bool result2 = Int32.TryParse(comando2, out IdC2);
+                                H = HabilidadEspecialBL.Obtener(IdC2);
+                                Console.WriteLine();
+                            }
+                            else if (com == 2)
+                            {
+                                Habilidad_Especial HES = new Habilidad_Especial();
+                                Console.WriteLine("Ingrese los datos de su nueva Habilidad");
+                                Console.WriteLine();
+                                Console.Write("Nombre: ");
+                                HES.Nombre = Console.ReadLine();
+                                Console.WriteLine();
+                                Console.Write("Descripción: ");
+                                HES.Descripcion = Console.ReadLine();
+                                BusinessLogic.HabilidadEspecialBL.Agregar(HES);
 
+                                foreach (Habilidad_Especial H4 in BusinessLogic.HabilidadEspecialBL.Listar())
+                                {                
+                                    if(H4.Nombre == HES.Nombre && H4.Descripcion == HES.Descripcion)
+                                    {
+                                        Clase_HEBL.Agregar(CLA, H4);
+                                        Console.WriteLine();
+                                    }
+                                }
+                            }
+                            else if (com == 3)
+                            {
+                                EntraCLH = false;
+                                Entra3 = false;
+                            }
+                        }
+                       
+                    }
                 }
-                if (ComandoHE.Equals("Nueva"))
-                {
-                    Habilidad_Especial aux = HEControlador.CrearHabilidadHespecial();
-                    Clase.HE_AtributoColeccion.Add(aux);
-                    Console.WriteLine();
-                    Console.WriteLine("Ingrese Siguiente o Nueva");
-                    Console.WriteLine();
-                    Console.Write("Ingrese comando: ");
-                    ComandoHE = Console.ReadLine();
-                    Console.WriteLine();
-                }
+           
 
             }
             Console.WriteLine();
-            Clase_List.Add(Clase);
+            
 
             return Clase;
         }
@@ -240,7 +233,8 @@ namespace ConsoleApplication.Controladores
             {
                 Console.Write("Id = ");
                 Console.Write(ClaseLI.Id);
-                Console.Write(", Nombre : ");
+                Console.Write(" -> ");
+                Console.Write("Nombre : ");
                 Console.Write(ClaseLI.Nombre);
                 Console.Write(", Descripcion : ");
                 Console.WriteLine(ClaseLI.Descripcion);

@@ -30,26 +30,35 @@ namespace ConsoleApplication.Controladores
 
         public Caracteristica CrearCaracteristica()
         {
-            Caracteristica = new Caracteristica();
-            Console.Write("Ingrese Nombre de la nueva Caracteristica: ");
-            Caracteristica.Nombre = Console.ReadLine();
-            /*Aca hay que agregarle la caracteristica a todos los personajes
-            Personaje_Caracteristica PerCAR = new Personaje_Caracteristica() { valor = 1, CaracteristicaV = Caracteristica };*/
-
-            int idRazaGenerada = BusinessLogic.CaracteristicaBL.Add(Caracteristica);
-
-            if (idRazaGenerada > 0)
-            {
-                Console.WriteLine("La Raza se agregao correctamente en la BD");
-                Console.WriteLine();
-            }
-            else
-            {
-                Console.WriteLine("No se agrega la Raza en la BD");
-                Console.WriteLine();
-            }
+            Caracteristica C = new Caracteristica();
+            Console.WriteLine("Ingrese los datos de su nueva Caracteristica");
             Console.WriteLine();
-            ListarCaracteristicas();
+            Console.Write("Nombre: ");
+            C.Nombre = Console.ReadLine();
+            Console.WriteLine();
+            int valor = 1;
+            BusinessLogic.CaracteristicaBL.Agregar(C);
+            Personaje_Caracteristica Pc = new Personaje_Caracteristica();  
+            foreach (Personaje P in BusinessLogic.PersonajeBL.Listar())
+            {
+                foreach (Caracteristica L in CaracteristicaBL.Listar())
+                {
+                    int con = 0;
+                    int Id1 = 0;
+                    int Id2 = P.Id;
+                    int IdMax = Math.Max(Id1, Id2);
+                    Id1 = Id2;
+                    con = con + 1;
+                    if (con == CaracteristicaBL.Listar().Count)
+                    {
+                        Caracteristica CARR = CaracteristicaBL.Obtener(IdMax);
+                        BusinessLogic.Personaje_CaracteristicaBL.Agregar(P, C, valor);
+                        Pc = null;
+                    }
+
+                }
+                
+            }            
 
             return Caracteristica;
         }
