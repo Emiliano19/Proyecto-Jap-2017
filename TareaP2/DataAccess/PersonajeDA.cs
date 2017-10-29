@@ -10,7 +10,7 @@ namespace DataAccess
 {
     public class PersonajeDA
     {
-        static string _ConnectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=TareaParte2;Data Source=DESKTOP-JU5V3V1\\SQLEXPRESS01";
+        static string _ConnectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=TareaParte2;Data Source=DESKTOP-3V542RP\\SQLEXPRESS";
 
         public static int Agregar(Personaje Personaje)
         {
@@ -18,7 +18,7 @@ namespace DataAccess
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "INSERT INTO Personaje(Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdRaza, IdClase) VALUES (@Nombre, @Nivel, @Fuerza, @Destreza, @Constitución, @Inteligencia, @Sabiduria, @Carisma, @IdRaza, @IdClase)";
+                string query = "INSERT INTO Personaje(Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdR, IdC) VALUES (@Nombre, @Nivel, @Fuerza, @Destreza, @Constitución, @Inteligencia, @Sabiduria, @Carisma, @IdR, @IdC)";
                 SqlCommand com = new SqlCommand(query, connection);
 
                 com.Parameters.AddWithValue("@Nombre", Personaje.Nombre);
@@ -29,8 +29,8 @@ namespace DataAccess
                 com.Parameters.AddWithValue("@Inteligencia", Personaje.Inteligencia);
                 com.Parameters.AddWithValue("@Sabiduria", Personaje.Sabiduria);
                 com.Parameters.AddWithValue("@Carisma", Personaje.Carisma);
-                com.Parameters.AddWithValue("@IdRaza", Personaje.RazaAtributo.Id);
-                com.Parameters.AddWithValue("@IdClase", Personaje.ClaseAtributo.Id);
+                com.Parameters.AddWithValue("@IdR", Personaje.RazaAtributo.Id);
+                com.Parameters.AddWithValue("@IdC", Personaje.ClaseAtributo.Id);
 
 
                 connection.Open();
@@ -91,7 +91,7 @@ namespace DataAccess
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "SELECT IdPer, Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdRaza, IdClase FROM Personaje WHERE IdPer = @id";
+                string query = "SELECT IdPer, Nombre, Nivel, Fuerza, Destreza, Constitución, Inteligencia, Sabiduria, Carisma, IdR, IdC FROM Personaje WHERE IdPer = @id";
                 SqlCommand com = new SqlCommand(query, connection);
                 com.Parameters.AddWithValue("@id", id);
 
@@ -111,8 +111,8 @@ namespace DataAccess
                     result.Inteligencia = (int)Reader["Inteligencia"];
                     result.Sabiduria = (int)Reader["Sabiduria"];
                     result.Carisma = (int)Reader["Carisma"];
-                    result.RazaAtributo.Id = (int)Reader["IdRaza"];
-                    result.ClaseAtributo.Id = (int)Reader["IdClase"];
+                    result.RazaAtributo = RazaDA.Obtener((int)Reader["IdR"]);
+                    result.ClaseAtributo = ClaseDA.Obtener((int)Reader["IdC"]);
 
                 }
             }
@@ -127,7 +127,7 @@ namespace DataAccess
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
                 connection.Open();
-                string query = "UPDATE Personaje SET [Nombre] = @Nombre, [Nivel] = @Nivel, [Fuerza] = @Fuerza, [Destreza] = @Destreza, [Constitución] = @Constitución, [Inteligencia] = @Inteligencia, [Sabiduria] = @Sabiduria, [Carisma] = @Carisma, [IdRaza] = @IdRaza WHERE [IdPer] = @IdPer";//, [IdClase] = @IdClase";
+                string query = "UPDATE Personaje SET [Nombre] = @Nombre, [Nivel] = @Nivel, [Fuerza] = @Fuerza, [Destreza] = @Destreza, [Constitución] = @Constitución, [Inteligencia] = @Inteligencia, [Sabiduria] = @Sabiduria, [Carisma] = @Carisma, [IdR] = @IdR, , [IdCl] = @IdC WHERE [IdPer] = @IdPer";;
 
                 SqlCommand com = new SqlCommand(query, connection);
                 com.Parameters.AddWithValue("@IdPer", P.Id);
@@ -139,8 +139,8 @@ namespace DataAccess
                 com.Parameters.AddWithValue("@Inteligencia", P.Inteligencia);
                 com.Parameters.AddWithValue("@Sabiduria", P.Sabiduria);
                 com.Parameters.AddWithValue("@Carisma", P.Carisma);
-                com.Parameters.AddWithValue("@IdRaza", P.RazaAtributo.Id);
-                //com.Parameters.AddWithValue("@IdClase", P.ClaseAtributo.Id);
+                com.Parameters.AddWithValue("@IdR", P.RazaAtributo.Id);
+                com.Parameters.AddWithValue("@IdC", P.ClaseAtributo.Id);
 
                /* result.Id = (int)Reader["IdPer"];
                 result.Nombre = Reader["Nombre"].ToString();

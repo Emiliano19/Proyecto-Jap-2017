@@ -33,7 +33,7 @@ namespace BusinessLogic
             return result;
         }
 
-        public static int Modificar(int IdC, int IdP, int Valor)
+        public static int Modificar(int IdP, int IdC, int Valor)
         {
             int result = -1;
 

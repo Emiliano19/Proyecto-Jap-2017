@@ -10,7 +10,7 @@ namespace DataAccess
 {
     public class RazaDA
     {
-        static string _ConnectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=TareaParte2;Data Source=DESKTOP-JU5V3V1\\SQLEXPRESS01";
+        static string _ConnectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=TareaParte2;Data Source=DESKTOP-3V542RP\\SQLEXPRESS";
 
         public static int Agregar(Raza Raza)
         {

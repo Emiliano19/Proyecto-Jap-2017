@@ -386,7 +386,7 @@ namespace ConsoleApplication.Controladores
                 }
 
             }
-            Personaje_List.Add(PersonajeX);
+            BusinessLogic.PersonajeBL.Agregar(PersonajeX);
             Console.WriteLine("___________________________________________________________________________________________________________________");
             Console.WriteLine();
             Console.WriteLine("Se muestran las Caracteristicas Variables Existentes en el sistema a continuacion siga las instrucciones");
@@ -553,16 +553,7 @@ namespace ConsoleApplication.Controladores
                         P.Nombre = NuevoNombre;
                         int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
                         Console.WriteLine();
-                        if (idRazaGenerada > 0)
-                        {
-                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
-                            Console.WriteLine();
-                        }
+                        
                         Entra = false;
                     }
                     else if (ComandoCL2 == 2)
@@ -574,16 +565,7 @@ namespace ConsoleApplication.Controladores
                         P.Nivel = NuevoNivel;
                         int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
                         Console.WriteLine();
-                        if (idRazaGenerada > 0)
-                        {
-                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
-                            Console.WriteLine();
-                        }
+                       
                         Entra = false;
                     }
                     else if (ComandoCL2 == 3)
@@ -595,16 +577,8 @@ namespace ConsoleApplication.Controladores
                         P.Fuerza = NuevaFuerza;
                         int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
                         Console.WriteLine();
-                        if (idRazaGenerada > 0)
-                        {
-                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
-                            Console.WriteLine();
-                        }
+                        Console.WriteLine();
+                        
                         Entra = false;
                     }
                     else if (ComandoCL2 == 4)
@@ -616,16 +590,7 @@ namespace ConsoleApplication.Controladores
                         P.Destreza = NuevaDestreza;
                         int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
                         Console.WriteLine();
-                        if (idRazaGenerada > 0)
-                        {
-                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
-                            Console.WriteLine();
-                        }
+                        
                         Entra = false;
                     }
                     else if (ComandoCL2 == 5)
@@ -637,16 +602,7 @@ namespace ConsoleApplication.Controladores
                         P.Constitucion = NuevaConstitucion;
                         int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
                         Console.WriteLine();
-                        if (idRazaGenerada > 0)
-                        {
-                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
-                            Console.WriteLine();
-                        }
+                        
                         Entra = false;
                     }
                     else if (ComandoCL2 == 6)
@@ -658,16 +614,8 @@ namespace ConsoleApplication.Controladores
                         P.Inteligencia = NuevaInteligencia;
                         int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
                         Console.WriteLine();
-                        if (idRazaGenerada > 0)
-                        {
-                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
-                            Console.WriteLine();
-                        }
+                        
+                        
                         Entra = false;
                     }
                     else if (ComandoCL2 == 7)
@@ -679,16 +627,7 @@ namespace ConsoleApplication.Controladores
                         P.Sabiduria = NuevaSabiduria;
                         int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
                         Console.WriteLine();
-                        if (idRazaGenerada > 0)
-                        {
-                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
-                            Console.WriteLine();
-                        }
+                        
                         Entra = false;
                     }
                     else if (ComandoCL2 == 8)
@@ -700,16 +639,7 @@ namespace ConsoleApplication.Controladores
                         P.Carisma = NuevoCarisma;
                         int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
                         Console.WriteLine();
-                        if (idRazaGenerada > 0)
-                        {
-                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
-                            Console.WriteLine();
-                        }
+                        
                         Entra = false;
                     }
                     else if (ComandoCL2 == 9)
@@ -730,16 +660,7 @@ namespace ConsoleApplication.Controladores
                         P.RazaAtributo = RazaBL.Obtener(idr);
                         int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
                         Console.WriteLine();
-                        if (idRazaGenerada > 0)
-                        {
-                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
-                            Console.WriteLine();
-                        }
+                        
                         Entra = false;
                     }
                     else if (ComandoCL2 == 10)
@@ -753,92 +674,98 @@ namespace ConsoleApplication.Controladores
                         P.RazaAtributo = RazaBL.Obtener(idc);
                         int idRazaGenerada = BusinessLogic.PersonajeBL.Modificar(P);
                         Console.WriteLine();
-                        if (idRazaGenerada > 0)
-                        {
-                            Console.WriteLine("El Personaje se Modifico correctamente en la BD");
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se pudo Modifico el Personaje en la BD");
-                            Console.WriteLine();
-                        }
+                        
                         Entra = false;
                     }
-                    /* else if (ComandoCL2 == 11)
+                    else if (ComandoCL2 == 11)
                      {
                          Console.WriteLine();
                          bool EntraGeneral = true;
-                         while (EntraGeneral)
-                         {
-                             Console.Write("Elija la Caracteristica que desea modificar de la lista de Caracteristicas de su Personaje");
-                             //Aca tengo que llamar a la coleccion de caracteristicas de mi personaje
-                             string ComandoCL3 = Console.ReadLine();
-                             bool Entra3 = true;
-                             int Contador3 = 0;
-                             while (Entra3)
-                             {
-                                 foreach (Personaje_Caracteristica CARVARIA in 
-                                 {
-                                     if (CARVARIA.CaracteristicaV.Nombre == ComandoCL3)
-                                     {
-                                         Contador3 = Contador3 + 1;
-                                         Console.WriteLine();
-                                         Console.WriteLine("En esta instancia solo puede modificar el valor de la Caracteristica para este Presonaje");
-                                         Console.WriteLine();
-                                         Console.WriteLine("Si desea Modificar el nombre valla al Procedimiento modificar Caracteristica, y el nombre cambiara para cada Personaje");
-                                         bool Entra4 = true;
-                                         while (Entra4)
-                                         {
-                                             Console.WriteLine();
-                                             CARVARIA.valor = 0;
-                                             Console.WriteLine("Escriba el nuevo valor de la Caracteristica ");
-                                             Console.WriteLine();
-                                             CARVARIA.valor = int.Parse(Console.ReadLine());
-                                             Entra4 = false;
+                        while (EntraGeneral)
+                        {
+                            Console.WriteLine("Elija la Caracteristica que desea modificar de la siguiente lista");
+                            Console.WriteLine();
+                            //Aca tengo que llamar a la coleccion de caracteristicas de mi personaje
+                            foreach (Personaje_Caracteristica C in BusinessLogic.Personaje_CaracteristicaBL.Listar())
+                            {
+                                Console.Write("Id = ");
+                                Console.Write(C.CaracteristicaV.Id);
+                                Caracteristica CA = BusinessLogic.CaracteristicaBL.Obtener(C.CaracteristicaV.Id);
+                                Console.Write(", Nombre : ");
+                                Console.Write(CA.Nombre);
+                                Console.Write(", Valor : ");
+                                Console.WriteLine(C.valor);
+                                Console.WriteLine();
+                            }
+                            Console.Write("Ingrese Id de la caracteristica elegida: ");
+                            string comando = Console.ReadLine();
+                            int IdC;
+                            bool result = Int32.TryParse(comando, out IdC);
+                            bool Entra3 = true;
+                            bool encontro = false;
+                            while (Entra3)
+                            {
+                                Caracteristica PCC = CaracteristicaBL.Obtener(IdC);
 
-                                         }
-                                         Entra3 = false;
-                                         Entra = false;
-                                     }
+                                if (PCC != null)
+                                {
+                                    Personaje_Caracteristica PCA = BusinessLogic.Personaje_CaracteristicaBL.Obtener(P.Id, PCC.Id);
 
-                                 }
-                                 if (Contador3 == 0)
-                                 {
-                                     Console.WriteLine();
-                                     Console.WriteLine("Error la Caracteristica que a elegido no se encuentra en el Sistema, serciorese de haber ingresado bien el nombre");
-                                     Console.WriteLine();
-                                     Console.WriteLine(PersonajeModi.C_VAtributoColeccion.Count);
-                                     Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
-                                     ComandoCL3 = Console.ReadLine();
-                                 }
+                                    if (PCA != null)
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("En esta instancia solo puede modificar el valor de la Caracteristica para este Presonaje");
+                                        Console.WriteLine();
+                                        Console.WriteLine("Si desea Modificar el nombre valla al Procedimiento modificar Caracteristica, y el nombre cambiara para cada Personaje");
+                                        Console.WriteLine();
+                                        Console.Write("Escriba el nuevo valor de la Caracteristica: ");
+                                        string comando1 = Console.ReadLine();
+                                        int Valor;
+                                        bool result1 = Int32.TryParse(comando1, out Valor);
+                                        BusinessLogic.Personaje_CaracteristicaBL.Modificar(P.Id, PCC.Id, PCA.valor);
+                                        encontro = !encontro;
+                                        Entra3 = false;
+                                        EntraGeneral = false;
+                                        Entra = false;
+                                        break;
+                                    }
+                                if (encontro == false)
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Error la Caracteristica que a elegido no se encuentra en el Sistema, serciorese de haber ingresado bien el nombre");
+                                    Console.WriteLine();
+                                    Entra3 = false;
+                                }
+                            }
 
-                             }
-                             Console.WriteLine();
-                             Console.WriteLine("Si desea modificar el valor de otra de las caracteristicas ingrese SI de lo contrario ingrese NO");
-                             Console.WriteLine();
-                             string Eleccion = Console.ReadLine();
-                             if (Eleccion == "SI")
-                             {
-                                 Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
-                                 ComandoCL3 = Console.ReadLine();
-                             }
-                             else if (Eleccion == "NO")
-                             {
+
+
+                        }
+                               /*  Console.WriteLine();
+                               Console.WriteLine("Si desea modificar el valor de otra de las caracteristicas ingrese SI de lo contrario ingrese NO");
+                               Console.WriteLine();
+                               string Eleccion = Console.ReadLine();
+                              cif (Eleccion == "SI")
+                              {
+                                  Console.Write("Escriba el Nombre de la Caracteristica que desea modificar: ");
+                                  ComandoCL3 = Console.ReadLine();
+                                }
+                                else if (Eleccion == "NO")
+                                {
                                  EntraGeneral = false;
-                                 Entra = false;
-                             }
-                         }
-                         Console.WriteLine();
+                                   Entra = false;
+                                   }*/
+                        }
+                         /*Console.WriteLine();
                          foreach (Personaje_Caracteristica CarVarPerso in PersonajeModi.C_VAtributoColeccion)
                          {
                              Console.Write(CarVarPerso.CaracteristicaV.Nombre);
                              Console.Write(" -> Valor: ");
                              Console.WriteLine(CarVarPerso.valor);
-                         }
+                         }*/
 
-                     }
-                     else if (ComandoCL2 == 12)
+                    }
+                   /*  else if (ComandoCL2 == 12)
                      {
                          Console.WriteLine();
                          PersonajeModi.Nombre = null;
@@ -1023,7 +950,10 @@ namespace ConsoleApplication.Controladores
                 Console.Write("Nombre: ");
                 Console.WriteLine(P.Nombre);
                 Console.WriteLine();
-                foreach(Personaje_Caracteristica PC in Personaje_CaracteristicaBL)
+                foreach (Personaje_Caracteristica PC in Personaje_CaracteristicaBL.Listar())
+                {
+
+                }
 
             }
 

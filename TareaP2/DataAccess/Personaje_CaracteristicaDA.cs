@@ -10,7 +10,7 @@ namespace DataAccess
 {
     public class Personaje_CaracteristicaDA
     {
-        static string _ConnectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=TareaParte2;Data Source=DESKTOP-JU5V3V1\\SQLEXPRESS01";
+        static string _ConnectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=TareaParte2;Data Source=DESKTOP-3V542RP\\SQLEXPRESS";
 
         public static int Agregar(Personaje P, Caracteristica C, int Valor)
         {
@@ -67,9 +67,9 @@ namespace DataAccess
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
-                string query = "SELECT IdP, IdC, Valor FROM Personaje_Caracteristica";
+                string query = "SELECT IdPersonaje, IdCaracteristica, Valor FROM Personaje_Caracteristica";
                 SqlCommand com = new SqlCommand(query, connection);
-                com.Parameters.AddWithValue("IdP", );
+               // com.Parameters.AddWithValue("IdP", );
 
                 connection.Open();
                 SqlDataReader Reader = com.ExecuteReader();
@@ -83,7 +83,7 @@ namespace DataAccess
 
                     Personaje_Caracteristica C = new Personaje_Caracteristica();
 
-                    C.CaracteristicaV.Id = (int)Reader["IdC"];
+                    C.CaracteristicaV.Id = (int)Reader["IdCaracteristica"];
                     C.valor = (int)Reader["Valor"];
                     result.Add(C);
                 }
@@ -100,7 +100,7 @@ namespace DataAccess
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
                 connection.Open();
-                string query = "UPDATE Personaje_Caracteristica SET [IdPersonaje] = @IdPersonaje, [IdCaracteristica] = @IdCaracteristica, [Valor] = @Valor WHERE [IdCaracteristica] = @IdCaracteristica";
+                string query = "UPDATE Personaje_Caracteristica SET [IdPersonaje] = @IdPersonaje, [IdCaracteristica] = @IdCaracteristica, [Valor] = @Valor WHERE [IdPersonaje] = @IdPersonaje and [IdCaracteristica] = @IdCaracteristica";
 
                 SqlCommand com = new SqlCommand(query, connection);
                 com.Parameters.AddWithValue("@IdPersonaje", IdP);
