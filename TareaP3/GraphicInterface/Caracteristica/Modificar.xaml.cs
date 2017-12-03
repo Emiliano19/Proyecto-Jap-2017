@@ -13,16 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GraphicInterface.Caracteírstica
+namespace GraphicInterface.Caracteristica
 {
     /// <summary>
-    /// Lógica de interacción para Crear.xaml
+    /// Lógica de interacción para Modificar.xaml
     /// </summary>
-    public partial class Crear : Page
+    public partial class Modificar : Page
     {
-        public Crear()
+        public Modificar()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

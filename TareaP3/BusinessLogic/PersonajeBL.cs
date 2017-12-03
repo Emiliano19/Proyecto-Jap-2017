@@ -33,11 +33,25 @@ namespace BusinessLogic
             return DataAccess.PersonajeDA.Obtener(id);
         }
 
-        public static int Modificar(Personaje Personaje)
+        public static int Modificar(Personaje Personaje, int IdR, int IdC)
         {
             int result = -1;
 
-            result = DataAccess.PersonajeDA.Modificar(Personaje);
+            result = DataAccess.PersonajeDA.Modificar(Personaje, IdR, IdC);
+
+            return result;
+        }
+
+        public static int RetornaRazaId(Personaje P)
+        {
+            int result = DataAccess.PersonajeDA.RetornaRazaId(P);
+
+            return result;
+        }
+
+        public static int RetornaClaseId(Personaje P)
+        {
+            int result = DataAccess.PersonajeDA.RetornaRazaId(P);
 
             return result;
         }
@@ -46,6 +60,32 @@ namespace BusinessLogic
         {
             int result = -1;
 
+            if (CaracteristicaBL.Listar() != null)
+            {
+                foreach (Caracteristica C in CaracteristicaBL.Listar())
+                {
+                    Personaje_Caracteristica PC = Personaje_CaracteristicaBL.Obtener(IdP, C.Id);
+                    if (PC != null)
+                    {
+                        Personaje_CaracteristicaBL.Eliminar(IdP, C.Id);
+                    }
+
+                }
+
+            }
+            if (HabilidadEspecialBL.Listar() != null)
+            {
+                foreach (Habilidad_Especial H in HabilidadEspecialBL.Listar())
+                {
+                    Personaje_HE PH = Personaje_HEBL.Obtener(IdP, H.Id);
+                    if (PH != null)
+                    {
+                        Personaje_HEBL.Eliminar(IdP, H.Id);
+                    }
+
+                }
+
+            }
             result = DataAccess.PersonajeDA.Eliminar(IdP);
 
             return result;

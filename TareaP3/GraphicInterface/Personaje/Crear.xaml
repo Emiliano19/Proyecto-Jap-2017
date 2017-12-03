@@ -8,20 +8,20 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Crear">
 
-    <Grid Background="White" Margin="8,-30,-678,-42">
-        <Label Content="Nombre" HorizontalAlignment="Left" Margin="61,26,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Height="37"/>
-        <Label Content="Nivel" HorizontalAlignment="Left" Margin="86,49,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.879,0.449" FontSize="18" FontWeight="Bold"/>
-        <Label Content="Raza" HorizontalAlignment="Left" Margin="90,105,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <Label Content="Clase" HorizontalAlignment="Left" Margin="85,132,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <Image Name="ImagenBuscar" HorizontalAlignment="Left" Height="130" Margin="368,34,0,0" VerticalAlignment="Top" Width="140" OpacityMask="#FF363535"/>
-        <Button Name="Examinar" Content="Examinar.." HorizontalAlignment="Left" Margin="424,175,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click" Height="30"/>
-        <Label Content="Fuerza" HorizontalAlignment="Left" Margin="72,224,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <Label Content="Destreza" HorizontalAlignment="Left" Margin="55,263,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.144,0.464" FontSize="18" FontWeight="Bold"/>
-        <Label Content="Constitución" HorizontalAlignment="Left" Margin="21,299,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.24,0.505" FontSize="18" FontWeight="Bold"/>
-        <Label Content="Inteligencia" HorizontalAlignment="Left" Margin="283,222,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <Label Content="Sabiduria" HorizontalAlignment="Left" Margin="301,263,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <Label Content="Carisma" HorizontalAlignment="Left" Margin="314,303,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <ComboBox Name="ComboFuerza" HorizontalAlignment="Left" Margin="152,231,0,0" VerticalAlignment="Top" Width="110" SelectionChanged="ComboFuerza_SelectionChanged">
+    <Grid Margin="-34,-24,-708,-133" Background="#FF52574F">
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="93,36,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Height="42" Width="92"/>
+        <Label Content="Nivel" HorizontalAlignment="Left" Margin="122,62,0,0" VerticalAlignment="Top" Width="84" RenderTransformOrigin="0.879,0.449" FontSize="18" FontWeight="Bold" Height="38"/>
+        <Label Content="Raza" HorizontalAlignment="Left" Margin="127,125,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Height="39" Width="57"/>
+        <Label Content="Clase" HorizontalAlignment="Left" Margin="121,156,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Height="38" Width="62"/>
+        <Image Name="ImagenBuscar" HorizontalAlignment="Left" Height="147" Margin="444,45,0,0" VerticalAlignment="Top" Width="160" OpacityMask="#FF363535" Stretch="Fill"/>
+        <Button Name="Examinar" Content="Examinar.." HorizontalAlignment="Left" Margin="508,205,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click" Height="34"/>
+        <Label Content="Fuerza" HorizontalAlignment="Left" Margin="106,260,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Height="39" Width="75"/>
+        <Label Content="Destreza" HorizontalAlignment="Left" Margin="87,304,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.144,0.464" FontSize="18" FontWeight="Bold" Height="39" Width="94"/>
+        <Label Content="Constitución" HorizontalAlignment="Left" Margin="48,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.24,0.505" FontSize="18" FontWeight="Bold" Height="39" Width="133"/>
+        <Label Content="Inteligencia" HorizontalAlignment="Left" Margin="347,258,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Height="39" Width="124"/>
+        <Label Content="Sabiduria" HorizontalAlignment="Left" Margin="367,304,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Height="39" Width="103"/>
+        <Label Content="Carisma" HorizontalAlignment="Left" Margin="382,350,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Height="38" Width="88"/>
+        <ComboBox Name="ComboFuerza" HorizontalAlignment="Left" Margin="197,268,0,0" VerticalAlignment="Top" Width="126" SelectionChanged="ComboFuerza_SelectionChanged" Height="25">
             <ListBoxItem Content="1" Width="40"/>
             <ListBoxItem Content="2" Width="40"/>
             <ListBoxItem Content="3" Width="40"/>
@@ -33,7 +33,7 @@
             <ListBoxItem Content="9" Width="40"/>
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
-        <ComboBox Name="ComboDestreza" HorizontalAlignment="Left" Margin="152,268,0,0" VerticalAlignment="Top" Width="110" SelectionChanged="ComboDestreza_SelectionChanged">
+        <ComboBox Name="ComboDestreza" HorizontalAlignment="Left" Margin="197,310,0,0" VerticalAlignment="Top" Width="126" SelectionChanged="ComboDestreza_SelectionChanged" Height="25">
             <ListBoxItem Content="1" Width="40"/>
             <ListBoxItem Content="2" Width="40"/>
             <ListBoxItem Content="3" Width="40"/>
@@ -45,7 +45,7 @@
             <ListBoxItem Content="9" Width="40"/>
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
-        <ComboBox Name="ComboConstitucion" HorizontalAlignment="Left" Margin="152,305,0,0" VerticalAlignment="Top" Width="110" SelectionChanged="ComboConstitucion_SelectionChanged">
+        <ComboBox Name="ComboConstitucion" HorizontalAlignment="Left" Margin="197,352,0,0" VerticalAlignment="Top" Width="126" SelectionChanged="ComboConstitucion_SelectionChanged" Height="25">
             <ListBoxItem Content="1" Width="40"/>
             <ListBoxItem Content="2" Width="40"/>
             <ListBoxItem Content="3" Width="40"/>
@@ -57,9 +57,9 @@
             <ListBoxItem Content="9" Width="40"/>
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
-        <ComboBox Name="ComboRaza" HorizontalAlignment="Left" Margin="150,114,0,0" VerticalAlignment="Top" Width="110" SelectionChanged="ComboRaza_SelectionChanged"/>
-        <ComboBox Name="ComboClase" HorizontalAlignment="Left" Margin="150,139,0,0" VerticalAlignment="Top" Width="110" SelectionChanged="ComboClase_SelectionChanged"/>
-        <ComboBox Name="ComboNivel" HorizontalAlignment="Left" Margin="152,57,0,0" VerticalAlignment="Top" Width="110" SelectionChanged="ComboBoxNivel" IsSynchronizedWithCurrentItem="False">
+        <ComboBox Name="ComboRaza" HorizontalAlignment="Left" Margin="195,135,0,0" VerticalAlignment="Top" Width="126" SelectionChanged="ComboRaza_SelectionChanged" Height="25"/>
+        <ComboBox Name="ComboClase" HorizontalAlignment="Left" Margin="195,164,0,0" VerticalAlignment="Top" Width="126" SelectionChanged="ComboClase_SelectionChanged" Height="25"/>
+        <ComboBox Name="ComboNivel" HorizontalAlignment="Left" Margin="197,71,0,0" VerticalAlignment="Top" Width="126" SelectionChanged="ComboBoxNivel" IsSynchronizedWithCurrentItem="False" Height="25">
             <ListBoxItem Content="1" Width="40"/>
             <ListBoxItem Content="2" Width="40"/>
             <ListBoxItem Content="3" Width="40"/>
@@ -71,9 +71,9 @@
             <ListBoxItem Content="9" Width="40"/>
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
-        <TextBox Name="Nombre" HorizontalAlignment="Left" Height="20" Margin="152,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="110" TextChanged="Nombre_TextChanged" FontWeight="Bold" FontSize="14"/>
-        <Button Name="Agregar" Content="Guardar" HorizontalAlignment="Left" Margin="424,342,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click_1" Height="29" Background="#FF00FFDC" FontSize="14" FontWeight="Bold"/>
-        <ComboBox x:Name="ComboInteligencia" HorizontalAlignment="Left" Margin="398,232,0,0" VerticalAlignment="Top" Width="110" SelectionChanged="ComboInteligencia_SelectionChanged">
+        <TextBox Name="Nombre" HorizontalAlignment="Left" Height="22" Margin="197,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="126" TextChanged="Nombre_TextChanged" FontWeight="Bold" FontSize="14"/>
+        <Button Name="Agregar" Content="Guardar" HorizontalAlignment="Left" Margin="508,394,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_1" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold"/>
+        <ComboBox x:Name="ComboInteligencia" HorizontalAlignment="Left" Margin="478,269,0,0" VerticalAlignment="Top" Width="126" SelectionChanged="ComboInteligencia_SelectionChanged" Height="25">
             <ListBoxItem Content="1" Width="40"/>
             <ListBoxItem Content="2" Width="40"/>
             <ListBoxItem Content="3" Width="40"/>
@@ -85,7 +85,7 @@
             <ListBoxItem Content="9" Width="40"/>
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
-        <ComboBox Name="ComboSabiduria" HorizontalAlignment="Left" Margin="398,269,0,0" VerticalAlignment="Top" Width="110" SelectionChanged="ComboSabiduria_SelectionChanged">
+        <ComboBox Name="ComboSabiduria" HorizontalAlignment="Left" Margin="478,311,0,0" VerticalAlignment="Top" Width="126" SelectionChanged="ComboSabiduria_SelectionChanged" Height="25">
             <ListBoxItem Content="1" Width="40"/>
             <ListBoxItem Content="2" Width="40"/>
             <ListBoxItem Content="3" Width="40"/>
@@ -97,7 +97,7 @@
             <ListBoxItem Content="9" Width="40"/>
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
-        <ComboBox Name="ComboCarisma" HorizontalAlignment="Left" Margin="398,306,0,0" VerticalAlignment="Top" Width="110" SelectionChanged="ComboCarisma_SelectionChanged">
+        <ComboBox Name="ComboCarisma" HorizontalAlignment="Left" Margin="478,353,0,0" VerticalAlignment="Top" Width="126" SelectionChanged="ComboCarisma_SelectionChanged" Height="25">
             <ListBoxItem Content="1" Width="40"/>
             <ListBoxItem Content="2" Width="40"/>
             <ListBoxItem Content="3" Width="40"/>
@@ -109,35 +109,15 @@
             <ListBoxItem Content="9" Width="40"/>
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
-        <Rectangle HorizontalAlignment="Left" Height="30" Margin="276,175,0,0" Stroke="Black" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.825,-0.381"/>
-        <TextBlock HorizontalAlignment="Left" Margin="280,179,0,0" TextWrapping="Wrap" Text="Archivo seleccionado" VerticalAlignment="Top" Height="27" Width="143" FontWeight="Bold" FontSize="14"/>
+        <Rectangle HorizontalAlignment="Left" Height="34" Margin="339,205,0,0" Stroke="Black" VerticalAlignment="Top" Width="169" RenderTransformOrigin="0.825,-0.381" Fill="#FFC9BEBE"/>
+        <TextBlock HorizontalAlignment="Left" Margin="351,212,0,0" TextWrapping="Wrap" Text="Archivo seleccionado" VerticalAlignment="Top" Height="31" Width="164" FontWeight="Bold" FontSize="14"/>
         <TextBlock Name="RutaImagen" HorizontalAlignment="Left" Margin="649,219,0,0" Visibility="Hidden" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="232" FontSize="14" FontWeight="Bold"/>
-        <Rectangle HorizontalAlignment="Left" Height="130" Margin="368,34,0,0" VerticalAlignment="Top" Width="140" Stroke="Black"/>
-        <Button x:Name="Cancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="330,342,0,0" VerticalAlignment="Top" Width="84" Height="29" Background="#FF00FFDC" FontSize="14" FontWeight="Bold" Click="Cancelar_Click"/>
-        <ListView Name="listviewcar" HorizontalAlignment="Left" Height="127" Margin="631,34,0,0" VerticalAlignment="Top" Width="244" RenderTransformOrigin="0.5,0.41" SelectionChanged="ListView_SelectionChanged">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <WrapPanel>
-                        <TextBlock Text="{Binding Nombre}"/>
-                    </WrapPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <ComboBox HorizontalAlignment="Left" Margin="695,184,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged">
-            <ListBoxItem Content="1" Width="40"/>
-            <ListBoxItem Content="2" Width="40"/>
-            <ListBoxItem Content="3" Width="40"/>
-            <ListBoxItem Content="4" Width="40"/>
-            <ListBoxItem Content="5" Width="40"/>
-            <ListBoxItem Content="6" Width="40"/>
-            <ListBoxItem Content="7" Width="40"/>
-            <ListBoxItem Content="8" Width="40"/>
-            <ListBoxItem Content="9" Width="40"/>
-            <ListBoxItem Content="10" Width="40" />
-        </ComboBox>
-        <Label Content="Valor" HorizontalAlignment="Left" Margin="636,179,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <Image Name="ImagenTic" HorizontalAlignment="Left" Height="40" Margin="830,170,0,0" VerticalAlignment="Top" Width="45"/>
-        <Rectangle HorizontalAlignment="Left" Height="40" Margin="830,170,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.825,-0.381"/>
+        <Rectangle HorizontalAlignment="Left" Height="147" Margin="444,45,0,0" VerticalAlignment="Top" Width="160" Stroke="Black"/>
+        <Button x:Name="CancelarB" Visibility="Visible" Content="Cancelar" HorizontalAlignment="Left" Margin="401,394,0,0" VerticalAlignment="Top" Width="95" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold" Click="Cancelar_Click"/>
+        <Button Name="MostrarCar" Visibility="Hidden" Content="Mostrar" HorizontalAlignment="Left" Margin="818,40,0,0" VerticalAlignment="Top" Width="117" Height="27" Click="Button_Click_2"/>
+        <Frame Name="Navigation" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="295" Margin="660,82,0,0" VerticalAlignment="Top" Width="364" Navigated="Navigation_Navigated"/>
+        <TextBlock HorizontalAlignment="Left" Margin="660,43,0,0" TextWrapping="Wrap" Text="Características" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Width="128"/>
+        <Button Name="CrearCar" Visibility="Hidden" Content="Crear Nueva Característica" HorizontalAlignment="Left" Margin="660,393,0,0" VerticalAlignment="Top" Width="364" Height="32" OpacityMask="#FFF00606" Background="#FF9B9393" FontWeight="Bold" FontSize="18" Click="CrearCar_Click"/>
 
 
     </Grid>

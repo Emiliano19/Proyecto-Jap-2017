@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "ConsoleApplication\ConsoleApplication.csproj", "{8646D1A1-D227-43C3-B93B-3E8E2601CEEE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{ABB4BB16-767E-42BC-9529-E41512BD44C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{209446E7-DCED-4E56-9157-FF2BFD4D04BC}"
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8646D1A1-D227-43C3-B93B-3E8E2601CEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8646D1A1-D227-43C3-B93B-3E8E2601CEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8646D1A1-D227-43C3-B93B-3E8E2601CEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8646D1A1-D227-43C3-B93B-3E8E2601CEEE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ABB4BB16-767E-42BC-9529-E41512BD44C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABB4BB16-767E-42BC-9529-E41512BD44C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABB4BB16-767E-42BC-9529-E41512BD44C4}.Release|Any CPU.ActiveCfg = Release|Any CPU

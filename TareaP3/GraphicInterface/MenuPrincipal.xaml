@@ -8,27 +8,30 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="MenuPrincipal">
 
-    <Grid Background="White" Margin="10,-20,-680,-42" RenderTransformOrigin="0.5,0.5">
+    <Grid Margin="-3,-20,-729,-30" RenderTransformOrigin="0.5,0.5">
+        <Grid.Background>
+            <ImageBrush ImageSource="Personaje/Transformers-dragon-620x330.jpg"/>
+        </Grid.Background>
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
                 <SkewTransform/>
-                <RotateTransform Angle="-0.263"/>
+                <RotateTransform Angle="0.014"/>
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <ComboBox HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_1" IsEditable="True" Text="        Personajes" FontFamily="Segoe Print" FontWeight="Bold" Height="27">
+        <ComboBox HorizontalAlignment="Left" Margin="25,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_1" IsEditable="True" Text="        Personajes" FontFamily="Segoe Print" FontWeight="Bold" Height="27">
             <Button Content="Crear" Width="148" Click="Button_Click"/>
             <Button Content="Listar" Width="148" Click="Button_Click_2"/>
             <Button Content="Subir de Nivel" Width="148" Click="Button_Click_6"/>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="210,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_2" IsEditable="True" Text="           Raza" FontFamily="Segoe Print" FontWeight="Bold" Height="27"/>
-        <ComboBox HorizontalAlignment="Left" Margin="404,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_3" IsEditable="True" Text="           Clase" FontFamily="Segoe Print" FontWeight="Bold"/>
-        <ComboBox HorizontalAlignment="Left" Margin="593,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_4" IsEditable="True" Text="Habilidades Especiales" FontFamily="Segoe Print" FontWeight="Bold">
+        <ComboBox HorizontalAlignment="Left" Margin="219,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_2" IsEditable="True" Text="           Raza" FontFamily="Segoe Print" FontWeight="Bold" Height="27"/>
+        <ComboBox HorizontalAlignment="Left" Margin="422,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_3" IsEditable="True" Text="           Clase" FontFamily="Segoe Print" FontWeight="Bold"/>
+        <ComboBox HorizontalAlignment="Left" Margin="624,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_4" IsEditable="True" Text="Habilidades Especiales" FontFamily="Segoe Print" FontWeight="Bold">
             <Button Content="Crear" Width="148" Click="Button_Click_7"/>
             <Button Content="Listar" Width="148" Click="Button_Click_8"/>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="790,32,0,0" VerticalAlignment="Top" Width="158" Text="     Características" IsEditable="True" FontFamily="Segoe Print" FontWeight="Bold" SelectionChanged="ComboBox_SelectionChanged_5" RenderTransformOrigin="0.5,0.5">
+        <ComboBox HorizontalAlignment="Left" Margin="821,32,0,0" VerticalAlignment="Top" Width="158" Text="     Características" IsEditable="True" FontFamily="Segoe Print" FontWeight="Bold" SelectionChanged="ComboBox_SelectionChanged_5" RenderTransformOrigin="0.5,0.5">
             <ComboBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -37,8 +40,9 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </ComboBox.RenderTransform>
+            <Button Content="Crear" Width="148" Click="Button_Click_1"/>
+            <Button Content="Listar" Width="148" Click="Button_Click_3"/>
         </ComboBox>
-        <Frame Name="Navigation" Content="Frame" HorizontalAlignment="Left" NavigationUIVisibility="Automatic" Height="265" Margin="10,87,0,0" VerticalAlignment="Top" Width="950" Navigated="Navigation_Navigated"/>
 
     </Grid>
 </Page>

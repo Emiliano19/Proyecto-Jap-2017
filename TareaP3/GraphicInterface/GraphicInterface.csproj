@@ -93,19 +93,31 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Caracteírstica\Crear.xaml">
+    <Page Include="Caracteristica\Crear.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Caracteristica\Listar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Caracteristica\Modificar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Habilidad\Crear.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Habilidad\Listar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MenuPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MenuPrincipal.xaml">
+    <Page Include="Personaje\Caracteristicas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -127,17 +139,22 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caracteírstica\Crear.xaml.cs">
+    <Compile Include="Caracteristica\Crear.xaml.cs">
       <DependentUpon>Crear.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Habilidad\Crear.xaml.cs">
-      <DependentUpon>Crear.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Habilidad\Listar.xaml.cs">
+    <Compile Include="Caracteristica\Listar.xaml.cs">
       <DependentUpon>Listar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Caracteristica\Modificar.xaml.cs">
+      <DependentUpon>Modificar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Habilidad\Crear.xaml.cs" />
+    <Compile Include="Habilidad\Listar.xaml.cs" />
     <Compile Include="MenuPrincipal.xaml.cs">
       <DependentUpon>MenuPrincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Personaje\Caracteristicas.xaml.cs">
+      <DependentUpon>Caracteristicas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Personaje\Crear.xaml.cs">
       <DependentUpon>Crear.xaml</DependentUpon>
@@ -183,10 +200,6 @@
       <Project>{abb4bb16-767e-42bc-9529-e41512bd44c4}</Project>
       <Name>BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ConsoleApplication\ConsoleApplication.csproj">
-      <Project>{8646d1a1-d227-43c3-b93b-3e8e2601ceee}</Project>
-      <Name>ConsoleApplication</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{c09a07d6-0e6d-45f3-bd8a-73c57661ee6d}</Project>
       <Name>Domain</Name>
@@ -213,6 +226,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Personaje\PruebaX.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Personaje\Transformers-dragon-620x330.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,7 +34,7 @@ namespace GraphicInterface.Habilidad
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -44,10 +44,25 @@ namespace GraphicInterface.Habilidad
 
         private void ComboClase_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            int selectedIndex = ComboClase.SelectedIndex;
+            Domain.Clase selectedItem = (Domain.Clase)ComboClase.SelectedItem;
+            List<Domain.Habilidad_Especial> HL = new List<Domain.Habilidad_Especial>();
+            foreach(Domain.Habilidad_Especial H in BusinessLogic.HabilidadEspecialBL.Listar())
+            {
+                Domain.Clase_HE CH = BusinessLogic.Clase_HEBL.Obtener(selectedItem.Id, H.Id);
+                if(CH != null)
+                {
+                    HL.Add(H);
+                }
+            }
+            listview.ItemsSource = HL;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+           
+        }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
            
         }

@@ -47,7 +47,6 @@ namespace GraphicInterface.Personaje
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Hay que auto ajustar tamaño de la imagen a cuadro Image
             if (ImagenBuscar.Source == null)
             {
                 OpenFileDialog openFile = new OpenFileDialog();
@@ -83,10 +82,45 @@ namespace GraphicInterface.Personaje
         
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            listviewcar.ItemsSource = BusinessLogic.CaracteristicaBL.Listar();
-            if (P.Nombre == "" || P.Nivel == 0 || P.Fuerza == 0 || P.Destreza == 0 || P.Constitucion == 0 || P.Inteligencia == 0 || P.Sabiduria == 0 || P.Carisma == 0 || P.RazaAtributo == null || P.ClaseAtributo == null) //Falta agregar que la imagen no puede estar vacia
+            if (Nombre.Text == "" || P.Nivel == 0 || P.Fuerza == 0 || P.Destreza == 0 || P.Constitucion == 0 || P.Inteligencia == 0 || P.Sabiduria == 0 || P.Carisma == 0 || P.RazaAtributo == null || P.ClaseAtributo == null || ImagenBuscar.Source == null) //Falta agregar que la imagen no puede estar vacia
             {
-                MessageBox.Show("Algun Campo a quedado vacío resive que este todo completo para poder guardar");
+                if(P.Nombre == "")
+                {
+                    MessageBox.Show("Falta ingresar el Nombre");
+                }
+                else if (P.Nivel == 0)
+                {
+                    MessageBox.Show("Falta ingresar el Nivel");
+                }
+                else if (P.Fuerza == 0)
+                {
+                    MessageBox.Show("Falta ingresar la Fuerza");
+                }
+                else if (P.Destreza == 0)
+                {
+                    MessageBox.Show("Falta ingresar la Destreza");
+                }
+                else if (P.Constitucion == 0)
+                {
+                    MessageBox.Show("Falta ingresar la Constitución");
+                }
+                else if (P.Inteligencia == 0)
+                {
+                    MessageBox.Show("Falta ingresar la Inteligencia");
+                }
+                else if (P.Sabiduria == 0)
+                {
+                    MessageBox.Show("Falta ingresar la Sabiduria");
+                }
+                else if (P.Carisma == 0)
+                {
+                    MessageBox.Show("Falta ingresar el Carisma");
+                }
+                else if(P.Imagen == null)
+                {
+                    MessageBox.Show("Falta ingresar la Imagen");
+                }
+        
             }
             else
             {
@@ -114,6 +148,7 @@ namespace GraphicInterface.Personaje
                     int result = BusinessLogic.PersonajeBL.Agregar(P);
                     if (result == 1)
                     {
+                        MostrarCar.Visibility = Visibility;
                         MessageBox.Show("Se guardado correctamente el nuevo Personaje");
                     }
                     else if (result == -1)
@@ -173,47 +208,40 @@ namespace GraphicInterface.Personaje
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
-        }
-
-        private void AgregarC_Click(object sender, RoutedEventArgs e)
-        {
-          //  this.NavigationService.Navigate(new Característica.Crear());
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
             int IdP = BusinessLogic.PersonajeBL.Listar().Max(x => x.Id);
-            int selectedIndex = listviewcar.SelectedIndex;
-            Domain.Caracteristica selectedItem = (Domain.Caracteristica)listviewcar.SelectedItem;
-            Domain.Personaje_Caracteristica aux = BusinessLogic.Personaje_CaracteristicaBL.Obtener(IdP, selectedItem.Id);
-            if(aux != null)
+            int cont = 0;
+            foreach (Domain.Caracteristica CX in BusinessLogic.CaracteristicaBL.Listar())
             {
-                BitmapImage bi3 = new BitmapImage();
-                bi3.BeginInit();
-                bi3.UriSource = new Uri("Prueba.jpg", UriKind.Relative);
-                bi3.EndInit();
-                ImagenTic.Stretch = Stretch.Fill;
-                ImagenTic.Source = bi3;
+                Domain.Personaje_Caracteristica PX = BusinessLogic.Personaje_CaracteristicaBL.Obtener(IdP, CX.Id);
+                if (PX != null)
+                {
+                    cont = cont + 1;
+                }
+            }
+            if (cont == BusinessLogic.CaracteristicaBL.Listar().Count)
+            {
+                NavigationService.GoBack();
             }
             else
             {
-                BitmapImage bi3 = new BitmapImage();
-                bi3.BeginInit();
-                bi3.UriSource = new Uri("PruebaX.jpg", UriKind.Relative);
-                bi3.EndInit();
-                ImagenTic.Stretch = Stretch.Fill;
-                ImagenTic.Source = bi3;
+                MessageBox.Show("No se puede Cancelar sin darle valor a las Características de su personaje");
             }
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            int IdP = BusinessLogic.PersonajeBL.Listar().Max(x => x.Id);
-            valor = ComboCarisma.SelectedIndex + 1;
-            int selectedIndex = listviewcar.SelectedIndex;
-            Domain.Caracteristica selectedItem = (Domain.Caracteristica)listviewcar.SelectedItem;
-            int result = BusinessLogic.Personaje_CaracteristicaBL.Agregar(IdP, selectedItem.Id, valor);
+            Navigation.Navigate(new Caracteristicas());
+            CrearCar.Visibility = Visibility;
+        }
+
+        private void Navigation_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
+
+        private void CrearCar_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Caracteristica.Crear());
         }
     }
 

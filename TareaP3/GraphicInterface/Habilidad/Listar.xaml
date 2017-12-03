@@ -13,7 +13,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
-                        <CheckBox></CheckBox>
+                        <CheckBox Name="Chek" Checked="CheckBox_Checked"></CheckBox>
                         <TextBlock Text="Nombre: "/>
                         <TextBlock Text="{Binding Nombre}" FontWeight="Bold"/>
                         <TextBlock Text=", "/>
@@ -26,6 +26,6 @@
         <Button Content="Modificar" HorizontalAlignment="Left" Margin="693,381,0,0" VerticalAlignment="Top" Width="118" Height="34" FontWeight="Bold" Click="Button_Click_2"/>
         <Button Content="Eliminar" HorizontalAlignment="Left" Margin="869,381,0,0" VerticalAlignment="Top" Width="118" Height="34" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="727,10,0,0" TextWrapping="Wrap" Text="Filtro por Clase:" VerticalAlignment="Top" Height="34" Width="151" FontSize="18" FontWeight="Bold"/>
-        <ComboBox ItemsSource="{Binding Nombre}" Name="ComboClase" HorizontalAlignment="Left" Margin="867,10,0,0" VerticalAlignment="Top" Width="120" Height="24" SelectionChanged="ComboClase_SelectionChanged"/>
+        <ComboBox Name="ComboClase" HorizontalAlignment="Left" Margin="867,10,0,0" VerticalAlignment="Top" Width="120" Height="24" SelectionChanged="ComboClase_SelectionChanged"/>
     </Grid>
 </Page>

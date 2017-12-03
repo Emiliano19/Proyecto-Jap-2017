@@ -83,55 +83,7 @@ namespace ConsoleApplication.Controladores
         }
         public void EliminarCaracteristica()
         {
-            Console.WriteLine("Lista de las Características Variables existentes en el sistema");
-            Console.WriteLine();
-            ListarCaracteristicas();
-            Console.WriteLine();
-            Console.Write("Ingrese el Id de la Característica elegida: ");
-            string Comando = Console.ReadLine();
-            int IdC;
-            bool result = Int32.TryParse(Comando, out IdC);
-            if (result == false)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Error lo que ingreso no es un valor, o un tipo de valor correcto, intente de nuevo");
-                Console.WriteLine();
-            }
-            else
-            {
-                if(PersonajeBL.Listar().Count > 0)
-                {
-                    foreach (Personaje P in PersonajeBL.Listar())
-                    {
-                        Personaje_Caracteristica PC = Personaje_CaracteristicaBL.Obtener(P.Id, IdC);
-                        if(PC != null)
-                        {
-                            Personaje_CaracteristicaBL.Eliminar(P.Id, IdC);
-                        }
-                        
-                    }
-                    
-                }
-                Caracteristica CA = CaracteristicaBL.Obtener(IdC);
-                if(RazaBL.Listar().Count > 0)
-                {
-                    foreach (Raza R in RazaBL.Listar())
-                    {
-                        if (R.Caract_VarRazaAtributo.Id == CA.Id)
-                        {
-                            int Idc = 10;
-                            Raza RR = RazaBL.Obtener(R.Id);
-                            Caracteristica CaC = CaracteristicaBL.Obtener(Idc);
-                            BusinessLogic.RazaBL.Modificar(RR, CaC.Id);
-                           
-                        }
-
-                    }
-                    
-                }
-                CaracteristicaBL.Eliminar(IdC);
-            }
-
+          
         }
 
     }

@@ -4,11 +4,157 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GraphicInterface.Personaje"
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="Modificar">
+      mc:Ignorable="d"
+      Title="Modificar" Height="269.947" Width="317.758">
 
-    <Grid Background="White" Margin="10,-20,-680,-42">
-        
+    <Grid Background="White" Margin="10,-20,-750,-202">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="53*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Nuevo Nombre" HorizontalAlignment="Left" Margin="43,62,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="42" Width="151"/>
+        <Label Content="Nuevo Nivel" HorizontalAlignment="Left" Margin="64,88,0,0" VerticalAlignment="Top" Width="146" RenderTransformOrigin="0.879,0.449" FontSize="16" FontWeight="Bold" Height="38"/>
+        <Label Content="Nueva Raza" HorizontalAlignment="Left" Margin="67,151,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="39" Width="124"/>
+        <Label Content="Nueva Clase" HorizontalAlignment="Left" Margin="62,182,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="38" Width="123"/>
+        <Image Name="ImagenBuscar" HorizontalAlignment="Left" Height="147" Margin="448,62,0,0" VerticalAlignment="Top" Width="160" OpacityMask="#FF363535" Stretch="Fill"/>
+        <Button Name="Examinar" Content="Examinar.." HorizontalAlignment="Left" Margin="512,222,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click" Height="34"/>
+        <Label Content="Nueva Fuerza" HorizontalAlignment="Left" Margin="53,286,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="39" Width="135"/>
+        <Label Content="Nueva Destreza" HorizontalAlignment="Left" Margin="38,330,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.144,0.464" FontSize="16" FontWeight="Bold" Height="39" Width="147"/>
+        <Label Content="Nueva Constitución" HorizontalAlignment="Left" Margin="10,371,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.24,0.505" FontSize="16" FontWeight="Bold" Height="39" Width="171"/>
+        <Label Content="Nueva Inteligencia" HorizontalAlignment="Left" Margin="327,291,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="39" Width="172"/>
+        <Label Content="Nueva Sabiduria" HorizontalAlignment="Left" Margin="342,330,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="39" Width="153"/>
+        <Label Content="Nuevo Carisma" HorizontalAlignment="Left" Margin="352,374,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="38" Width="142"/>
+        <ComboBox Name="ComboFuerza" HorizontalAlignment="Left" Margin="172,294,0,0" VerticalAlignment="Top" Width="91" SelectionChanged="ComboFuerza_SelectionChanged" Height="25">
+            <ListBoxItem Content="1" Width="40"/>
+            <ListBoxItem Content="2" Width="40"/>
+            <ListBoxItem Content="3" Width="40"/>
+            <ListBoxItem Content="4" Width="40"/>
+            <ListBoxItem Content="5" Width="40"/>
+            <ListBoxItem Content="6" Width="40"/>
+            <ListBoxItem Content="7" Width="40"/>
+            <ListBoxItem Content="8" Width="40"/>
+            <ListBoxItem Content="9" Width="40"/>
+            <ListBoxItem Content="10" Width="40" />
+        </ComboBox>
+        <ComboBox Name="ComboDestreza" HorizontalAlignment="Left" Margin="172,336,0,0" VerticalAlignment="Top" Width="91" SelectionChanged="ComboDestreza_SelectionChanged" Height="25">
+            <ListBoxItem Content="1" Width="40"/>
+            <ListBoxItem Content="2" Width="40"/>
+            <ListBoxItem Content="3" Width="40"/>
+            <ListBoxItem Content="4" Width="40"/>
+            <ListBoxItem Content="5" Width="40"/>
+            <ListBoxItem Content="6" Width="40"/>
+            <ListBoxItem Content="7" Width="40"/>
+            <ListBoxItem Content="8" Width="40"/>
+            <ListBoxItem Content="9" Width="40"/>
+            <ListBoxItem Content="10" Width="40" />
+        </ComboBox>
+        <ComboBox Name="ComboConstitucion" HorizontalAlignment="Left" Margin="172,378,0,0" VerticalAlignment="Top" Width="91" SelectionChanged="ComboConstitucion_SelectionChanged" Height="25">
+            <ListBoxItem Content="1" Width="40"/>
+            <ListBoxItem Content="2" Width="40"/>
+            <ListBoxItem Content="3" Width="40"/>
+            <ListBoxItem Content="4" Width="40"/>
+            <ListBoxItem Content="5" Width="40"/>
+            <ListBoxItem Content="6" Width="40"/>
+            <ListBoxItem Content="7" Width="40"/>
+            <ListBoxItem Content="8" Width="40"/>
+            <ListBoxItem Content="9" Width="40"/>
+            <ListBoxItem Content="10" Width="40" />
+        </ComboBox>
+        <ComboBox Name="ComboRaza" HorizontalAlignment="Left" Margin="170,161,0,0" VerticalAlignment="Top" Width="93" SelectionChanged="ComboRaza_SelectionChanged" Height="25"/>
+        <ComboBox Name="ComboClase" HorizontalAlignment="Left" Margin="170,190,0,0" VerticalAlignment="Top" Width="93" SelectionChanged="ComboClase_SelectionChanged" Height="25"/>
+        <ComboBox Name="ComboNivel" HorizontalAlignment="Left" Margin="172,97,0,0" VerticalAlignment="Top" Width="91" SelectionChanged="ComboBoxNivel" IsSynchronizedWithCurrentItem="False" Height="25">
+            <ListBoxItem Content="1" Width="40"/>
+            <ListBoxItem Content="2" Width="40"/>
+            <ListBoxItem Content="3" Width="40"/>
+            <ListBoxItem Content="4" Width="40"/>
+            <ListBoxItem Content="5" Width="40"/>
+            <ListBoxItem Content="6" Width="40"/>
+            <ListBoxItem Content="7" Width="40"/>
+            <ListBoxItem Content="8" Width="40"/>
+            <ListBoxItem Content="9" Width="40"/>
+            <ListBoxItem Content="10" Width="40" />
+        </ComboBox>
+        <TextBox Name="Nombre" HorizontalAlignment="Left" Height="22" Margin="172,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="126" TextChanged="Nombre_TextChanged" FontWeight="Bold" FontSize="14"/>
+        <Button Name="Agregar" Content="Guardar" HorizontalAlignment="Left" Margin="512,419,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_1" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold"/>
+        <ComboBox x:Name="ComboInteligencia" HorizontalAlignment="Left" Margin="482,294,0,0" VerticalAlignment="Top" Width="91" SelectionChanged="ComboInteligencia_SelectionChanged" Height="25">
+            <ListBoxItem Content="1" Width="40"/>
+            <ListBoxItem Content="2" Width="40"/>
+            <ListBoxItem Content="3" Width="40"/>
+            <ListBoxItem Content="4" Width="40"/>
+            <ListBoxItem Content="5" Width="40"/>
+            <ListBoxItem Content="6" Width="40"/>
+            <ListBoxItem Content="7" Width="40"/>
+            <ListBoxItem Content="8" Width="40"/>
+            <ListBoxItem Content="9" Width="40"/>
+            <ListBoxItem Content="10" Width="40" />
+        </ComboBox>
+        <ComboBox Name="ComboSabiduria" HorizontalAlignment="Left" Margin="482,336,0,0" VerticalAlignment="Top" Width="91" SelectionChanged="ComboSabiduria_SelectionChanged" Height="25">
+            <ListBoxItem Content="1" Width="40"/>
+            <ListBoxItem Content="2" Width="40"/>
+            <ListBoxItem Content="3" Width="40"/>
+            <ListBoxItem Content="4" Width="40"/>
+            <ListBoxItem Content="5" Width="40"/>
+            <ListBoxItem Content="6" Width="40"/>
+            <ListBoxItem Content="7" Width="40"/>
+            <ListBoxItem Content="8" Width="40"/>
+            <ListBoxItem Content="9" Width="40"/>
+            <ListBoxItem Content="10" Width="40" />
+        </ComboBox>
+        <ComboBox Name="ComboCarisma" HorizontalAlignment="Left" Margin="482,378,0,0" VerticalAlignment="Top" Width="91" SelectionChanged="ComboCarisma_SelectionChanged" Height="25">
+            <ListBoxItem Content="1" Width="40"/>
+            <ListBoxItem Content="2" Width="40"/>
+            <ListBoxItem Content="3" Width="40"/>
+            <ListBoxItem Content="4" Width="40"/>
+            <ListBoxItem Content="5" Width="40"/>
+            <ListBoxItem Content="6" Width="40"/>
+            <ListBoxItem Content="7" Width="40"/>
+            <ListBoxItem Content="8" Width="40"/>
+            <ListBoxItem Content="9" Width="40"/>
+            <ListBoxItem Content="10" Width="40" />
+        </ComboBox>
+        <Rectangle HorizontalAlignment="Left" Height="34" Margin="343,222,0,0" Stroke="Black" VerticalAlignment="Top" Width="169" RenderTransformOrigin="0.825,-0.381" Fill="#FFC9BEBE"/>
+        <TextBlock HorizontalAlignment="Left" Margin="355,229,0,0" TextWrapping="Wrap" Text="Archivo seleccionado" VerticalAlignment="Top" Height="31" Width="164" FontWeight="Bold" FontSize="14"/>
+        <TextBlock Name="RutaImagen" Visibility="Hidden" HorizontalAlignment="Left" Margin="33.355,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="212" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="147" Margin="448,62,0,0" VerticalAlignment="Top" Width="160" Stroke="Black"/>
+        <Button x:Name="CancelarB"  Content="Cancelar" HorizontalAlignment="Left" Margin="405,419,0,0" VerticalAlignment="Top" Width="95" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold" Click="Cancelar_Click"/>
+        <Button Name="MostrarCar" Visibility="Hidden" Content="Mostrar" HorizontalAlignment="Left" Margin="273.355,46,0,0" VerticalAlignment="Top" Width="117" Height="27" Click="Button_Click_2" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="43.355,46,0,0" TextWrapping="Wrap" Text="Características" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Width="131" Grid.Column="1"/>
+        <TextBlock x:Name="NivelViejo" HorizontalAlignment="Left" Height="24" Margin="268,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontWeight="Bold" FontSize="14"/>
+        <TextBlock x:Name="RazaVieja" HorizontalAlignment="Left" Height="24" Margin="268,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="93" FontWeight="Bold" FontSize="14"/>
+        <TextBlock x:Name="ClaseVieja" HorizontalAlignment="Left" Height="24" Margin="268,190,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="93" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.692,4.834"/>
+        <TextBlock x:Name="FuerzaVieja" HorizontalAlignment="Left" Height="24" Margin="268,294,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontWeight="Bold" FontSize="14"/>
+        <TextBlock x:Name="DestrezaVieja" HorizontalAlignment="Left" Height="24" Margin="268,337,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontWeight="Bold" FontSize="14"/>
+        <TextBlock x:Name="ConstiVieja" HorizontalAlignment="Left" Height="24" Margin="268,378,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30"  FontWeight="Bold" FontSize="14"/>
+        <TextBlock x:Name="InteliVieja" HorizontalAlignment="Left" Height="24" Margin="578,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30"  FontWeight="Bold" FontSize="14"/>
+        <TextBlock x:Name="SabiduVieja" HorizontalAlignment="Left" Height="24" Margin="578,336,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30"  FontWeight="Bold" FontSize="14"/>
+        <TextBlock x:Name="CarismaViejo" HorizontalAlignment="Left" Height="24" Margin="578,378,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontWeight="Bold" FontSize="14"/>
+        <TextBlock x:Name="NombreOrigiText" HorizontalAlignment="Left" Height="22" Margin="172,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="126" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Nombre Original" HorizontalAlignment="Left" Margin="33,37,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="42" Width="151"/>
+        <TextBlock Name="RecibeId" Visibility="Hidden" HorizontalAlignment="Left" Margin="170,439,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="20" Width="116"/>
+        <ListView Name="listviewcar" HorizontalAlignment="Left" Height="222" Margin="38.355,88,0,0" VerticalAlignment="Top" Width="324" RenderTransformOrigin="0.5,0.41" SelectionChanged="ListView_SelectionChanged" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Nombre}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ComboBox Name="ComboCar" Visibility="Hidden" HorizontalAlignment="Left" Margin="106.355,330,0,0" VerticalAlignment="Top" Width="162" SelectionChanged="ComboBox_SelectionChanged" Height="38" Grid.Column="1">
+            <ListBoxItem Content="1" Width="40"/>
+            <ListBoxItem Content="2" Width="40"/>
+            <ListBoxItem Content="3" Width="40"/>
+            <ListBoxItem Content="4" Width="40"/>
+            <ListBoxItem Content="5" Width="40"/>
+            <ListBoxItem Content="6" Width="40"/>
+            <ListBoxItem Content="7" Width="40"/>
+            <ListBoxItem Content="8" Width="40"/>
+            <ListBoxItem Content="9" Width="40"/>
+            <ListBoxItem Content="10" Width="40" />
+        </ComboBox>
+        <Label Name="ValorCar" Visibility="Hidden" Content="Valor" HorizontalAlignment="Left" Margin="45.355,333,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Height="60" Width="67" Grid.Column="1"/>
+        <Button Name="CargarValor" Visibility="Hidden" Content="Cargar Valor" HorizontalAlignment="Left" Margin="278.355,330,0,0" VerticalAlignment="Top" Width="83" Height="38" FontSize="14" FontWeight="Bold" Click="Button_Click" Grid.Column="1"/>
+
+
     </Grid>
 </Page>

@@ -124,7 +124,51 @@ namespace DataAccess
             return result;
         }
 
-        public static int Modificar(Personaje P)
+        public static int RetornaRazaId(Personaje P)
+        {
+            int result = 0;
+
+            using (SqlConnection connection = new SqlConnection(_ConnectionString))
+            {
+                string query = "SELECT IdR FROM Personaje WHERE IdPer = @id";
+                SqlCommand com = new SqlCommand(query, connection);
+                com.Parameters.AddWithValue("@id", P.Id);
+
+                connection.Open();
+                SqlDataReader Reader = com.ExecuteReader();
+
+                if (Reader.Read())
+                {          
+                    result =(int)Reader["IdR"];
+                }
+            }
+
+            return result;
+        }
+
+        public static int RetornaclaseId(Personaje P)
+        {
+            int result = 0;
+
+            using (SqlConnection connection = new SqlConnection(_ConnectionString))
+            {
+                string query = "SELECT IdC FROM Personaje WHERE IdPer = @id";
+                SqlCommand com = new SqlCommand(query, connection);
+                com.Parameters.AddWithValue("@id", P.Id);
+
+                connection.Open();
+                SqlDataReader Reader = com.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    result = (int)Reader["IdC"];
+                }
+            }
+
+            return result;
+        }
+
+        public static int Modificar(Personaje P, int IdR, int IdC)
         {
             int result;
 
@@ -144,8 +188,8 @@ namespace DataAccess
                 com.Parameters.AddWithValue("@Sabiduría", P.Sabiduria);
                 com.Parameters.AddWithValue("@Carisma", P.Carisma);
                 com.Parameters.AddWithValue("@Imagen", P.Imagen);
-                com.Parameters.AddWithValue("@IdR", P.RazaAtributo.Id);
-                com.Parameters.AddWithValue("@IdC", P.ClaseAtributo.Id);
+                com.Parameters.AddWithValue("@IdR", IdR);
+                com.Parameters.AddWithValue("@IdC", IdC);
 
 
                 result = com.ExecuteNonQuery();

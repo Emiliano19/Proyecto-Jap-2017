@@ -80,9 +80,14 @@ namespace GraphicInterface
             this.NavigationService.Navigate(new Habilidad.Listar());
         }
 
-        private void Navigation_Navigated(object sender, NavigationEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            this.NavigationService.Navigate(new Caracteristica.Crear());
+        }
 
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Caracteristica.Listar());
         }
     }
 }
