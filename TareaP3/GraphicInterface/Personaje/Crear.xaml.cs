@@ -30,6 +30,7 @@ namespace GraphicInterface.Personaje
             InitializeComponent();
             
             ComboRaza.ItemsSource = BusinessLogic.RazaBL.Listar();
+            Cartexto.Visibility = Visibility.Hidden;
             ComboRaza.SelectedValuePath = "IdRaza";
             ComboRaza.DisplayMemberPath = "Nombre";
      
@@ -61,6 +62,10 @@ namespace GraphicInterface.Personaje
                         ImagenBuscar.Source = bitCoder.Frames[0];
                         RutaImagen.Text = openFile.FileName;
                     }
+                    System.IO.FileStream fs;
+                    fs = new System.IO.FileStream(RutaImagen.Text, System.IO.FileMode.Open);
+                    ImagenByte = new byte[Convert.ToInt32(fs.Length.ToString())];
+                    fs.Read(ImagenByte, 0, ImagenByte.Length);
                 }
             }
             else
@@ -68,10 +73,7 @@ namespace GraphicInterface.Personaje
                 ImagenBuscar.Source = null;
                 Examinar.Content = "Agregar Foto";
             }
-            System.IO.FileStream fs;
-            fs = new System.IO.FileStream(RutaImagen.Text, System.IO.FileMode.Open);
-            ImagenByte = new byte[Convert.ToInt32(fs.Length.ToString())];
-            fs.Read(ImagenByte, 0, ImagenByte.Length);
+           
 
         }
 
@@ -149,6 +151,7 @@ namespace GraphicInterface.Personaje
                     if (result == 1)
                     {
                         MostrarCar.Visibility = Visibility;
+                        Cartexto.Visibility = Visibility;
                         MessageBox.Show("Se guardado correctamente el nuevo Personaje");
                     }
                     else if (result == -1)
@@ -230,7 +233,8 @@ namespace GraphicInterface.Personaje
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Navigation.Navigate(new Caracteristicas());
+            int IdP = BusinessLogic.PersonajeBL.Listar().Max(x => x.Id);
+            Navigation.Navigate(new Caracteristicas(IdP));
             CrearCar.Visibility = Visibility;
         }
 

@@ -60,7 +60,7 @@ namespace GraphicInterface.Habilidad
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-           
+            this.NavigationService.GoBack();
         }
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {

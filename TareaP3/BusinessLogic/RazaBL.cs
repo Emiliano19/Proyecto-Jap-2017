@@ -42,11 +42,13 @@ namespace BusinessLogic
             return result;
         }
 
-        public static int Eliminar(Raza Raza)
+        public static int Eliminar(int IdR)
         {
             int result = -1;
 
-            result = DataAccess.RazaDA.Eliminar(Raza);
+         //   Raza Rx = Obtener(IdR);
+
+            result = DataAccess.RazaDA.Eliminar(IdR);
 
             return result;
         }

@@ -67,7 +67,7 @@ namespace GraphicInterface
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Personaje.Subir_de_Nivel());
+            //this.NavigationService.Navigate(new Personaje.Subir_de_Nivel());
         }
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
@@ -88,6 +88,26 @@ namespace GraphicInterface
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Caracteristica.Listar());
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Raza.Crear());
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Clase.Crear());
+        }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Clase.Listar());
+        }
+
+        private void Button_Click_10(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Raza.Listar());
         }
     }
 }

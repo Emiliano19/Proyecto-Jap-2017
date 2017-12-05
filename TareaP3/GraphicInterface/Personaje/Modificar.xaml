@@ -7,7 +7,13 @@
       mc:Ignorable="d"
       Title="Modificar" Height="269.947" Width="317.758">
 
-    <Grid Background="White" Margin="10,-20,-750,-202">
+    <Grid Margin="10,-20,-750,-202">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF00F586" Offset="0"/>
+                <GradientStop Color="#FF0435DA" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="77*"/>
             <ColumnDefinition Width="53*"/>
@@ -75,7 +81,7 @@
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
         <TextBox Name="Nombre" HorizontalAlignment="Left" Height="22" Margin="172,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="126" TextChanged="Nombre_TextChanged" FontWeight="Bold" FontSize="14"/>
-        <Button Name="Agregar" Content="Guardar" HorizontalAlignment="Left" Margin="512,419,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_1" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold"/>
+        <Button Name="Agregar" Content="Guardar" HorizontalAlignment="Left" Margin="512,419,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_1" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
         <ComboBox x:Name="ComboInteligencia" HorizontalAlignment="Left" Margin="482,294,0,0" VerticalAlignment="Top" Width="91" SelectionChanged="ComboInteligencia_SelectionChanged" Height="25">
             <ListBoxItem Content="1" Width="40"/>
             <ListBoxItem Content="2" Width="40"/>
@@ -116,8 +122,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="355,229,0,0" TextWrapping="Wrap" Text="Archivo seleccionado" VerticalAlignment="Top" Height="31" Width="164" FontWeight="Bold" FontSize="14"/>
         <TextBlock Name="RutaImagen" Visibility="Hidden" HorizontalAlignment="Left" Margin="33.355,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="212" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
         <Rectangle HorizontalAlignment="Left" Height="147" Margin="448,62,0,0" VerticalAlignment="Top" Width="160" Stroke="Black"/>
-        <Button x:Name="CancelarB"  Content="Cancelar" HorizontalAlignment="Left" Margin="405,419,0,0" VerticalAlignment="Top" Width="95" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold" Click="Cancelar_Click"/>
-        <Button Name="MostrarCar" Visibility="Hidden" Content="Mostrar" HorizontalAlignment="Left" Margin="273.355,46,0,0" VerticalAlignment="Top" Width="117" Height="27" Click="Button_Click_2" Grid.Column="1"/>
+        <Button x:Name="CancelarB"  Content="Cancelar" HorizontalAlignment="Left" Margin="405,419,0,0" VerticalAlignment="Top" Width="95" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold" Click="Cancelar_Click" FontStyle="Italic"/>
+        <Button Name="MostrarCar" Content="Mostrar" HorizontalAlignment="Left" Margin="244,52,0,0" VerticalAlignment="Top" Width="117" Height="27" Click="Button_Click_2" Grid.Column="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="43.355,46,0,0" TextWrapping="Wrap" Text="Características" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Width="131" Grid.Column="1"/>
         <TextBlock x:Name="NivelViejo" HorizontalAlignment="Left" Height="24" Margin="268,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" FontWeight="Bold" FontSize="14"/>
         <TextBlock x:Name="RazaVieja" HorizontalAlignment="Left" Height="24" Margin="268,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="93" FontWeight="Bold" FontSize="14"/>
@@ -131,7 +137,7 @@
         <TextBlock x:Name="NombreOrigiText" HorizontalAlignment="Left" Height="22" Margin="172,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="126" FontWeight="Bold" FontSize="14"/>
         <Label Content="Nombre Original" HorizontalAlignment="Left" Margin="33,37,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="42" Width="151"/>
         <TextBlock Name="RecibeId" Visibility="Hidden" HorizontalAlignment="Left" Margin="170,439,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="20" Width="116"/>
-        <ListView Name="listviewcar" HorizontalAlignment="Left" Height="222" Margin="38.355,88,0,0" VerticalAlignment="Top" Width="324" RenderTransformOrigin="0.5,0.41" SelectionChanged="ListView_SelectionChanged" Grid.Column="1">
+        <ListView Name="listviewcar" Visibility="Hidden" HorizontalAlignment="Left" Height="222" Margin="38.355,88,0,0" VerticalAlignment="Top" Width="324" RenderTransformOrigin="0.5,0.41" SelectionChanged="ListView_SelectionChanged" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -140,7 +146,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ComboBox Name="ComboCar" Visibility="Hidden" HorizontalAlignment="Left" Margin="106.355,330,0,0" VerticalAlignment="Top" Width="162" SelectionChanged="ComboBox_SelectionChanged" Height="38" Grid.Column="1">
+        <ComboBox Name="ComboCar" HorizontalAlignment="Left" Margin="106.355,330,0,0" VerticalAlignment="Top" Width="162" SelectionChanged="ComboBox_SelectionChanged" Height="38" Grid.Column="1">
             <ListBoxItem Content="1" Width="40"/>
             <ListBoxItem Content="2" Width="40"/>
             <ListBoxItem Content="3" Width="40"/>
@@ -152,8 +158,8 @@
             <ListBoxItem Content="9" Width="40"/>
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
-        <Label Name="ValorCar" Visibility="Hidden" Content="Valor" HorizontalAlignment="Left" Margin="45.355,333,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Height="60" Width="67" Grid.Column="1"/>
-        <Button Name="CargarValor" Visibility="Hidden" Content="Cargar Valor" HorizontalAlignment="Left" Margin="278.355,330,0,0" VerticalAlignment="Top" Width="83" Height="38" FontSize="14" FontWeight="Bold" Click="Button_Click" Grid.Column="1"/>
+        <Label Name="ValorCar" Content="Valor" HorizontalAlignment="Left" Margin="45.355,333,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Height="60" Width="67" Grid.Column="1"/>
+        <Button Name="CargarValor" Content="Cargar Valor" HorizontalAlignment="Left" Margin="268,330,0,0" VerticalAlignment="Top" Width="93" Height="38" FontSize="14" FontWeight="Bold" Click="Cargar_Click" Grid.Column="1" FontStyle="Italic"/>
 
 
     </Grid>

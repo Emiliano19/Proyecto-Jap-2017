@@ -10,11 +10,11 @@ namespace BusinessLogic
 {
     public class Personaje_HEBL
     {
-        public static int Agregar(Personaje P, Habilidad_Especial H)
+        public static int Agregar(int IdP, int IdH)
         {
             int result = -1;
 
-            result = DataAccess.Personaje_HEDA.Agregar(P, H);
+            result = DataAccess.Personaje_HEDA.Agregar(IdP, IdH);
 
             return result;
         }

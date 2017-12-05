@@ -1,0 +1,29 @@
+﻿<Page x:Class="GraphicInterface.Personaje.Fijas"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GraphicInterface.Personaje"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Fijas">
+
+    <Grid  Margin="0,0,-742,-157" RenderTransformOrigin="0.516,0.513">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF9FE606" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Button Name="Fuerza" Content="Fuerza" HorizontalAlignment="Left" Margin="257,100,0,0" VerticalAlignment="Top" Width="141" Height="34" Background="#FFF30A0A" FontWeight="Bold" FontStyle="Italic" Click="Button_Click"/>
+        <Button Name="Destreza" Content="Destreza" HorizontalAlignment="Left" Margin="257,163,0,0" VerticalAlignment="Top" Width="142" Height="34" Background="#FFF30A0A" FontWeight="Bold" FontStyle="Italic" Click="Button_Click_1"/>
+        <Button Name="Consti" Content="Constitución" HorizontalAlignment="Left" Margin="258,222,0,0" VerticalAlignment="Top" Width="141" Height="34" Background="#FFF30A0A" FontWeight="Bold" FontStyle="Italic" Click="Button_Click_3"/>
+        <Button Name="Inteligencia" Content="Inteligencia" HorizontalAlignment="Left" Margin="610,100,0,0" VerticalAlignment="Top" Width="140" Height="34" Background="#FFF30A0A" FontWeight="Bold" FontStyle="Italic" Click="Button_Click_4"/>
+        <Button Name="Sabiduria" Content="Sabiduria" HorizontalAlignment="Left" Margin="610,163,0,0" VerticalAlignment="Top" Width="140" Height="34" Background="#FFF30A0A" FontWeight="Bold" FontStyle="Italic" Click="Button_Click_5"/>
+        <Button Name="Carisma" Content="Carisma" HorizontalAlignment="Left" Margin="610,222,0,0" VerticalAlignment="Top" Width="142" Height="34" Background="#FFF30A0A" FontWeight="Bold" FontStyle="Italic" Click="Button_Click_6"/>
+        <TextBlock HorizontalAlignment="Left" Margin="114,10,0,0" TextWrapping="Wrap" Text="Precione el boton de la caracteristica a la que desea aumentarle valor y luego precione Finalizar" VerticalAlignment="Top" Height="33" Width="818" FontWeight="Bold" FontSize="18"/>
+        <Button Content="Finalizar" HorizontalAlignment="Left" Margin="82,323,0,0" VerticalAlignment="Top" Width="891" Height="33" Background="#FF08FF08" FontWeight="Bold" FontStyle="Italic" Click="Button_Click_2"/>
+        <TextBox Name="IdPER" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="10,424,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
+    </Grid>
+</Page>

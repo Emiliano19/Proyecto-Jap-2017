@@ -27,13 +27,7 @@ namespace GraphicInterface.Personaje
         public Listar()
         {
             InitializeComponent();
-            listview.ItemsSource = BusinessLogic.PersonajeBL.Listar();
-            foreach(Domain.Personaje P in listview.ItemsSource)
-            {
-                int IdR = BusinessLogic.PersonajeBL.RetornaRazaId(P);
-                Domain.Raza R = BusinessLogic.RazaBL.Obtener(IdR);
-                RazaName.Text = R.Nombre;
-            }
+         
             ComboPer.ItemsSource = BusinessLogic.PersonajeBL.Listar();
             ComboPer.SelectedValuePath = "IdPer";
             ComboPer.DisplayMemberPath = "Nombre";
@@ -47,14 +41,33 @@ namespace GraphicInterface.Personaje
             ComboClase.SelectedValuePath = "IdClase";
             ComboClase.DisplayMemberPath = "Nombre";
 
-            
+            List<PersonajeLista> PL2 = new List<PersonajeLista>();
+            List<Domain.Personaje> PP = BusinessLogic.PersonajeBL.Listar();
+            foreach (Domain.Personaje P in PP)
+            {
+                PersonajeLista PLL = new PersonajeLista();
+                PLL.RazaNombre = P.RazaAtributo.Nombre;
+                PLL.ClaseNombre = P.ClaseAtributo.Nombre;
+                PLL.Nombre = P.Nombre;
+                PLL.Nivel = P.Nivel;
+                PLL.Destreza = P.Destreza;
+                PLL.Constitucion = P.Constitucion;
+                PLL.Inteligencia = P.Inteligencia;
+                PLL.Sabiduria = P.Sabiduria;
+                PLL.Carisma = P.Carisma;
+                PLL.Imagen = P.Imagen;
+                PL2.Add(PLL);
+
+            }
+            listview.ItemsSource = PL2;
+
         }
 
         static string _ConnectionString = ConfigurationManager.ConnectionStrings["_ConnectionString"].ConnectionString;
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            listview.ItemsSource = BusinessLogic.PersonajeBL.Listar();
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -152,7 +165,8 @@ namespace GraphicInterface.Personaje
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-           
+            Domain.Personaje selectItem = (Domain.Personaje)ComboPer.SelectedItem;
+            this.Navigate1.Navigate(new VerDetalles(selectItem.Id));
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -183,9 +197,7 @@ namespace GraphicInterface.Personaje
 
         private void ComboPer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Domain.Personaje selectItem = (Domain.Personaje)ComboPer.SelectedItem;
-            
-            
+            Domain.Personaje selectItem = (Domain.Personaje)ComboPer.SelectedItem;           
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
@@ -223,6 +235,25 @@ namespace GraphicInterface.Personaje
         private void Navigate_Navigated(object sender, NavigationEventArgs e)
         {
 
+        }
+
+        private void Regresar_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+
+        private void SubirNivel_Click(object sender, RoutedEventArgs e)
+        {
+            if(ComboPer.SelectedItem != null)
+            {
+                Domain.Personaje P = (Domain.Personaje)ComboPer.SelectedItem;
+                this.NavigationService.Navigate(new Subir_de_Nivel(P.Id));
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un personaje del ComboBox antes de precionar Subir de Nivel");
+            }
+           
         }
     }                
 }

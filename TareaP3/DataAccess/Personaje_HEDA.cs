@@ -13,7 +13,7 @@ namespace DataAccess
     {
         static string _ConnectionString = ConfigurationManager.ConnectionStrings["_ConnectionString"].ConnectionString;
 
-        public static int Agregar(Personaje P, Habilidad_Especial H)
+        public static int Agregar(int IdP, int IdH)
         {
             int result;
 
@@ -22,8 +22,8 @@ namespace DataAccess
                 string query = "INSERT INTO Personaje_HE(IdP, IdH) VALUES (@IdP, @IdH)";
                 SqlCommand com = new SqlCommand(query, connection);
 
-                com.Parameters.AddWithValue("@IdP", P.Id);
-                com.Parameters.AddWithValue("@IdH", H.Id);
+                com.Parameters.AddWithValue("@IdP", IdP);
+                com.Parameters.AddWithValue("@IdH", IdH);
 
                 connection.Open();
 

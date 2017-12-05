@@ -45,6 +45,14 @@ namespace BusinessLogic
         public static int Eliminar(int IdC)
         {
             int result = -1;
+            foreach(Domain.Habilidad_Especial HC in BusinessLogic.HabilidadEspecialBL.Listar())
+            {
+                Domain.Clase_HE H = BusinessLogic.Clase_HEBL.Obtener(IdC, HC.Id);
+                if(H != null)
+                {
+                    BusinessLogic.Clase_HEBL.Eliminar(IdC, HC.Id);
+                }
+            }
 
             result = DataAccess.ClaseDA.Eliminar(IdC);
 

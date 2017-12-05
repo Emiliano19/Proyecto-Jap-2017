@@ -7,8 +7,14 @@
       mc:Ignorable="d"
       Title="Caracteristicas" Height="403.5" Width="349.5">
 
-    <Grid Background="#FF23FF00" Margin="0,-4,0,0">
-        <ListView Name="listviewcar" HorizontalAlignment="Left" Height="222" Margin="8,8,0,0" VerticalAlignment="Top" Width="332" RenderTransformOrigin="0.5,0.41" SelectionChanged="ListView_SelectionChanged">
+    <Grid Margin="0,-4,0,0">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFFF2402" Offset="0"/>
+                <GradientStop Color="#FF0C20E6" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <ListView Name="listviewcar" HorizontalAlignment="Left" Height="222" Margin="8,8,0,0" VerticalAlignment="Top" Width="332" RenderTransformOrigin="0.5,0.41" SelectionChanged="ListView_SelectionChanged" Background="#FFCDBEBE">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -30,6 +36,7 @@
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
         <Label Content="Valor" HorizontalAlignment="Left" Margin="13,254,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Height="60" Width="74"/>
-        <Button Content="Cargar Valor" HorizontalAlignment="Left" Margin="250,250,0,0" VerticalAlignment="Top" Width="90" Height="38" FontSize="14" FontWeight="Bold" Click="Button_Click"/>
+        <Button Content="Cargar Valor" HorizontalAlignment="Left" Margin="250,250,0,0" VerticalAlignment="Top" Width="90" Height="38" FontSize="14" FontWeight="Bold" Click="Button_Click" Background="#FF36EC00" FontStyle="Italic"/>
+        <TextBox Name="IdPersonaje" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="68,346,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Page>

@@ -7,15 +7,21 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Listar">
-    <Grid Background="White" Margin="0,0,-714,-141">
-        <TextBlock Name="RazaName" FontWeight="Black" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40" RenderTransformOrigin="-0.181,-1.352" Canvas.Left="490" Canvas.Top="130" FontSize="18"/>
-        <ListView Name="listview" HorizontalAlignment="Left" Height="336" VerticalAlignment="Top" Width="940" Margin="38,10,0,0" SelectionChanged="ListView_SelectionChanged" Background="{x:Null}">
+    <Grid  Margin="-2,0,-732,-149">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0.258"/>
+                <GradientStop Color="#FF0BB284" Offset="0.573"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <ListView Name="listview" HorizontalAlignment="Left" Height="336" VerticalAlignment="Top" Width="940" Margin="38,10,0,0" SelectionChanged="ListView_SelectionChanged" Background="#FF575151">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Canvas Name="Canv" Margin="38,10,0,0" Height="318" Width="880">
                         <Image Source="{Binding Imagen}" Stretch="Fill" HorizontalAlignment="Left" Height="191" VerticalAlignment="Top" Width="194" Canvas.Left="55" Canvas.Top="65"/>
                         <TextBlock FontWeight="Bold" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Raza:" VerticalAlignment="Top" RenderTransformOrigin="1.753,-2.011" FontSize="18" Height="23" Width="46" Canvas.Left="432" Canvas.Top="130"/>
-                       
+                        <TextBlock Name="RazaName" FontWeight="Black" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="{Binding RazaNombre}" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.181,-1.352" Canvas.Left="490" Canvas.Top="130" FontSize="18"/>
                         <TextBlock FontWeight="Bold" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Fuerza:" VerticalAlignment="Top" RenderTransformOrigin="1.753,-2.011" FontSize="18" Height="38" Width="62" Canvas.Left="416" Canvas.Top="152"/>
                         <TextBlock FontWeight="Black" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="{Binding Fuerza}" VerticalAlignment="Top" Width="40" RenderTransformOrigin="-0.181,-1.352" Canvas.Left="490" Canvas.Top="152" FontSize="18"/>
                         <TextBlock FontWeight="Bold" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Destreza:" VerticalAlignment="Top" RenderTransformOrigin="1.753,-2.011" FontSize="18" Height="39" Width="98" Canvas.Left="400" Canvas.Top="174"/>
@@ -23,7 +29,7 @@
                         <TextBlock FontWeight="Bold" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Constitución:" VerticalAlignment="Top" RenderTransformOrigin="1.753,-2.011" FontSize="18" Height="37" Width="172" Canvas.Left="366" Canvas.Top="196"/>
                         <TextBlock FontWeight="Black" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="{Binding Constitucion}" VerticalAlignment="Top" Width="40" RenderTransformOrigin="-0.181,-1.352" Canvas.Left="490" Canvas.Top="196" FontSize="18"/>
                         <TextBlock FontWeight="Bold" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Clase:" VerticalAlignment="Top" RenderTransformOrigin="1.753,-2.011" FontSize="18" Height="26" Width="54" Canvas.Left="668" Canvas.Top="130"/>
-                        <TextBlock Name="ClaseName" FontWeight="Black" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="42" RenderTransformOrigin="-0.181,-1.352" Canvas.Left="730" Canvas.Top="130" FontSize="18"/>
+                        <TextBlock Name="ClaseName" FontWeight="Black" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="{Binding ClaseNombre}" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.181,-1.352" Canvas.Left="730" Canvas.Top="130" FontSize="18"/>
                         <TextBlock FontWeight="Bold" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Inteligencia:" VerticalAlignment="Top" RenderTransformOrigin="1.753,-2.011" FontSize="18" Height="25" Width="108" Canvas.Left="614" Canvas.Top="152"/>
                         <TextBlock FontWeight="Black" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="{Binding Inteligencia}" VerticalAlignment="Top" Width="42" RenderTransformOrigin="-0.181,-1.352" Canvas.Left="730" Canvas.Top="152" FontSize="18"/>
                         <TextBlock FontWeight="Bold" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Sabiduria:" VerticalAlignment="Top" RenderTransformOrigin="1.753,-2.011" FontSize="18" Height="23" Width="86" Canvas.Left="634" Canvas.Top="176"/>
@@ -41,19 +47,21 @@
             </ListView.ItemTemplate>
 
         </ListView>
-        <TextBlock HorizontalAlignment="Left" Margin="39,353,0,0" TextWrapping="Wrap" Text="Elija Raza:" VerticalAlignment="Top" Height="34" Width="133" FontSize="14" FontWeight="Bold"/>
-        <ComboBox ItemsSource="{Binding Nombre}" Name="ComboRaza" HorizontalAlignment="Left" Margin="116,353,0,0" VerticalAlignment="Top" Width="122" Height="24" SelectionChanged="ComboBox_SelectionChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="288,353,0,0" TextWrapping="Wrap" Text="Elija Clase:" VerticalAlignment="Top" Height="34" Width="151" FontWeight="Bold" FontSize="14"/>
-        <ComboBox ItemsSource="{Binding Nombre}" Name="ComboClase" HorizontalAlignment="Left" Margin="368,353,0,0" VerticalAlignment="Top" Width="120" Height="24" SelectionChanged="ComboClase_SelectionChanged"/>
-        <Button Content="Ver Detalles" HorizontalAlignment="Left" Margin="712,391,0,0" VerticalAlignment="Top" Width="85" Height="34" RenderTransformOrigin="0.545,0.87" FontSize="16" FontWeight="Bold" Click="Button_Click_1"/>
-        <Button Content="Modificar" HorizontalAlignment="Left" Margin="802,391,0,0" VerticalAlignment="Top" Width="86" Height="34" RenderTransformOrigin="3.935,6.2" FontSize="14" FontWeight="Bold" Click="Button_Click_3"/>
-        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="892,391,0,0" VerticalAlignment="Top" Width="86" Height="34" FontWeight="Bold" FontSize="14" Click="Button_Click_4"/>
-        <Button Name="BotonRaza" Content="Filtrado por Raza" HorizontalAlignment="Left" Margin="102,398,0,0" VerticalAlignment="Top" Width="122" Height="27" FontWeight="Bold" Click="BotonRaza_Click"/>
-        <Button Name="BotonClase" Content="Filtrado por Clase" HorizontalAlignment="Left" Margin="368,398,0,0" VerticalAlignment="Top" Width="120" Height="27" FontWeight="Bold" Click="BotonClase_Click"/>
-        <Button Name="BotonDoble" Content="Filtrado Doble" HorizontalAlignment="Left" Margin="237,398,0,0" VerticalAlignment="Top" Width="120" Height="27" FontWeight="Bold" Click="BotonDoble_Click"/>
-        <ComboBox  Name="ComboPer" HorizontalAlignment="Left" Margin="862,355,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboPer_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="44,353,0,0" TextWrapping="Wrap" Text="Elija Raza:" VerticalAlignment="Top" Height="34" Width="132" FontSize="14" FontWeight="Bold"/>
+        <ComboBox ItemsSource="{Binding Nombre}" Name="ComboRaza" HorizontalAlignment="Left" Margin="120,353,0,0" VerticalAlignment="Top" Width="122" Height="24" SelectionChanged="ComboBox_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="292,353,0,0" TextWrapping="Wrap" Text="Elija Clase:" VerticalAlignment="Top" Height="34" Width="152" FontWeight="Bold" FontSize="14"/>
+        <ComboBox ItemsSource="{Binding Nombre}" Name="ComboClase" HorizontalAlignment="Left" Margin="372,353,0,0" VerticalAlignment="Top" Width="120" Height="24" SelectionChanged="ComboClase_SelectionChanged"/>
+        <Button Content="Ver Detalles" HorizontalAlignment="Left" Margin="692,379,0,0" VerticalAlignment="Top" Width="109" Height="34" RenderTransformOrigin="0.545,0.87" FontSize="16" FontWeight="Bold" Click="Button_Click_1" FontStyle="Italic" Background="#FF0CFF00"/>
+        <Button Content="Modificar" HorizontalAlignment="Left" Margin="806,379,0,0" VerticalAlignment="Top" Width="86" Height="34" RenderTransformOrigin="3.935,6.2" FontSize="14" FontWeight="Bold" Click="Button_Click_3" FontStyle="Italic" Background="#FF0CFF00"/>
+        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="896,379,0,0" VerticalAlignment="Top" Width="82" Height="34" FontWeight="Bold" FontSize="14" Click="Button_Click_4" FontStyle="Italic" Background="#FF0CFF00"/>
+        <Button Name="BotonRaza" Content="Filtrado por Raza" HorizontalAlignment="Left" Margin="106,398,0,0" VerticalAlignment="Top" Width="122" Height="27" FontWeight="Bold" Click="BotonRaza_Click" FontStyle="Italic" Background="#FF0CFF00"/>
+        <Button Name="BotonClase" Content="Filtrado por Clase" HorizontalAlignment="Left" Margin="372,398,0,0" VerticalAlignment="Top" Width="120" Height="27" FontWeight="Bold" Click="BotonClase_Click" FontStyle="Italic" Background="#FF0CFF00"/>
+        <Button Name="BotonDoble" Content="Filtrado Doble" HorizontalAlignment="Left" Margin="242,398,0,0" VerticalAlignment="Top" Width="120" Height="27" FontWeight="Bold" Click="BotonDoble_Click" FontStyle="Italic" Background="#FF0CFF00"/>
+        <ComboBox  Name="ComboPer" HorizontalAlignment="Left" Margin="862,355,0,0" VerticalAlignment="Top" Width="116" SelectionChanged="ComboPer_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="649,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="204" FontWeight="Bold" FontSize="14"><Run Text="Elija un personaje de esta lista:"/></TextBlock>
-        <Frame Name="Navigate1" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="441" VerticalAlignment="Top" Width="1014" Navigated="Navigate_Navigated"/>
+        <Frame Name="Navigate1" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="336" VerticalAlignment="Top" Width="940" Navigated="Navigate_Navigated" Margin="38,10,0,0"/>
+        <Button Content="Regresar al Menú" HorizontalAlignment="Left" Margin="534,379,0,0" VerticalAlignment="Top" Width="150" Height="34" RenderTransformOrigin="0.545,0.87" FontSize="16" FontWeight="Bold" Click="Regresar_Click_1" FontStyle="Italic" Background="#FF0CFF00"/>
+        <Button Content="Subir de Nivel" HorizontalAlignment="Left" Margin="534,413,0,0" VerticalAlignment="Top" Width="444" Height="34" RenderTransformOrigin="0.545,0.87" FontSize="16" FontWeight="Bold" Click="SubirNivel_Click" FontStyle="Italic" Background="#FF0CFF00"/>
 
 
     </Grid>

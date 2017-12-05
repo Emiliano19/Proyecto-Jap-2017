@@ -8,11 +8,28 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Crear">
 
-    <Grid Margin="0,0,-220,-15" Background="#FFF50D0D">
-        <Button Content="Agregar" HorizontalAlignment="Left" Margin="379,228,0,0" VerticalAlignment="Top" Width="102" Click="Agregar" Height="34"/>
+    <Grid Margin="0,0,-511,-78" Background="#FFF50D0D">
+        <Button Content="Guardar" HorizontalAlignment="Left" Margin="699,334,0,0" VerticalAlignment="Top" Width="102" Click="Agregar" Height="34" RenderTransformOrigin="0.595,0.366"/>
         <TextBox Name="TexNombre" HorizontalAlignment="Left" Height="28" Margin="125,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
         <TextBox Name="TexDescripión" HorizontalAlignment="Left" Height="27" Margin="125,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
-        <Label Content="Nombre" HorizontalAlignment="Left" Margin="37,37,0,0" VerticalAlignment="Top" Height="31" Width="81" FontWeight="Bold"/>
-        <Label Content="Descripción" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Height="31" Width="108" FontWeight="Bold"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="37,37,0,0" VerticalAlignment="Top" Height="31" Width="81" FontWeight="Bold" FontSize="16"/>
+        <Label Content="Descripción" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Height="31" Width="108" FontWeight="Bold" FontSize="16"/>
+        <ListView Name="listviewHH" HorizontalAlignment="Left" Height="174" Margin="332,70,0,0" VerticalAlignment="Top" Width="469" SelectionChanged="listviewHH_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel Margin="10,20,0,0">
+                        <TextBlock Text="Nombre: " FontSize="14" FontWeight="Bold" Canvas.Top="-135" RenderTransformOrigin="0.509,0.828"/>
+                        <TextBlock Text="{Binding Nombre}" Width="122" FontSize="14" Canvas.Left="40" Canvas.Top="-135"/>
+                        <TextBlock Text="Descripción: " Width="90" FontSize="14" FontWeight="Bold" Canvas.Left="70" Canvas.Top="-135"/>
+                        <TextBlock Text="{Binding Descripcion}" Width="700" FontSize="14" Canvas.Top="-135" Canvas.Left="85"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label Name="Habitex" Content="Habilidades" HorizontalAlignment="Left" Margin="332,34,0,0" VerticalAlignment="Top" Height="31" Width="107" FontWeight="Bold" FontSize="16"/>
+        <TextBox Name="NombreH" HorizontalAlignment="Left" Height="23" Margin="447,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148"/>
+        <TextBlock Name="Instruciones" HorizontalAlignment="Left" Margin="360,271,0,0" TextWrapping="Wrap" Text="Seleccione una Habilidad de la lista y cuando su nombre aparesca en el cuadro de texto precione Agregar" VerticalAlignment="Top" Height="50" Width="415" FontSize="14"/>
+        <Button Name="Agregarx" Content="Agregar" HorizontalAlignment="Left" Margin="606,37,0,0" VerticalAlignment="Top" Width="92" Height="24" Click="Agregax_Ckick"/>
+        <Button Content="Finalizar" HorizontalAlignment="Left" Margin="592,334,0,0" VerticalAlignment="Top" Width="102" Height="34" RenderTransformOrigin="0.595,0.366" Click="Finalizar_Ckick"/>
     </Grid>
 </Page>

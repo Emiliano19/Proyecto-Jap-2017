@@ -8,7 +8,36 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Subir_de_Nivel">
 
-    <Grid>
-        
+    <Grid  Margin="0,0,-742,-157" Background="#FF0CE416">
+        <TextBox Name="IdPersonaje" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="792,383,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Name="TexNombre" HorizontalAlignment="Left" Margin="120,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Width="180"/>
+        <TextBlock HorizontalAlignment="Left" Margin="40,28,0,0" TextWrapping="Wrap" Text="Nombre: " VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <TextBlock Name="TexId" HorizontalAlignment="Left" Margin="396,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="344,28,0,0" TextWrapping="Wrap" Text="Id: " VerticalAlignment="Top" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.318,0.522"/>
+        <ListView Name="listview" HorizontalAlignment="Left" Height="200" Margin="40,86,0,0" VerticalAlignment="Top" Width="372" Background="#FF999696" SelectionChanged="ListView_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel Margin="10,20,0,0">
+                        <TextBlock Text="Nombre: " FontSize="14" FontWeight="Bold" Canvas.Top="-135" RenderTransformOrigin="0.509,0.828"/>
+                        <TextBlock Text="{Binding Nombre}" Width="122" FontSize="14" Canvas.Left="40" Canvas.Top="-135"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Content="Agregar Habilidad a Personaje" HorizontalAlignment="Left" Margin="40,328,0,0" VerticalAlignment="Top" Width="372" Height="38" FontWeight="Bold" FontStyle="Italic" Click="Button_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF1E1E1E"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox Name="NombreHabili" HorizontalAlignment="Left" Height="32" Margin="40,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="372"/>
+        <Button Name="Finalizar" Content="Finalizar" HorizontalAlignment="Left" Margin="853,383,0,0" VerticalAlignment="Top" Width="141" Height="44" FontSize="16" FontWeight="Bold" FontStyle="Italic" Click="Finalizar_Click_1"/>
+        <TextBlock x:Name="Mensaje" Visibility="Hidden" HorizontalAlignment="Left" Margin="495,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="499" FontWeight="Bold" FontSize="16"><Run Text="El Nivel de Personaje es impar así que puede aumentar el valor de una caracteristica elija si fija o variable a continuación"/></TextBlock>
+        <Button Name="Fijass" Visibility="Hidden"  Content="Fijas" HorizontalAlignment="Left" Margin="548,86,0,0" VerticalAlignment="Top" Width="149" Height="41" FontSize="16" FontWeight="Bold" Click="Button_Click_1"/>
+        <Button Name="Variabless" Visibility="Hidden" Content="Variables" HorizontalAlignment="Left" Margin="778,86,0,0" VerticalAlignment="Top" Width="149" Height="41" FontSize="16" FontWeight="Bold" Click="Fijass_Click"/>
+        <Frame Name="Navigate" Visibility="Hidden" HorizontalAlignment="Left" Height="374" Margin="495,73,0,0" VerticalAlignment="Top" Width="515"/>
     </Grid>
 </Page>

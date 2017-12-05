@@ -25,10 +25,11 @@ namespace GraphicInterface.Personaje
     /// </summary>
     public partial class Caracteristicas : Page
     {
-        public Caracteristicas()
+        public Caracteristicas(int value)
         {
             InitializeComponent();
             listviewcar.ItemsSource = BusinessLogic.CaracteristicaBL.Listar();
+            IdPersonaje.Text = value.ToString();
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -90,6 +91,14 @@ namespace GraphicInterface.Personaje
             if (cont == BusinessLogic.CaracteristicaBL.Listar().Count)
             {
                 MessageBox.Show("Se an cargado correctamente los valores a todas las Características");
+                Domain.Personaje Px = BusinessLogic.PersonajeBL.Obtener(Convert.ToInt32(IdPersonaje.Text));
+                int IdR = Px.RazaAtributo.Id;
+                Domain.Raza Rx = BusinessLogic.RazaBL.Obtener(IdR);
+                int IdCa = Rx.Caract_VarRazaAtributo.Id;
+
+                Domain.Personaje_Caracteristica PCx = BusinessLogic.Personaje_CaracteristicaBL.Obtener(IdP, IdCa);
+                int valor = PCx.valor + Rx.ValorPlus;
+                BusinessLogic.Personaje_CaracteristicaBL.Modificar(IdP, IdCa, valor);
                 listviewcar.ItemsSource = null;
             }
         }

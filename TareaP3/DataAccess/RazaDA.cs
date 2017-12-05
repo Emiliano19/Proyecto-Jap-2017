@@ -125,7 +125,7 @@ namespace DataAccess
             
         }
 
-        public static int Eliminar(Raza Raza)
+        public static int Eliminar(int IdR)
         {
             int result;
 
@@ -135,7 +135,7 @@ namespace DataAccess
                 string query = "Delete Raza WHERE [IdRaza] = @id";
 
                 SqlCommand com = new SqlCommand(query, connection);
-                com.Parameters.AddWithValue("@id", Raza.Id);
+                com.Parameters.AddWithValue("@id", IdR);
 
                 result = com.ExecuteNonQuery();
  

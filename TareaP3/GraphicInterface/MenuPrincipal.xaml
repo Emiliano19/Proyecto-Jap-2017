@@ -8,25 +8,25 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="MenuPrincipal">
 
-    <Grid Margin="-3,-20,-729,-30" RenderTransformOrigin="0.5,0.5">
+    <Grid Margin="0,0,-742,-157" RenderTransformOrigin="0.5,0.5">
         <Grid.Background>
-            <ImageBrush ImageSource="Personaje/Transformers-dragon-620x330.jpg"/>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
         </Grid.Background>
-        <Grid.RenderTransform>
-            <TransformGroup>
-                <ScaleTransform/>
-                <SkewTransform/>
-                <RotateTransform Angle="0.014"/>
-                <TranslateTransform/>
-            </TransformGroup>
-        </Grid.RenderTransform>
         <ComboBox HorizontalAlignment="Left" Margin="25,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_1" IsEditable="True" Text="        Personajes" FontFamily="Segoe Print" FontWeight="Bold" Height="27">
             <Button Content="Crear" Width="148" Click="Button_Click"/>
             <Button Content="Listar" Width="148" Click="Button_Click_2"/>
-            <Button Content="Subir de Nivel" Width="148" Click="Button_Click_6"/>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="219,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_2" IsEditable="True" Text="           Raza" FontFamily="Segoe Print" FontWeight="Bold" Height="27"/>
-        <ComboBox HorizontalAlignment="Left" Margin="422,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_3" IsEditable="True" Text="           Clase" FontFamily="Segoe Print" FontWeight="Bold"/>
+        <ComboBox HorizontalAlignment="Left" Margin="219,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_2" IsEditable="True" Text="           Raza" FontFamily="Segoe Print" FontWeight="Bold" Height="27">
+            <Button Content="Crear" Width="148" Click="Button_Click_4"/>
+            <Button Content="Listar" Width="148"/>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" Margin="422,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_3" IsEditable="True" Text="           Clase" FontFamily="Segoe Print" FontWeight="Bold">
+            <Button Content="Crear" Width="148" Click="Button_Click_5"/>
+            <Button Content="Listar" Width="148" Click="Button_Click_9"/>
+        </ComboBox>
         <ComboBox HorizontalAlignment="Left" Margin="624,32,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_4" IsEditable="True" Text="Habilidades Especiales" FontFamily="Segoe Print" FontWeight="Bold">
             <Button Content="Crear" Width="148" Click="Button_Click_7"/>
             <Button Content="Listar" Width="148" Click="Button_Click_8"/>
@@ -43,6 +43,19 @@
             <Button Content="Crear" Width="148" Click="Button_Click_1"/>
             <Button Content="Listar" Width="148" Click="Button_Click_3"/>
         </ComboBox>
+        <Rectangle HorizontalAlignment="Left" Height="356" Margin="262,81,0,0" VerticalAlignment="Top" Width="510" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.021"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="photo (2).png"/>
+            </Rectangle.Fill>
+        </Rectangle>
 
     </Grid>
 </Page>

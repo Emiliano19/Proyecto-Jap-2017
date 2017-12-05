@@ -28,7 +28,6 @@ namespace GraphicInterface.Personaje
         public Modificar(int value)
         {
             InitializeComponent();
-           // this.RecibeId.Text = value;
             ComboRaza.ItemsSource = BusinessLogic.RazaBL.Listar();
             ComboRaza.SelectedValuePath = "IdRaza";
             ComboRaza.DisplayMemberPath = "Nombre";
@@ -40,10 +39,10 @@ namespace GraphicInterface.Personaje
             RecibeId.Text = value.ToString();
 
             Domain.Personaje P = BusinessLogic.PersonajeBL.Obtener(Convert.ToInt32(value));
-
-            if(Nombre.Text == "")
+        
+            if(P.Nombre != "")
             {
-                P.Nombre = NombreOrigiText.Text;
+                NombreOrigiText.Text = P.Nombre;
             }
             NivelViejo.Text = P.Nivel.ToString();
             RazaVieja.Text = P.RazaAtributo.Nombre;
@@ -209,9 +208,7 @@ namespace GraphicInterface.Personaje
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            CargarValor.Visibility = Visibility.Visible;
-            ValorCar.Visibility = Visibility.Visible;
-            ComboCar.Visibility = Visibility.Visible;
+            listviewcar.Visibility = Visibility;
 
         }
 
@@ -238,6 +235,29 @@ namespace GraphicInterface.Personaje
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Cargar_Click(object sender, RoutedEventArgs e)
+        {
+            Domain.Caracteristica selectItem = (Domain.Caracteristica)listviewcar.SelectedItem;
+            if(ComboCar.SelectedItem != null)
+            {
+                int valor = ComboCar.SelectedIndex + 1;
+                int aux = BusinessLogic.Personaje_CaracteristicaBL.Modificar(Convert.ToInt32(RecibeId.Text), selectItem.Id, valor);
+                if(aux == 1)
+                {
+                    MessageBox.Show("La caracteristica se modifico con Exito");
+                }            
+                else
+                {
+                    MessageBox.Show("A ocurrido un error inesperado en el proceso");
+                }
+            
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un valor antes de precionar Cargar Valor");
+            }
         }
     }
 
