@@ -37,18 +37,25 @@ namespace GraphicInterface.Personaje
             int IdP = Convert.ToInt32(IdPersonaje.Text);
             Domain.Caracteristica Cn = (Domain.Caracteristica)listviewcar.SelectedItem;
             Domain.Personaje_Caracteristica Pcc = BusinessLogic.Personaje_CaracteristicaBL.Obtener(IdP, Cn.Id);
-            int valor = Pcc.valor + 1;
-            int aux = BusinessLogic.Personaje_CaracteristicaBL.Modificar(IdP, Cn.Id, valor);
+            if(Pcc.valor < 15)
+            {
+                int valor = Pcc.valor + 1;
+                int aux = BusinessLogic.Personaje_CaracteristicaBL.Modificar(IdP, Cn.Id, valor);
 
-            if (aux == 1)
-            {
-                MessageBox.Show("Se a modificado correctamente el valor de la Característica proceda a Finalizar");
-                listviewcar.ItemsSource = null;
-                this.NavigationService.GoBack();
+                if (aux == 1)
+                {
+                    MessageBox.Show("Se a modificado correctamente el valor de la Característica proceda a Finalizar");
+                    listviewcar.ItemsSource = null;
+                    this.NavigationService.GoBack();
+                }
+                else if (aux == -1)
+                {
+                    MessageBox.Show("A ocurrido un error inesperado al modificar el valor de la característica");
+                }
             }
-            else if (aux == -1)
+            else if(Pcc.valor == 15)
             {
-                MessageBox.Show("A ocurrido un error inesperado al modificar el valor de la característica");
+                MessageBox.Show("El valor de esta Característica ya esta en el máximo permitido, elija otra");
             }
 
         }

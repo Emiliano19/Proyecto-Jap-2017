@@ -66,13 +66,25 @@ namespace BusinessLogic
                 {
                     if (R.Caract_VarRazaAtributo.Id == CA.Id)
                     {
-                        int Idc = 7;
+                        int Idc = 6;
                         RazaBL.Modificar(R, Idc);
 
                     }
 
                 }
 
+            }
+            if (BusinessLogic.PersonajeBL.Listar() != null)
+            {
+                foreach (Domain.Personaje p in BusinessLogic.PersonajeBL.Listar())
+                {
+                    Domain.Personaje_Caracteristica PH = BusinessLogic.Personaje_CaracteristicaBL.Obtener(p.Id, CA.Id);
+                    if (PH != null)
+                    {
+                        BusinessLogic.Personaje_CaracteristicaBL.Eliminar(p.Id, CA.Id);
+                    }
+
+                }
             }
 
             result = CaracteristicaDA.Eliminar(IdC);

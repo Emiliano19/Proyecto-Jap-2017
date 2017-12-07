@@ -5,14 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GraphicInterface.Caracteristica"
       mc:Ignorable="d"
-      Title="Crear"  Height="409.5" Width="671.5">
+      Title="Crear" d:DesignWidth="327.709" d:DesignHeight="363.721">
 
-    <Grid Background="#FF23FF00" Margin="-204,-24,-708,-133">
-        <Button Name="Guardar" Content="Guardar" HorizontalAlignment="Left" Margin="179,368,0,0" VerticalAlignment="Top" Width="199" Height="42" OpacityMask="#FFF00606" Background="#FF9B9393" FontWeight="Bold" FontSize="18" Click="CrearCar_Click"/>
+    <Grid Margin="0,-4,-742,-153">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF001076" Offset="1"/>
+                <GradientStop Color="#FF97FF00"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button Name="Guardar" Content="Guardar" HorizontalAlignment="Left" Margin="740,384,0,0" VerticalAlignment="Top" Width="199" Height="42" OpacityMask="#FFF00606" Background="#FF07C99D" FontWeight="Bold" FontSize="18" Click="CrearCar_Click" FontStyle="Italic"/>
         <TextBlock HorizontalAlignment="Left" Margin="84,88,0,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" RenderTransformOrigin="-0.361,0.501" FontSize="18" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="87,167,0,0" TextWrapping="Wrap" Text="Valor:  1" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <Button x:Name="Cancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="411,368,0,0" VerticalAlignment="Top" Width="199" Height="42" OpacityMask="#FFF00606" Background="#FF9B9393" FontWeight="Bold" FontSize="18" Click="Cancelar_Click"/>
-        <Button x:Name="Finalizar" Content="Finalizar" HorizontalAlignment="Left" Margin="643,368,0,0" VerticalAlignment="Top" Width="199" Height="42" OpacityMask="#FFF00606" Background="#FF9B9393" FontWeight="Bold" FontSize="18" Click="Finalizar_Click"/>
+        <Button x:Name="Finalizar" Content="Finalizar" HorizontalAlignment="Left" Margin="1151,483,0,0" VerticalAlignment="Top" Width="199" Height="42" OpacityMask="#FFF00606" Background="#FF07C99D" FontWeight="Bold" FontSize="18" Click="Finalizar_Click" FontStyle="Italic"/>
         <TextBox Name="Nombre" HorizontalAlignment="Left" Height="30" Margin="178,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="236" FontSize="14" FontWeight="Bold"/>
+        <Button x:Name="Volver" Content="Volver al menú" HorizontalAlignment="Left" Margin="530,384,0,0" VerticalAlignment="Top" Width="199" Height="42" OpacityMask="#FFF00606" Background="#FF07C99D" FontWeight="Bold" FontSize="18" Click="Volver_Click" FontStyle="Italic"/>
     </Grid>
 </Page>

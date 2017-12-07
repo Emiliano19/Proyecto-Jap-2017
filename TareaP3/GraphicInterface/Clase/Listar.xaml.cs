@@ -36,22 +36,30 @@ namespace GraphicInterface.Clase
             if(listview.SelectedItem != null)
             {
                 Domain.Clase C = (Domain.Clase)listview.SelectedItem;
-                int aux = BusinessLogic.ClaseBL.Eliminar(C.Id);
+                if(C.Id != 10)
+                {
+                    int aux = BusinessLogic.ClaseBL.Eliminar(C.Id);
 
-                if(aux == 1)
-                {
-                    List<Domain.Clase> LC = new List<Domain.Clase>();
-                    foreach(Domain.Clase CZ in BusinessLogic.ClaseBL.Listar())
+                    if (aux == 1)
                     {
-                        LC.Add(CZ);
+                        List<Domain.Clase> LC = new List<Domain.Clase>();
+                        foreach (Domain.Clase CZ in BusinessLogic.ClaseBL.Listar())
+                        {
+                            LC.Add(CZ);
+                        }
+                        listview.ItemsSource = LC;
+                        MessageBox.Show("Se a borrado la Clase con Exito");
                     }
-                    listview.ItemsSource = LC;
-                    MessageBox.Show("Se a borrado la Clase con Exito");
+                    else if (aux == -1)
+                    {
+                        MessageBox.Show("A ocurrido un error inesperado y no se a podido borrar la Clase seleccionada");
+                    }
                 }
-                else if (aux == -1)
+                else
                 {
-                    MessageBox.Show("A ocurrido un error inesperado y no se a podido borrar la Clase seleccionada");
+                    MessageBox.Show("A seleccionado una clase que esta definida por defecto y no se puede eliminar elija otra");
                 }
+               
             }
             else
             {

@@ -42,7 +42,7 @@
             <ListBoxItem Content="9" Width="40"/>
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
-        <Button Content="Volver al Listar" HorizontalAlignment="Left" Margin="591,397,0,0" VerticalAlignment="Top" Width="140" Height="39" FontStyle="Italic" FontWeight="Bold">
+        <Button Content="Volver al Menú" HorizontalAlignment="Left" Margin="591,397,0,0" VerticalAlignment="Top" Width="140" Height="39" FontStyle="Italic" FontWeight="Bold" Click="Button_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF9BD8C5" Offset="0.112"/>

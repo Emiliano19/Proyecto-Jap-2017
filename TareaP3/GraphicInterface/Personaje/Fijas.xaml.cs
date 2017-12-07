@@ -24,26 +24,48 @@ namespace GraphicInterface.Personaje
         {
             InitializeComponent();
             IdPER.Text = value.ToString();
+            Domain.Personaje P = BusinessLogic.PersonajeBL.Obtener(value);
+            FuerzaValor.Text = P.Fuerza.ToString();
+            DestrezaValor.Text = P.Destreza.ToString();
+            ConstValor.Text = P.Constitucion.ToString();
+            InteliValor.Text = P.Inteligencia.ToString();
+            SabiduriaValor.Text = P.Sabiduria.ToString();
+            CarismaValor.Text = P.Carisma.ToString();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        {   
             int IdP = Convert.ToInt32(IdPER.Text);
             Domain.Personaje Per = BusinessLogic.PersonajeBL.Obtener(IdP);
-            Per.Fuerza = Per.Fuerza + 1;
-            int IdR = Per.RazaAtributo.Id;
-            int IdC = Per.ClaseAtributo.Id;
-            int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
-            if(aux == 1)
+            if(Per.Fuerza < 15)
             {
-                MessageBox.Show("El valor de Fuerza fue aumentado con Exito");
-                Fuerza.Visibility = Visibility.Hidden;
-                Destreza.Visibility = Visibility.Hidden;
-                Consti.Visibility = Visibility.Hidden;
-                Inteligencia.Visibility = Visibility.Hidden;
-                Sabiduria.Visibility = Visibility.Hidden;
-                Carisma.Visibility = Visibility.Hidden;
+                Per.Fuerza = Per.Fuerza + 1;
+                int IdR = Per.RazaAtributo.Id;
+                int IdC = Per.ClaseAtributo.Id;
+                int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
+                if (aux == 1)
+                {
+                    MessageBox.Show("El valor de Fuerza fue aumentado con Exito");
+                    FuerzaValor.Visibility = Visibility.Hidden;
+                    DestrezaValor.Visibility = Visibility.Hidden;
+                    ConstValor.Visibility = Visibility.Hidden;
+                    InteliValor.Visibility = Visibility.Hidden;
+                    SabiduriaValor.Visibility = Visibility.Hidden;
+                    CarismaValor.Visibility = Visibility.Hidden;
 
+                    Fuerza.Visibility = Visibility.Hidden;
+                    Destreza.Visibility = Visibility.Hidden;
+                    Consti.Visibility = Visibility.Hidden;
+                    Inteligencia.Visibility = Visibility.Hidden;
+                    Sabiduria.Visibility = Visibility.Hidden;
+                    Carisma.Visibility = Visibility.Hidden;
+
+                }
+            }
+            else if(Per.Fuerza == 15)
+            {
+                MessageBox.Show("El valor de Fuerza ya esta en el Máximo permitido, elija otra Característica para aumentar");
             }
 
         }
@@ -52,20 +74,34 @@ namespace GraphicInterface.Personaje
         {
             int IdP = Convert.ToInt32(IdPER.Text);
             Domain.Personaje Per = BusinessLogic.PersonajeBL.Obtener(IdP);
-            Per.Destreza = Per.Destreza + 1;
-            int IdR = Per.RazaAtributo.Id;
-            int IdC = Per.ClaseAtributo.Id;
-            int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
-            if (aux == 1)
+            if (Per.Destreza < 15)
             {
-                MessageBox.Show("El valor de Fuerza fue aumentado con Exito");
-                Fuerza.Visibility = Visibility.Hidden;
-                Destreza.Visibility = Visibility.Hidden;
-                Consti.Visibility = Visibility.Hidden;
-                Inteligencia.Visibility = Visibility.Hidden;
-                Sabiduria.Visibility = Visibility.Hidden;
-                Carisma.Visibility = Visibility.Hidden;
+                Per.Destreza = Per.Destreza + 1;
+                int IdR = Per.RazaAtributo.Id;
+                int IdC = Per.ClaseAtributo.Id;
+                int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
+                if (aux == 1)
+                {
+                    MessageBox.Show("El valor de Fuerza a aumentado con Exito");
+                    FuerzaValor.Visibility = Visibility.Hidden;
+                    DestrezaValor.Visibility = Visibility.Hidden;
+                    ConstValor.Visibility = Visibility.Hidden;
+                    InteliValor.Visibility = Visibility.Hidden;
+                    SabiduriaValor.Visibility = Visibility.Hidden;
+                    CarismaValor.Visibility = Visibility.Hidden;
 
+                    Fuerza.Visibility = Visibility.Hidden;
+                    Destreza.Visibility = Visibility.Hidden;
+                    Consti.Visibility = Visibility.Hidden;
+                    Inteligencia.Visibility = Visibility.Hidden;
+                    Sabiduria.Visibility = Visibility.Hidden;
+                    Carisma.Visibility = Visibility.Hidden;
+
+                }
+            }
+            else if (Per.Destreza == 15)
+            {
+                MessageBox.Show("El valor de Fuerza ya esta en el Máximo permitido, elija otra Característica para aumentar");
             }
         }
 
@@ -73,20 +109,34 @@ namespace GraphicInterface.Personaje
         {
             int IdP = Convert.ToInt32(IdPER.Text);
             Domain.Personaje Per = BusinessLogic.PersonajeBL.Obtener(IdP);
-            Per.Constitucion = Per.Constitucion + 1;
-            int IdR = Per.RazaAtributo.Id;
-            int IdC = Per.ClaseAtributo.Id;
-            int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
-            if (aux == 1)
+            if (Per.Constitucion < 15)
             {
-                MessageBox.Show("El valor de Fuerza fue aumentado con Exito");
-                Fuerza.Visibility = Visibility.Hidden;
-                Destreza.Visibility = Visibility.Hidden;
-                Consti.Visibility = Visibility.Hidden;
-                Inteligencia.Visibility = Visibility.Hidden;
-                Sabiduria.Visibility = Visibility.Hidden;
-                Carisma.Visibility = Visibility.Hidden;
+                Per.Constitucion = Per.Constitucion + 1;
+                int IdR = Per.RazaAtributo.Id;
+                int IdC = Per.ClaseAtributo.Id;
+                int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
+                if (aux == 1)
+                {
+                    MessageBox.Show("El valor de Fuerza a aumentado con Exito");
+                    FuerzaValor.Visibility = Visibility.Hidden;
+                    DestrezaValor.Visibility = Visibility.Hidden;
+                    ConstValor.Visibility = Visibility.Hidden;
+                    InteliValor.Visibility = Visibility.Hidden;
+                    SabiduriaValor.Visibility = Visibility.Hidden;
+                    CarismaValor.Visibility = Visibility.Hidden;
 
+                    Fuerza.Visibility = Visibility.Hidden;
+                    Destreza.Visibility = Visibility.Hidden;
+                    Consti.Visibility = Visibility.Hidden;
+                    Inteligencia.Visibility = Visibility.Hidden;
+                    Sabiduria.Visibility = Visibility.Hidden;
+                    Carisma.Visibility = Visibility.Hidden;
+
+                }
+            }
+            else if (Per.Constitucion == 15)
+            {
+                MessageBox.Show("El valor de Fuerza ya esta en el Máximo permitido, elija otra Característica para aumentar");
             }
         }
 
@@ -94,20 +144,34 @@ namespace GraphicInterface.Personaje
         {
             int IdP = Convert.ToInt32(IdPER.Text);
             Domain.Personaje Per = BusinessLogic.PersonajeBL.Obtener(IdP);
-            Per.Inteligencia = Per.Inteligencia + 1;
-            int IdR = Per.RazaAtributo.Id;
-            int IdC = Per.ClaseAtributo.Id;
-            int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
-            if (aux == 1)
+            if (Per.Inteligencia < 15)
             {
-                MessageBox.Show("El valor de Fuerza fue aumentado con Exito");
-                Fuerza.Visibility = Visibility.Hidden;
-                Destreza.Visibility = Visibility.Hidden;
-                Consti.Visibility = Visibility.Hidden;
-                Inteligencia.Visibility = Visibility.Hidden;
-                Sabiduria.Visibility = Visibility.Hidden;
-                Carisma.Visibility = Visibility.Hidden;
+                Per.Inteligencia = Per.Inteligencia + 1;
+                int IdR = Per.RazaAtributo.Id;
+                int IdC = Per.ClaseAtributo.Id;
+                int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
+                if (aux == 1)
+                {
+                    MessageBox.Show("El valor de Fuerza a aumentado con Exito");
+                    FuerzaValor.Visibility = Visibility.Hidden;
+                    DestrezaValor.Visibility = Visibility.Hidden;
+                    ConstValor.Visibility = Visibility.Hidden;
+                    InteliValor.Visibility = Visibility.Hidden;
+                    SabiduriaValor.Visibility = Visibility.Hidden;
+                    CarismaValor.Visibility = Visibility.Hidden;
 
+                    Fuerza.Visibility = Visibility.Hidden;
+                    Destreza.Visibility = Visibility.Hidden;
+                    Consti.Visibility = Visibility.Hidden;
+                    Inteligencia.Visibility = Visibility.Hidden;
+                    Sabiduria.Visibility = Visibility.Hidden;
+                    Carisma.Visibility = Visibility.Hidden;
+
+                }
+            }
+            else if (Per.Inteligencia == 15)
+            {
+                MessageBox.Show("El valor de Inteligencia ya esta en el Máximo permitido, elija otra Característica para aumentar");
             }
         }
 
@@ -115,47 +179,77 @@ namespace GraphicInterface.Personaje
         {
             int IdP = Convert.ToInt32(IdPER.Text);
             Domain.Personaje Per = BusinessLogic.PersonajeBL.Obtener(IdP);
-            Per.Sabiduria = Per.Sabiduria + 1;
-            int IdR = Per.RazaAtributo.Id;
-            int IdC = Per.ClaseAtributo.Id;
-            int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
-            if (aux == 1)
+            if (Per.Sabiduria < 15)
             {
-                MessageBox.Show("El valor de Fuerza fue aumentado con Exito");
-                Fuerza.Visibility = Visibility.Hidden;
-                Destreza.Visibility = Visibility.Hidden;
-                Consti.Visibility = Visibility.Hidden;
-                Inteligencia.Visibility = Visibility.Hidden;
-                Sabiduria.Visibility = Visibility.Hidden;
-                Carisma.Visibility = Visibility.Hidden;
+                Per.Sabiduria = Per.Sabiduria + 1;
+                int IdR = Per.RazaAtributo.Id;
+                int IdC = Per.ClaseAtributo.Id;
+                int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
+                if (aux == 1)
+                {
+                    MessageBox.Show("El valor de Fuerza a aumentado con Exito");
+                    FuerzaValor.Visibility = Visibility.Hidden;
+                    DestrezaValor.Visibility = Visibility.Hidden;
+                    ConstValor.Visibility = Visibility.Hidden;
+                    InteliValor.Visibility = Visibility.Hidden;
+                    SabiduriaValor.Visibility = Visibility.Hidden;
+                    CarismaValor.Visibility = Visibility.Hidden;
 
+                    Fuerza.Visibility = Visibility.Hidden;
+                    Destreza.Visibility = Visibility.Hidden;
+                    Consti.Visibility = Visibility.Hidden;
+                    Inteligencia.Visibility = Visibility.Hidden;
+                    Sabiduria.Visibility = Visibility.Hidden;
+                    Carisma.Visibility = Visibility.Hidden;
+
+                }
             }
+            else if (Per.Sabiduria == 15)
+            {
+                MessageBox.Show("El valor de Sabiduría ya esta en el Máximo permitido, elija otra Característica para aumentar");
+            }
+           
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
             int IdP = Convert.ToInt32(IdPER.Text);
             Domain.Personaje Per = BusinessLogic.PersonajeBL.Obtener(IdP);
-            Per.Carisma = Per.Carisma + 1;
-            int IdR = Per.RazaAtributo.Id;
-            int IdC = Per.ClaseAtributo.Id;
-            int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
-            if (aux == 1)
+            if (Per.Carisma < 15)
             {
-                MessageBox.Show("El valor de Fuerza fue aumentado con Exito");
-                Fuerza.Visibility = Visibility.Hidden;
-                Destreza.Visibility = Visibility.Hidden;
-                Consti.Visibility = Visibility.Hidden;
-                Inteligencia.Visibility = Visibility.Hidden;
-                Sabiduria.Visibility = Visibility.Hidden;
-                Carisma.Visibility = Visibility.Hidden;
+                Per.Carisma = Per.Carisma + 1;
+                int IdR = Per.RazaAtributo.Id;
+                int IdC = Per.ClaseAtributo.Id;
+                int aux = BusinessLogic.PersonajeBL.Modificar(Per, IdR, IdC);
+                if (aux == 1)
+                {
+                    MessageBox.Show("El valor de Fuerza a aumentado con Exito");
+                    FuerzaValor.Visibility = Visibility.Hidden;
+                    DestrezaValor.Visibility = Visibility.Hidden;
+                    ConstValor.Visibility = Visibility.Hidden;
+                    InteliValor.Visibility = Visibility.Hidden;
+                    SabiduriaValor.Visibility = Visibility.Hidden;
+                    CarismaValor.Visibility = Visibility.Hidden;
 
+                    Fuerza.Visibility = Visibility.Hidden;
+                    Destreza.Visibility = Visibility.Hidden;
+                    Consti.Visibility = Visibility.Hidden;
+                    Inteligencia.Visibility = Visibility.Hidden;
+                    Sabiduria.Visibility = Visibility.Hidden;
+                    Carisma.Visibility = Visibility.Hidden;
+
+                }
             }
+            else if (Per.Carisma == 15)
+            {
+                MessageBox.Show("El valor de Carisma ya esta en el Máximo permitido, elija otra Característica para aumentar");
+            }
+           
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new MenuPrincipal());
         }
     }
 }

@@ -9,7 +9,17 @@
       Title="Listar" Name="ListarX">
 
     <Grid>
-        <Grid Background="White" Margin="0,0,-714,-141">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Margin="0,0,-714,-141" Grid.RowSpan="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF021591" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <ListView Name="listview" HorizontalAlignment="Left" Height="303" VerticalAlignment="Top" Width="972" Margin="21,49,0,0" SelectionChanged="ListView_SelectionChanged" Background="#FFC3C3C3">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -20,12 +30,13 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Content="Modificar" HorizontalAlignment="Left" Margin="855,381,0,0" VerticalAlignment="Top" Width="118" Height="34" FontWeight="Bold" Click="Button_Click_2"/>
-            <Button Content="Eliminar" HorizontalAlignment="Left" Margin="691,381,0,0" VerticalAlignment="Top" Width="118" Height="34" FontWeight="Bold" Click="Button_Click"/>
+            <Button Content="Modificar" HorizontalAlignment="Left" Margin="855,381,0,0" VerticalAlignment="Top" Width="118" Height="34" FontWeight="Bold" Click="Button_Click_2" Background="Black" Foreground="#FFE4CCCC" BorderBrush="White"/>
+            <Button Content="Eliminar" HorizontalAlignment="Left" Margin="691,381,0,0" VerticalAlignment="Top" Width="118" Height="34" FontWeight="Bold" Click="Button_Click" Background="Black" Foreground="#FFE4CCCC" BorderBrush="White"/>
 
             <TextBlock Name="NuevoNombre" Visibility="Hidden" HorizontalAlignment="Left" Margin="639,116,0,0" TextWrapping="Wrap" Text="Nuevo Nombre" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Width="151"/>
             <TextBox Name="NuevoNombreX" Visibility="Hidden" HorizontalAlignment="Left" Height="27" Margin="795,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" TextChanged="TextBox_TextChanged"/>
             <Button Name="Guardar" Visibility="Hidden"  Content="Guardar Cambios" HorizontalAlignment="Left" Margin="880,242,0,0" VerticalAlignment="Top" Width="115" Height="32" Click="Guardar_Click"/>
+            <Button Content="Volver al Menú" HorizontalAlignment="Left" Margin="500,381,0,0" VerticalAlignment="Top" Width="118" Height="34" RenderTransformOrigin="0.631,-0.186" FontWeight="Bold" FontStyle="Italic" Background="Black" Foreground="#FFE4CCCC" BorderBrush="White" Click="Button_Click_1"/>
         </Grid>
     </Grid>
 </Page>

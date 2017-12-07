@@ -28,6 +28,7 @@
         <TextBox Name="IdPersonaje" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="68,346,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="116" FontWeight="Bold" FontSize="18" Text="Valor Actual: "/>
         <TextBlock Name="ValorActual" HorizontalAlignment="Left" Margin="126,255,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Width="112"/>
-      
+        <Button Content="Finalizar" HorizontalAlignment="Left" Margin="8,357,0,0" VerticalAlignment="Top" Width="332" Height="41" FontWeight="Bold" FontStyle="Italic" FontSize="16" Background="#FF386662"/>
+
     </Grid>
 </Page>

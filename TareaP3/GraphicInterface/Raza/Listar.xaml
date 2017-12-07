@@ -30,6 +30,6 @@
         </ListView>
         <Button Content="Modificar" HorizontalAlignment="Left" Margin="746,381,0,0" VerticalAlignment="Top" Width="118" Height="34" FontWeight="Bold" Click="Button_Click_2" FontStyle="Italic" Background="#FF3AFF00"/>
         <Button Content="Eliminar" HorizontalAlignment="Left" Margin="869,381,0,0" VerticalAlignment="Top" Width="118" Height="34" FontWeight="Bold" Click="Button_Click" FontStyle="Italic" Background="#FF3AFF00"/>
-        <Button Content="Regresar al Menú" HorizontalAlignment="Left" Margin="499,381,0,0" VerticalAlignment="Top" Width="118" Height="34" FontWeight="Bold" Click="Reagresar_Click_2" FontStyle="Italic" Background="#FF3AFF00"/>
+        <Button Content="Volver al Menú" HorizontalAlignment="Left" Margin="505,381,0,0" VerticalAlignment="Top" Width="118" Height="34" FontWeight="Bold" Click="Reagresar_Click_2" FontStyle="Italic" Background="#FF3AFF00"/>
     </Grid>
 </Page>

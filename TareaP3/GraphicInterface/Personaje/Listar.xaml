@@ -60,7 +60,7 @@
         <ComboBox  Name="ComboPer" HorizontalAlignment="Left" Margin="862,355,0,0" VerticalAlignment="Top" Width="116" SelectionChanged="ComboPer_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="649,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="204" FontWeight="Bold" FontSize="14"><Run Text="Elija un personaje de esta lista:"/></TextBlock>
         <Frame Name="Navigate1" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="336" VerticalAlignment="Top" Width="940" Navigated="Navigate_Navigated" Margin="38,10,0,0"/>
-        <Button Content="Regresar al Menú" HorizontalAlignment="Left" Margin="534,379,0,0" VerticalAlignment="Top" Width="150" Height="34" RenderTransformOrigin="0.545,0.87" FontSize="16" FontWeight="Bold" Click="Regresar_Click_1" FontStyle="Italic" Background="#FF0CFF00"/>
+        <Button Content="Volver al Menú" HorizontalAlignment="Left" Margin="534,379,0,0" VerticalAlignment="Top" Width="150" Height="34" RenderTransformOrigin="0.545,0.87" FontSize="16" FontWeight="Bold" Click="Regresar_Click_1" FontStyle="Italic" Background="#FF0CFF00"/>
         <Button Content="Subir de Nivel" HorizontalAlignment="Left" Margin="534,413,0,0" VerticalAlignment="Top" Width="444" Height="34" RenderTransformOrigin="0.545,0.87" FontSize="16" FontWeight="Bold" Click="SubirNivel_Click" FontStyle="Italic" Background="#FF0CFF00"/>
 
 

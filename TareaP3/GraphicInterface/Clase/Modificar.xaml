@@ -8,8 +8,14 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Modificar">
 
-    <Grid Margin="0,0,-642,-143" Background="#FF51E000">
-        <Button Content="Guardar" HorizontalAlignment="Left" Margin="806,345,0,0" VerticalAlignment="Top" Width="102" Click="Guardar" Height="34" RenderTransformOrigin="0.595,0.366" Background="#FF00FFA2" FontSize="14" FontStyle="Italic"/>
+    <Grid Margin="0,0,-642,-143">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF3F403E" Offset="0"/>
+                <GradientStop Color="#FF97FF00" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button Content="Guardar" HorizontalAlignment="Left" Margin="806,345,0,0" VerticalAlignment="Top" Width="102" Click="Guardar" Height="34" RenderTransformOrigin="0.595,0.366" Background="#FF12C383" FontSize="14" FontStyle="Italic" FontWeight="Bold"/>
         <TextBox Name="TexNombre" HorizontalAlignment="Left" Height="28" Margin="125,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179" Background="#FFA89F9F" FontWeight="Bold"/>
         <TextBox Name="TexDescripión" HorizontalAlignment="Left" Height="144" Margin="125,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179" Background="#FFA89F9F" FontWeight="Bold"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="37,37,0,0" VerticalAlignment="Top" Height="31" Width="81" FontWeight="Bold" FontSize="16"/>
@@ -36,9 +42,9 @@
         </ListView>
         <Label Name="Habitex" Content="Habilidad: " HorizontalAlignment="Left" Margin="334,37,0,0" VerticalAlignment="Top" Height="31" Width="115" FontWeight="Bold" FontSize="16"/>
         <TextBox Name="NombreH" HorizontalAlignment="Left" Height="23" Margin="428,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="480" Background="#FFA89F9F" FontWeight="Bold"/>
-        <Button Name="Agregarx" Content="Agregar a Clase" HorizontalAlignment="Left" Margin="623,267,0,0" VerticalAlignment="Top" Width="285" Height="35" Click="AgregaraC" FontWeight="Bold" FontSize="14"/>
-        <Button Content="Volver al Listar" HorizontalAlignment="Left" Margin="681,345,0,0" VerticalAlignment="Top" Width="102" Height="34" RenderTransformOrigin="0.595,0.366" Click="VolveraListar_Ckick" Background="#FF00FFA2" FontSize="14" FontStyle="Italic"/>
-        <Button x:Name="EliminardeC" Content="Eliminar de Clase" HorizontalAlignment="Left" Margin="334,267,0,0" VerticalAlignment="Top" Width="263" Height="35" Click="EliminarDeC_Ckick" FontWeight="Bold" FontSize="14"/>
+        <Button Name="Agregarx" Content="Agregar a Clase" HorizontalAlignment="Left" Margin="623,267,0,0" VerticalAlignment="Top" Width="285" Height="35" Click="AgregaraC" FontWeight="Bold" FontSize="14" Background="#FFFD4500"/>
+        <Button Content="Volver al Listar" HorizontalAlignment="Left" Margin="673,345,0,0" VerticalAlignment="Top" Width="110" Height="34" RenderTransformOrigin="0.595,0.366" Click="VolveraListar_Ckick" Background="#FF12C383" FontSize="14" FontStyle="Italic" FontWeight="Bold"/>
+        <Button x:Name="EliminardeC" Content="Eliminar de Clase" HorizontalAlignment="Left" Margin="334,267,0,0" VerticalAlignment="Top" Width="263" Height="35" Click="EliminarDeC_Ckick" FontWeight="Bold" FontSize="14" Background="#FFFD4500"/>
         <TextBox Name="IdRecibido" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="125,253,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Page>

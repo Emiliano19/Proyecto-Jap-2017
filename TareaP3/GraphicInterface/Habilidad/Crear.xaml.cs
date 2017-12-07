@@ -27,39 +27,52 @@ namespace GraphicInterface.Habilidad
 
         private void Agregar(object sender, RoutedEventArgs e)
         {
-            Domain.Habilidad_Especial H = new Domain.Habilidad_Especial();
-
-            H.Nombre = TexNombre.Text;
-            H.Descripcion = TexDescripión.Text;
-            int cont = 0;
-
-            foreach(Domain.Habilidad_Especial H1 in BusinessLogic.HabilidadEspecialBL.Listar())
+            if(TexNombre.Text != "" && TexDescripión.Text != "")
             {
-                if (H1.Nombre == H.Nombre || H1.Descripcion == H.Descripcion)
+                Domain.Habilidad_Especial H = new Domain.Habilidad_Especial();
+
+                H.Nombre = TexNombre.Text;
+                H.Descripcion = TexDescripión.Text;
+                int cont = 0;
+
+                foreach (Domain.Habilidad_Especial H1 in BusinessLogic.HabilidadEspecialBL.Listar())
                 {
-                    MessageBox.Show("Ya existe una habilidad con ese Nombre o Descripción en el sistema");
-                    cont = cont + 1;
+                    if (H1.Nombre == H.Nombre || H1.Descripcion == H.Descripcion)
+                    {
+                        MessageBox.Show("Ya existe una habilidad con ese Nombre o Descripción en el sistema");
+                        cont = cont + 1;
+                        TexNombre.Text = "";
+                        TexDescripión.Text = "";
+                    }
+                }
+
+                if (cont == 0)
+                {
+
+                    int result = BusinessLogic.HabilidadEspecialBL.Agregar(H);
+
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Se a guardado con exito la nueva Habilidad");
+                    }
+                    else if (result == -1)
+                    {
+                        MessageBox.Show("A ocurrido un error inesperado al intentar guardar la habilidad");
+                    }
                     TexNombre.Text = "";
                     TexDescripión.Text = "";
                 }
             }
-
-            if(cont == 0)
+            else
             {
-                int result = BusinessLogic.HabilidadEspecialBL.Agregar(H);
-
-                if (result == 1)
-                {
-                    MessageBox.Show("Se a guardado con exito la nueva HabilidadEspecial");
-                }
-                else if (result == -1)
-                {
-                    MessageBox.Show("A ocurrido un error, asegurese de que ningun campo quede vacio");
-                }
-                TexNombre.Text = "";
-                TexDescripión.Text = "";
+                MessageBox.Show("Hay campos vacios debe completarlos para poder guardar");
             }
+           
+        }
 
+        private void Volver(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

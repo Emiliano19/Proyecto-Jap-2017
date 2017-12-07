@@ -78,7 +78,7 @@
             <ListBoxItem Content="10" Width="40" />
         </ComboBox>
         <TextBox Name="Nombre" HorizontalAlignment="Left" Height="22" Margin="197,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="126" TextChanged="Nombre_TextChanged" FontWeight="Bold" FontSize="14"/>
-        <Button Name="Agregar" Content="Guardar" HorizontalAlignment="Left" Margin="508,394,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_1" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
+        <Button Name="Agregar" Content="Guardar" HorizontalAlignment="Left" Margin="367,403,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_1" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
         <ComboBox x:Name="ComboInteligencia" HorizontalAlignment="Left" Margin="478,269,0,0" VerticalAlignment="Top" Width="126" SelectionChanged="ComboInteligencia_SelectionChanged" Height="25">
             <ListBoxItem Content="1" Width="40"/>
             <ListBoxItem Content="2" Width="40"/>
@@ -119,11 +119,11 @@
         <TextBlock HorizontalAlignment="Left" Margin="351,212,0,0" TextWrapping="Wrap" Text="Archivo seleccionado" VerticalAlignment="Top" Height="31" Width="164" FontWeight="Bold" FontSize="14"/>
         <TextBlock Name="RutaImagen" HorizontalAlignment="Left" Margin="649,219,0,0" Visibility="Hidden" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="232" FontSize="14" FontWeight="Bold"/>
         <Rectangle HorizontalAlignment="Left" Height="147" Margin="444,45,0,0" VerticalAlignment="Top" Width="160" Stroke="Black"/>
-        <Button x:Name="CancelarB" Visibility="Visible" Content="Cancelar" HorizontalAlignment="Left" Margin="401,394,0,0" VerticalAlignment="Top" Width="95" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold" Click="Cancelar_Click" FontStyle="Italic"/>
         <Button Name="MostrarCar" Visibility="Hidden" Content="Mostrar" HorizontalAlignment="Left" Margin="818,40,0,0" VerticalAlignment="Top" Width="117" Height="27" Click="Button_Click_2"/>
         <Frame Name="Navigation" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="295" Margin="660,82,0,0" VerticalAlignment="Top" Width="364" Navigated="Navigation_Navigated"/>
-        <TextBlock Name="Cartexto" HorizontalAlignment="Left" Margin="660,43,0,0" TextWrapping="Wrap" Text="Características" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Width="128"/>
+        <TextBlock Name="Cartexto" HorizontalAlignment="Left" Visibility="Hidden" Margin="660,43,0,0" TextWrapping="Wrap" Text="Características" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Width="128"/>
         <Button Name="CrearCar" Visibility="Hidden" Content="Crear Nueva Característica" HorizontalAlignment="Left" Margin="660,393,0,0" VerticalAlignment="Top" Width="364" Height="32" OpacityMask="#FFF00606" Background="#FF9B9393" FontWeight="Bold" FontSize="18" Click="CrearCar_Click"/>
+        <Button x:Name="Volver" Content="Volver al Menú" HorizontalAlignment="Left" Visibility="Hidden" Margin="482,403,0,0" VerticalAlignment="Top" Width="122" Click="Volver_Click" Height="33" Background="#FF2EFF00" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
 
 
     </Grid>

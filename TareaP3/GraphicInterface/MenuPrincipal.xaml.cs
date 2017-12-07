@@ -65,11 +65,6 @@ namespace GraphicInterface
             this.NavigationService.Navigate(new Personaje.Listar());
         }
 
-        private void Button_Click_6(object sender, RoutedEventArgs e)
-        {
-            //this.NavigationService.Navigate(new Personaje.Subir_de_Nivel());
-        }
-
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Habilidad.Crear());
@@ -105,7 +100,9 @@ namespace GraphicInterface
             this.NavigationService.Navigate(new Clase.Listar());
         }
 
-        private void Button_Click_10(object sender, RoutedEventArgs e)
+        
+
+        private void Button_Click_11(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Raza.Listar());
         }

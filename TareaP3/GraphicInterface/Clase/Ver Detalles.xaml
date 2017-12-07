@@ -16,8 +16,9 @@
                     <GradientStop Color="#FF830606" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <Button Content="Ver Habilidades" HorizontalAlignment="Left" Margin="269,378,0,0" VerticalAlignment="Top" Width="131" RenderTransformOrigin="-0.178,0.781" Height="42" Click="Button_Click_1" Background="#FF2EFF00" FontStyle="Italic"/>
-            <ListView Name="listviewhab" HorizontalAlignment="Left" Height="300" Margin="40,35,0,0" VerticalAlignment="Top" Width="933" SelectionChanged="ListView_SelectionChanged" Background="#FF8B8585">
+            <Label Content="Nombre" HorizontalAlignment="Left" Margin="56,54,0,0" VerticalAlignment="Top" Height="44" Width="106" FontWeight="Bold" FontSize="18" Foreground="#FFFDFAFA"/>
+            <Label Content="Descripción" HorizontalAlignment="Left" Margin="27,170,0,0" VerticalAlignment="Top" Height="44" Width="141" FontWeight="Bold" FontSize="18" Foreground="#FFFDFAFA"/>
+            <ListView Name="listviewhab" HorizontalAlignment="Left" Height="300" Margin="461,35,0,0" VerticalAlignment="Top" Width="512" SelectionChanged="ListView_SelectionChanged" Background="#FF8B8585">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel Margin="10,20,0,0">
@@ -31,7 +32,9 @@
             </ListView>
             <TextBox Name="IdPersonaje" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="157,288,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="78"/>
             <TextBox Name="values" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="235,288,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <Button Content="Regresar a Listar" HorizontalAlignment="Left" Margin="636,378,0,0" VerticalAlignment="Top" Width="132" RenderTransformOrigin="-0.178,0.781" Height="42" Click="Regresar_Click_1" Background="#FF2EFF00" FontStyle="Italic"/>
+            <Button Content="Regresar a Listar" HorizontalAlignment="Left" Margin="841,388,0,0" VerticalAlignment="Top" Width="132" RenderTransformOrigin="-0.178,0.781" Height="42" Click="Regresar_Click_1" Background="#FF2EFF00" FontStyle="Italic" FontWeight="Bold" FontSize="14"/>
+            <TextBlock Name="TexDescripión" HorizontalAlignment="Left" Height="165" Margin="157,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255" Background="White" FontSize="14" FontWeight="Bold"/>
+            <TextBlock Name="TexNombre" HorizontalAlignment="Left" Height="40" Margin="157,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255" Background="White" FontSize="14" FontWeight="Bold"/>
 
 
         </Grid>

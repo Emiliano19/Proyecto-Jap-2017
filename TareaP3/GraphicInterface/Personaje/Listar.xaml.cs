@@ -27,39 +27,54 @@ namespace GraphicInterface.Personaje
         public Listar()
         {
             InitializeComponent();
-         
-            ComboPer.ItemsSource = BusinessLogic.PersonajeBL.Listar();
-            ComboPer.SelectedValuePath = "IdPer";
-            ComboPer.DisplayMemberPath = "Nombre";
-
-
-            ComboRaza.ItemsSource = BusinessLogic.RazaBL.Listar();
-            ComboRaza.SelectedValuePath = "IdRaza";
-            ComboRaza.DisplayMemberPath = "Nombre";
-
-            ComboClase.ItemsSource = BusinessLogic.ClaseBL.Listar();
-            ComboClase.SelectedValuePath = "IdClase";
-            ComboClase.DisplayMemberPath = "Nombre";
-
-            List<PersonajeLista> PL2 = new List<PersonajeLista>();
-            List<Domain.Personaje> PP = BusinessLogic.PersonajeBL.Listar();
-            foreach (Domain.Personaje P in PP)
+            
+            if(BusinessLogic.PersonajeBL.Listar() != null)
             {
-                PersonajeLista PLL = new PersonajeLista();
-                PLL.RazaNombre = P.RazaAtributo.Nombre;
-                PLL.ClaseNombre = P.ClaseAtributo.Nombre;
-                PLL.Nombre = P.Nombre;
-                PLL.Nivel = P.Nivel;
-                PLL.Destreza = P.Destreza;
-                PLL.Constitucion = P.Constitucion;
-                PLL.Inteligencia = P.Inteligencia;
-                PLL.Sabiduria = P.Sabiduria;
-                PLL.Carisma = P.Carisma;
-                PLL.Imagen = P.Imagen;
-                PL2.Add(PLL);
-
+                ComboPer.ItemsSource = BusinessLogic.PersonajeBL.Listar();
+                ComboPer.SelectedValuePath = "IdPer";
+                ComboPer.DisplayMemberPath = "Nombre";
             }
-            listview.ItemsSource = PL2;
+
+            if(BusinessLogic.RazaBL.Listar() != null)
+            {
+                ComboRaza.ItemsSource = BusinessLogic.RazaBL.Listar();
+                ComboRaza.SelectedValuePath = "IdRaza";
+                ComboRaza.DisplayMemberPath = "Nombre";
+            }
+           
+            if(BusinessLogic.ClaseBL.Listar() != null)
+            {
+                ComboClase.ItemsSource = BusinessLogic.ClaseBL.Listar();
+                ComboClase.SelectedValuePath = "IdClase";
+                ComboClase.DisplayMemberPath = "Nombre";
+            }
+          
+            if(BusinessLogic.PersonajeBL.Listar() != null)
+            {
+                List<PersonajeLista> PL2 = new List<PersonajeLista>();
+                foreach (Domain.Personaje P in BusinessLogic.PersonajeBL.Listar())
+                {
+                    PersonajeLista PLL = new PersonajeLista();
+                    PLL.RazaNombre = P.RazaAtributo.Nombre;
+                    PLL.ClaseNombre = P.ClaseAtributo.Nombre;
+                    PLL.Nombre = P.Nombre;
+                    PLL.Nivel = P.Nivel;
+                    PLL.Fuerza = P.Fuerza;
+                    PLL.Destreza = P.Destreza;
+                    PLL.Constitucion = P.Constitucion;
+                    PLL.Inteligencia = P.Inteligencia;
+                    PLL.Sabiduria = P.Sabiduria;
+                    PLL.Carisma = P.Carisma;
+                    PLL.Imagen = P.Imagen;
+                    PL2.Add(PLL);
+
+                }
+                listview.ItemsSource = PL2;
+            }
+            else
+            {
+                MessageBox.Show("No Hay Personajes para mostrar en el sistema debe crear algunos antes de listar");
+            }
 
         }
 
@@ -87,75 +102,99 @@ namespace GraphicInterface.Personaje
 
         private void BotonRaza_Click(object sender, RoutedEventArgs e)
         {
-            if(ComboRaza.SelectedItem != null)
+            if(BusinessLogic.PersonajeBL.Listar() != null)
             {
-                Domain.Raza selectedItem = (Domain.Raza)ComboRaza.SelectedItem;
-                List<Domain.Personaje> PL = new List<Domain.Personaje>();
-                foreach (Domain.Personaje P in BusinessLogic.PersonajeBL.Listar())
+                if (ComboRaza.SelectedItem != null)
                 {
-                    if (P.RazaAtributo.Id == selectedItem.Id)
+                    Domain.Raza selectedItem = (Domain.Raza)ComboRaza.SelectedItem;
+                    List<Domain.Personaje> PL = new List<Domain.Personaje>();
+                    foreach (Domain.Personaje P in BusinessLogic.PersonajeBL.Listar())
                     {
-                        PL.Add(P);
+                        if (P.RazaAtributo.Id == selectedItem.Id)
+                        {
+                            PL.Add(P);
+                        }
                     }
+                    listview.ItemsSource = PL;
                 }
-                listview.ItemsSource = PL;
+                else
+                {
+                    MessageBox.Show("Debe elegir una Raza antes de precionar Filtrado por Raza");
+                }
             }
             else
             {
-                MessageBox.Show("Debe elegir una Raza antes de precionar Filtrado por Raza");
+                MessageBox.Show("No hay personajes en el sistema así que no se puede realizar el filtrado");
             }
+          
         }
 
         private void BotonClase_Click(object sender, RoutedEventArgs e)
         {
-            if (ComboClase.SelectedItem != null)
+            if (BusinessLogic.PersonajeBL.Listar() != null)
             {
-                Domain.Clase selectedItem = (Domain.Clase)ComboClase.SelectedItem;
-                List<Domain.Personaje> PL = new List<Domain.Personaje>();
-                foreach (Domain.Personaje P in BusinessLogic.PersonajeBL.Listar())
+                if (ComboClase.SelectedItem != null)
                 {
-                    if (P.ClaseAtributo.Id == selectedItem.Id)
+                    Domain.Clase selectedItem = (Domain.Clase)ComboClase.SelectedItem;
+                    List<Domain.Personaje> PL = new List<Domain.Personaje>();
+                    foreach (Domain.Personaje P in BusinessLogic.PersonajeBL.Listar())
                     {
-                        PL.Add(P);
+                        if (P.ClaseAtributo.Id == selectedItem.Id)
+                        {
+                            PL.Add(P);
+                        }
                     }
+                    listview.ItemsSource = PL;
                 }
-                listview.ItemsSource = PL;
+                else
+                {
+                    MessageBox.Show("Debe elegir una Clase antes de precionar Filtrado por Clase");
+                }
             }
             else
             {
-                MessageBox.Show("Debe elegir una Clase antes de precionar Filtrado por Clase");
+                MessageBox.Show("No hay personajes en el sistema así que no se puede realizar el filtrado");
             }
+           
         }
 
         private void BotonDoble_Click(object sender, RoutedEventArgs e)
         {
-            if (ComboRaza.SelectedItem != null && ComboClase.SelectedItem != null)
+            if(BusinessLogic.PersonajeBL.Listar() != null)
             {
-                Domain.Raza selectedItemX = (Domain.Raza)ComboRaza.SelectedItem;
-                List<Domain.Personaje> PLX = new List<Domain.Personaje>();
-                foreach (Domain.Personaje P in BusinessLogic.PersonajeBL.Listar())
+                if (ComboRaza.SelectedItem != null && ComboClase.SelectedItem != null)
                 {
-                    if (P.RazaAtributo.Id == selectedItemX.Id)
+                    Domain.Raza selectedItemX = (Domain.Raza)ComboRaza.SelectedItem;
+                    List<Domain.Personaje> PLX = new List<Domain.Personaje>();
+                    foreach (Domain.Personaje P in BusinessLogic.PersonajeBL.Listar())
                     {
-                        PLX.Add(P);
+                        if (P.RazaAtributo.Id == selectedItemX.Id)
+                        {
+                            PLX.Add(P);
+                        }
                     }
-                }
-                Domain.Clase selectedItem = (Domain.Clase)ComboClase.SelectedItem;
-                List<Domain.Personaje> PL = new List<Domain.Personaje>();
-                foreach (Domain.Personaje P in PLX)
-                {
-                    if (P.ClaseAtributo.Id == selectedItem.Id)
+                    Domain.Clase selectedItem = (Domain.Clase)ComboClase.SelectedItem;
+                    List<Domain.Personaje> PL = new List<Domain.Personaje>();
+                    foreach (Domain.Personaje P in PLX)
                     {
-                        PL.Add(P);
+                        if (P.ClaseAtributo.Id == selectedItem.Id)
+                        {
+                            PL.Add(P);
+                        }
                     }
-                }
 
-                listview.ItemsSource = PL;
+                    listview.ItemsSource = PL;
+                }
+                else
+                {
+                    MessageBox.Show("Debe elegir una Raza y una Clase antes de precionar Filtrado doble");
+                }
             }
             else
             {
-                MessageBox.Show("Debe elegir una Raza y una Clase antes de precionar Filtrado doble");
+                MessageBox.Show("No hay personajes en el sistema así que no se puede realizar el filtrado");
             }
+            
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -165,8 +204,24 @@ namespace GraphicInterface.Personaje
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Domain.Personaje selectItem = (Domain.Personaje)ComboPer.SelectedItem;
-            this.Navigate1.Navigate(new VerDetalles(selectItem.Id));
+            if(BusinessLogic.PersonajeBL.Listar() != null)
+            {
+                if (ComboPer.SelectedItem != null)
+                {
+                    Domain.Personaje selectItem = (Domain.Personaje)ComboPer.SelectedItem;
+                    this.Navigate1.Navigate(new VerDetalles(selectItem.Id));
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un Personaje antes precionar Ver Detalles");
+                }
+             
+            }
+            else
+            {
+                MessageBox.Show("No hay personajes en el sistema así que no se puede Ver Detalles");
+            }
+           
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -182,16 +237,24 @@ namespace GraphicInterface.Personaje
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            if(ComboPer.SelectedItem != null)
+            if(BusinessLogic.PersonajeBL.Listar() != null)
             {
-                listview.Visibility = Visibility.Collapsed;
-                Domain.Personaje selectItem = (Domain.Personaje)ComboPer.SelectedItem;
-                this.Navigate1.Navigate(new Modificar(selectItem.Id));
+                if (ComboPer.SelectedItem != null)
+                {
+                    listview.Visibility = Visibility.Collapsed;
+                    Domain.Personaje selectItem = (Domain.Personaje)ComboPer.SelectedItem;
+                    this.Navigate1.Navigate(new Modificar(selectItem.Id));
+                }
+                else if (ComboPer.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar un Personaje del combobox antes de precionar Modificar");
+                }
             }
-            else if(ComboPer.SelectedItem == null)
+            else
             {
-                MessageBox.Show("Debe seleccionar un Personaje del combobox antes de precionar Modificar");
+                MessageBox.Show("Debe seleccionar un Personaje de la lista antes de precionar Modificar");
             }
+           
     
         }
 
@@ -202,32 +265,47 @@ namespace GraphicInterface.Personaje
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            Domain.Personaje selectItem = (Domain.Personaje)ComboPer.SelectedItem;
-            if(selectItem != null)
+            if(BusinessLogic.PersonajeBL.Listar() != null)
             {
-                int result = BusinessLogic.PersonajeBL.Eliminar(selectItem.Id);
-                if (result == 1)
+                if (ComboPer.SelectedItem != null)
                 {
-                    List<Domain.Personaje> PP = new List<Domain.Personaje>();
-                    foreach (Domain.Personaje P in listview.ItemsSource)
+                    Domain.Personaje selectItem = (Domain.Personaje)ComboPer.SelectedItem;
+                    int result = BusinessLogic.PersonajeBL.Eliminar(selectItem.Id);
+                    if (result == 1)
                     {
-                        if (P.Id != selectItem.Id)
+                        if(BusinessLogic.PersonajeBL.Listar() != null)
                         {
-                            PP.Add(P);
-                        }
+                            List<Domain.Personaje> PP = new List<Domain.Personaje>();
+                            foreach (Domain.Personaje P in BusinessLogic.PersonajeBL.Listar())
+                            {
+                                if (P.Id != selectItem.Id)
+                                {
+                                    PP.Add(P);
+                                }
 
+                            }
+                            listview.ItemsSource = PP;
+                        }
+                        else
+                        {
+                            ComboPer.ItemsSource = null;
+                            listview.ItemsSource = null;
+                        }
+                        MessageBox.Show("Se a borrado el Personaje con Exito");
                     }
-                    listview.ItemsSource = PP;
-                    MessageBox.Show("Sea borrado el Personaje con Exito");
+                    else if (result == -1)
+                    {
+                        MessageBox.Show("A ocurrido algún error y no se a podido borrar el Personaje seleccionado");
+                    }
                 }
-                else if (result == -1)
+                else
                 {
-                    MessageBox.Show("A ocurrido algún error y no se a podido borrar el Personaje seleccionado");
+                    MessageBox.Show("Debe seleccionar un Personaje de la lista antes de precionar Eliminar");
                 }
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un Personaje de la lista antes de precionar Eliminar");
+                MessageBox.Show("No hay personajes en el sistema así que no se puede Eliminar");
             }
            
         }
@@ -239,20 +317,107 @@ namespace GraphicInterface.Personaje
 
         private void Regresar_Click_1(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new MenuPrincipal());
         }
 
         private void SubirNivel_Click(object sender, RoutedEventArgs e)
         {
-            if(ComboPer.SelectedItem != null)
+            if(BusinessLogic.PersonajeBL.Listar() != null)
             {
-                Domain.Personaje P = (Domain.Personaje)ComboPer.SelectedItem;
-                this.NavigationService.Navigate(new Subir_de_Nivel(P.Id));
+                if (ComboPer.SelectedItem != null)
+                {
+                    Domain.Personaje P = (Domain.Personaje)ComboPer.SelectedItem;
+                    if(P.Nivel <= 10)
+                    {
+                        int NivelAnterior;
+                        int IdR = P.RazaAtributo.Id;
+                        int IdC = P.ClaseAtributo.Id;
+                        NivelAnterior = P.Nivel;
+                        P.Nivel = P.Nivel + 1;
+                        BusinessLogic.PersonajeBL.Modificar(P, IdR, IdC);
+
+                        if (BusinessLogic.HabilidadEspecialBL.Listar() != null)
+                        {
+                            List<Domain.Habilidad_Especial> Hll = new List<Domain.Habilidad_Especial>();
+                            foreach (Domain.Habilidad_Especial H in BusinessLogic.HabilidadEspecialBL.Listar())
+                            {
+                                Domain.Clase_HE HC = BusinessLogic.Clase_HEBL.Obtener(IdC, H.Id);
+
+                                if (HC != null)
+                                {
+                                    Hll.Add(H);
+                                }
+                            }
+                            bool contHP = true;
+                            int contHPP = 0;
+                            foreach (Domain.Habilidad_Especial H in BusinessLogic.HabilidadEspecialBL.Listar())
+                            {
+                                Domain.Personaje_HE HP = BusinessLogic.Personaje_HEBL.Obtener(P.Id, H.Id);
+
+                                if (HP != null)
+                                {
+                                    contHPP = contHPP + 1;
+                                }
+                            }
+                            if(Hll.Count != contHPP)
+                            {
+                                contHP = false;
+                            }
+                            int aux = NivelAnterior % 2;
+                            bool Par = true;
+                            if (aux != 0)
+                            {
+                                Par = false;
+                            }
+                            if (contHP == true && Par == true)
+                            {
+                                MessageBox.Show("El Nivel a subido pero no hay Habilidades extras para asignarle al Personaje y al ser par su Nivel tampoco aumenta valor de las Características");
+                            }
+                            else
+                            {
+                                this.NavigationService.Navigate(new Subir_de_Nivel(P.Id, NivelAnterior));
+                            }
+                        }
+
+                        if (BusinessLogic.PersonajeBL.Listar() != null)
+                        {
+                            List<PersonajeLista> PL2 = new List<PersonajeLista>();
+                            foreach (Domain.Personaje Px in BusinessLogic.PersonajeBL.Listar())
+                            {
+                                PersonajeLista PLL = new PersonajeLista();
+                                PLL.RazaNombre = Px.RazaAtributo.Nombre;
+                                PLL.ClaseNombre = Px.ClaseAtributo.Nombre;
+                                PLL.Nombre = Px.Nombre;
+                                PLL.Nivel = Px.Nivel;
+                                PLL.Fuerza = Px.Fuerza;
+                                PLL.Destreza = Px.Destreza;
+                                PLL.Constitucion = Px.Constitucion;
+                                PLL.Inteligencia = Px.Inteligencia;
+                                PLL.Sabiduria = Px.Sabiduria;
+                                PLL.Carisma = Px.Carisma;
+                                PLL.Imagen = Px.Imagen;
+                                PL2.Add(PLL);
+
+                            }
+                            listview.ItemsSource = PL2;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El Nivel de este Personaje ya esta en el Máximo permitido por lo que no puede volver a incrementarlo");
+                    }
+                   
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un personaje del ComboBox antes de precionar Subir de Nivel");
+                }
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un personaje del ComboBox antes de precionar Subir de Nivel");
+                MessageBox.Show("No hay personajes en el sistema así que no se puede Subir de Nivel");
             }
+           
            
         }
     }                

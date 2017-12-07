@@ -29,14 +29,20 @@ namespace GraphicInterface.Personaje
         {
             InitializeComponent();
             
-            ComboRaza.ItemsSource = BusinessLogic.RazaBL.Listar();
-            Cartexto.Visibility = Visibility.Hidden;
-            ComboRaza.SelectedValuePath = "IdRaza";
-            ComboRaza.DisplayMemberPath = "Nombre";
-     
-            ComboClase.ItemsSource = BusinessLogic.ClaseBL.Listar();
-            ComboClase.SelectedValuePath = "IdClase";
-            ComboClase.DisplayMemberPath = "Nombre";
+            if(BusinessLogic.RazaBL.Listar() != null)
+            {
+                ComboRaza.ItemsSource = BusinessLogic.RazaBL.Listar();
+                ComboRaza.SelectedValuePath = "IdRaza";
+                ComboRaza.DisplayMemberPath = "Nombre";
+            }
+            
+            if(BusinessLogic.ClaseBL.Listar() != null)
+            {
+                ComboClase.ItemsSource = BusinessLogic.ClaseBL.Listar();
+                ComboClase.SelectedValuePath = "IdClase";
+                ComboClase.DisplayMemberPath = "Nombre";
+            }
+          
 
         }
 
@@ -86,42 +92,7 @@ namespace GraphicInterface.Personaje
         {
             if (Nombre.Text == "" || P.Nivel == 0 || P.Fuerza == 0 || P.Destreza == 0 || P.Constitucion == 0 || P.Inteligencia == 0 || P.Sabiduria == 0 || P.Carisma == 0 || P.RazaAtributo == null || P.ClaseAtributo == null || ImagenBuscar.Source == null) //Falta agregar que la imagen no puede estar vacia
             {
-                if(P.Nombre == "")
-                {
-                    MessageBox.Show("Falta ingresar el Nombre");
-                }
-                else if (P.Nivel == 0)
-                {
-                    MessageBox.Show("Falta ingresar el Nivel");
-                }
-                else if (P.Fuerza == 0)
-                {
-                    MessageBox.Show("Falta ingresar la Fuerza");
-                }
-                else if (P.Destreza == 0)
-                {
-                    MessageBox.Show("Falta ingresar la Destreza");
-                }
-                else if (P.Constitucion == 0)
-                {
-                    MessageBox.Show("Falta ingresar la Constitución");
-                }
-                else if (P.Inteligencia == 0)
-                {
-                    MessageBox.Show("Falta ingresar la Inteligencia");
-                }
-                else if (P.Sabiduria == 0)
-                {
-                    MessageBox.Show("Falta ingresar la Sabiduria");
-                }
-                else if (P.Carisma == 0)
-                {
-                    MessageBox.Show("Falta ingresar el Carisma");
-                }
-                else if(P.Imagen == null)
-                {
-                    MessageBox.Show("Falta ingresar la Imagen");
-                }
+                MessageBox.Show("Hay campos sin rellenar verifique que este todo completo antes de guardar");
         
             }
             else
@@ -152,6 +123,7 @@ namespace GraphicInterface.Personaje
                     {
                         MostrarCar.Visibility = Visibility;
                         Cartexto.Visibility = Visibility;
+                        Volver.Visibility = Visibility;
                         MessageBox.Show("Se guardado correctamente el nuevo Personaje");
                     }
                     else if (result == -1)
@@ -209,8 +181,26 @@ namespace GraphicInterface.Personaje
             P.Carisma = valor;
         }
 
-        private void Cancelar_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            int IdP = BusinessLogic.PersonajeBL.Listar().Max(x => x.Id);
+            Navigation.Navigate(new Caracteristicas(IdP));
+            CrearCar.Visibility = Visibility;
+        }
+
+        private void Navigation_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
+
+        private void CrearCar_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Caracteristica.Crear());
+        }
+
+        private void Volver_Click(object sender, RoutedEventArgs e)
+        {
+
             int IdP = BusinessLogic.PersonajeBL.Listar().Max(x => x.Id);
             int cont = 0;
             foreach (Domain.Caracteristica CX in BusinessLogic.CaracteristicaBL.Listar())
@@ -227,25 +217,8 @@ namespace GraphicInterface.Personaje
             }
             else
             {
-                MessageBox.Show("No se puede Cancelar sin darle valor a las Características de su personaje");
+                MessageBox.Show("No se puede volver al Menú sin darle valor a las Características de su personaje");
             }
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            int IdP = BusinessLogic.PersonajeBL.Listar().Max(x => x.Id);
-            Navigation.Navigate(new Caracteristicas(IdP));
-            CrearCar.Visibility = Visibility;
-        }
-
-        private void Navigation_Navigated(object sender, NavigationEventArgs e)
-        {
-
-        }
-
-        private void CrearCar_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Caracteristica.Crear());
         }
     }
 

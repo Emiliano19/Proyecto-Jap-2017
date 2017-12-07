@@ -52,7 +52,23 @@ namespace BusinessLogic
         public static int Eliminar(int IdH)
         {
             int result = -1;
+            foreach(Domain.Clase c in BusinessLogic.ClaseBL.Listar())
+            {
+                Clase_HEBL.Eliminar(c.Id, IdH);
+            }
+            if(BusinessLogic.PersonajeBL.Listar() != null)
+            {
+                foreach (Domain.Personaje p in BusinessLogic.PersonajeBL.Listar())
+                {
+                    Domain.Personaje_HE PH = BusinessLogic.Personaje_HEBL.Obtener(p.Id, IdH);
+                    if (PH != null)
+                    {
+                        BusinessLogic.Personaje_HEBL.Eliminar(p.Id, IdH);
+                    }
 
+                }
+            }
+          
             result = DataAccess.HabilidadEspecialDA.Eliminar(IdH);
 
             return result;

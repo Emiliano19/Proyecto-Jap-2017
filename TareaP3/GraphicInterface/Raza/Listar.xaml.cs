@@ -23,7 +23,15 @@ namespace GraphicInterface.Raza
         public Listar()
         {
             InitializeComponent();
-            listview.ItemsSource = BusinessLogic.RazaBL.Listar();
+            if (BusinessLogic.RazaBL.Listar() != null)
+            {
+                listview.ItemsSource = BusinessLogic.RazaBL.Listar();
+            }
+            else
+            {
+                MessageBox.Show("No hay Razas para mostrar en el sistema debe crear algunos antes de listar");
+            }
+        
         }
 
         private void Agregar(object sender, RoutedEventArgs e)
@@ -33,39 +41,62 @@ namespace GraphicInterface.Raza
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (listview.SelectedItem != null)
+            if(BusinessLogic.RazaBL.Listar() != null)
             {
-                Domain.Raza Rx = (Domain.Raza)listview.SelectedItem;
-                int aux = BusinessLogic.RazaBL.Eliminar(Rx.Id);
+                if (listview.SelectedItem != null)
+                {
+                    Domain.Raza Rx = (Domain.Raza)listview.SelectedItem;
+                    int aux = BusinessLogic.RazaBL.Eliminar(Rx.Id);
 
-                if(aux == 1)
-                {
-                    List<Domain.Raza> LR = new List<Domain.Raza>();
-                    foreach(Domain.Raza R in BusinessLogic.RazaBL.Listar())
+                    if (aux == 1)
                     {
-                        if(R.Id != Rx.Id)
+                        List<Domain.Raza> LR = new List<Domain.Raza>();
+                        foreach (Domain.Raza R in BusinessLogic.RazaBL.Listar())
                         {
-                            LR.Add(R);
+                            if (R.Id != Rx.Id)
+                            {
+                                LR.Add(R);
+                            }
                         }
+                        listview.ItemsSource = LR;
+                        MessageBox.Show("Se a eliminado con Exito la Raza seleccionada");
                     }
-                    listview.ItemsSource = LR;
-                    MessageBox.Show("Se a eliminado con Exito la Raza seleccionada");
+                    else if (aux == -1)
+                    {
+                        MessageBox.Show("A ocurrido un error inesperado a la hora de eliminar la Raza seleccionada");
+                    }
                 }
-                else if(aux == -1)
+                else
                 {
-                    MessageBox.Show("A ocurrido un error inesperado a la hora de eliminar la Raza seleccionada");
+                    MessageBox.Show("Debes seleccionar una Raza de la lista antes de precionar Eliminar");
                 }
             }
             else
             {
-                MessageBox.Show("Debes seleccionar una Raza de la lista antes de precionar Eliminar");
+                MessageBox.Show("No hay Razas en el sistema así que no se puede Eliminar");
             }
+           
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Domain.Raza R = (Domain.Raza)listview.SelectedItem;
-            this.NavigationService.Navigate(new Modificar(R.Id));
+            if(BusinessLogic.RazaBL.Listar() != null)
+            {
+                if(listview.SelectedItem != null)
+                {
+                    Domain.Raza R = (Domain.Raza)listview.SelectedItem;
+                    this.NavigationService.Navigate(new Modificar(R.Id));
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una Raza de la lista antes de precinar Modificar");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay Razas en el sistema así que no se puede Modificar");
+            }
+           
         }
 
         private void Reagresar_Click_2(object sender, RoutedEventArgs e)

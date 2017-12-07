@@ -23,7 +23,10 @@ namespace GraphicInterface.Clase
         public Crear()
         {
             InitializeComponent();
-            listviewHH.ItemsSource = BusinessLogic.HabilidadEspecialBL.Listar();
+            if(BusinessLogic.HabilidadEspecialBL.Listar() != null)
+            {
+                listviewHH.ItemsSource = BusinessLogic.HabilidadEspecialBL.Listar();
+            }
             listviewHH.Visibility = Visibility.Hidden;
             NombreH.Visibility = Visibility.Hidden;
             Instruciones.Visibility = Visibility.Hidden;
@@ -40,11 +43,14 @@ namespace GraphicInterface.Clase
                 H.Nombre = TexNombre.Text;
                 H.Descripcion = TexDescripión.Text;
                 int cont = 0;
-                foreach (Domain.Clase H1 in BusinessLogic.ClaseBL.Listar())
+                if(BusinessLogic.ClaseBL.Listar() != null)
                 {
-                    if (H1.Nombre == H.Nombre || H1.Descripcion == H.Descripcion)
+                    foreach (Domain.Clase H1 in BusinessLogic.ClaseBL.Listar())
                     {
-                        cont = cont + 1;
+                        if (H1.Nombre == H.Nombre || H1.Descripcion == H.Descripcion)
+                        {
+                            cont = cont + 1;
+                        }
                     }
                 }
                 
@@ -54,12 +60,21 @@ namespace GraphicInterface.Clase
 
                     if (result == 1)
                     {
-                        listviewHH.Visibility = Visibility.Visible;
-                        NombreH.Visibility = Visibility.Visible;
-                        Instruciones.Visibility = Visibility.Visible;
-                        Habitex.Visibility = Visibility.Visible;
-                        Agregarx.Visibility = Visibility.Visible;
-                        MessageBox.Show("Se a guardado con exito la nueva Clase");
+                        if(BusinessLogic.HabilidadEspecialBL.Listar() != null)
+                        {
+                            listviewHH.Visibility = Visibility.Visible;
+                            NombreH.Visibility = Visibility.Visible;
+                            Instruciones.Visibility = Visibility.Visible;
+                            Habitex.Visibility = Visibility.Visible;
+                            Agregarx.Visibility = Visibility.Visible;
+
+                            MessageBox.Show("Se a guardado con exito la nueva Clase");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Su Clase se a guardado correctamente per no hay Habilidades existentes en el sistema para agregarle a la colección de la nueva Clase");
+                        }
+                       
                     }
                     else if (result == -1)
                     {

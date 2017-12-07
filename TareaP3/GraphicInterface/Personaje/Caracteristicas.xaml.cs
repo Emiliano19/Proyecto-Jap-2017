@@ -54,7 +54,7 @@ namespace GraphicInterface.Personaje
                     cont = cont + 1;
                 }
             }
-            if (listviewcar.ItemsSource != null)
+            if (listviewcar.SelectedItem != null)
             {
                 int valor = ComboCar.SelectedIndex + 1;
                 if(valor != 0)
@@ -66,7 +66,7 @@ namespace GraphicInterface.Personaje
                     {
                         MessageBox.Show("Esta Característica ya posee un valor para este Personaje");
                     }
-                    else
+                    else if(P == null)
                     {
                         int result = BusinessLogic.Personaje_CaracteristicaBL.Agregar(IdP, selectedItem.Id, valor);
                         List<Domain.Caracteristica> CC = new List<Domain.Caracteristica>();

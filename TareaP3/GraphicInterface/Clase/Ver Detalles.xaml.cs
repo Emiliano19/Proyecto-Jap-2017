@@ -24,26 +24,29 @@ namespace GraphicInterface.Clase
         {
             InitializeComponent();
             values.Text = value.ToString();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            List<Domain.Habilidad_Especial> LH = new List<Domain.Habilidad_Especial>();
-            int IdC = Convert.ToInt32(values.Text);
-            foreach(Domain.Habilidad_Especial H in BusinessLogic.HabilidadEspecialBL.Listar())
+            Domain.Clase Cx = BusinessLogic.ClaseBL.Obtener(value);
+            TexNombre.Text = Cx.Nombre;
+            TexDescripión.Text = Cx.Descripcion;
+            if(BusinessLogic.HabilidadEspecialBL.Listar() != null)
             {
-                Domain.Clase_HE CH = BusinessLogic.Clase_HEBL.Obtener(IdC, H.Id);
-
-                if(CH != null)
+                List<Domain.Habilidad_Especial> LH = new List<Domain.Habilidad_Especial>();
+                int IdC = Convert.ToInt32(values.Text);
+                foreach (Domain.Habilidad_Especial H in BusinessLogic.HabilidadEspecialBL.Listar())
                 {
-                    LH.Add(H);
+                    Domain.Clase_HE CH = BusinessLogic.Clase_HEBL.Obtener(IdC, H.Id);
+
+                    if (CH != null)
+                    {
+                        LH.Add(H);
+                    }
                 }
+                if (LH.Count == 0)
+                {
+                    MessageBox.Show("Esta clase no posee Habilidades en su colección");
+                }
+                listviewhab.ItemsSource = LH;
             }
-            if(LH.Count == 0)
-            {
-                MessageBox.Show("Esta clase no posee Habilidades en su colección");
-            }
-            listviewhab.ItemsSource = LH;
+           
         }
 
         private void Regresar_Click_1(object sender, RoutedEventArgs e)

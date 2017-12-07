@@ -25,5 +25,11 @@
         <TextBlock HorizontalAlignment="Left" Margin="114,10,0,0" TextWrapping="Wrap" Text="Precione el boton de la caracteristica a la que desea aumentarle valor y luego precione Finalizar" VerticalAlignment="Top" Height="33" Width="818" FontWeight="Bold" FontSize="18"/>
         <Button Content="Finalizar" HorizontalAlignment="Left" Margin="82,323,0,0" VerticalAlignment="Top" Width="891" Height="33" Background="#FF08FF08" FontWeight="Bold" FontStyle="Italic" Click="Button_Click_2"/>
         <TextBox Name="IdPER" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="10,424,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208"/>
+        <TextBlock Name="FuerzaValor" HorizontalAlignment="Left" Margin="421,104,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="31" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.384,0.598"/>
+        <TextBlock Name="DestrezaValor" HorizontalAlignment="Left" Margin="421,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="31" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.384,0.598"/>
+        <TextBlock Name="ConstValor" HorizontalAlignment="Left" Margin="421,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="31" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.384,0.598"/>
+        <TextBlock Name="InteliValor" HorizontalAlignment="Left" Margin="771,104,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="31" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.384,0.598"/>
+        <TextBlock Name="SabiduriaValor" HorizontalAlignment="Left" Margin="771,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="31" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.384,0.598"/>
+        <TextBlock Name="CarismaValor" HorizontalAlignment="Left" Margin="771,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="31" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.384,0.598"/>
     </Grid>
 </Page>

@@ -62,5 +62,10 @@ namespace GraphicInterface.Caracteristica
         {
             this.NavigationService.Navigate(new MenuPrincipal());
         }
+
+        private void Volver_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
     }
 }

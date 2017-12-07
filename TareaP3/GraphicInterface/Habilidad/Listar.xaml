@@ -15,24 +15,44 @@
                 <GradientStop Color="#FF22F002" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ListView Name="listview" HorizontalAlignment="Left" Height="303" VerticalAlignment="Top" Width="964" Margin="23,61,0,0" SelectionChanged="ListView_SelectionChanged" Background="#FF8F7575">
+        <ListView Name="listview" HorizontalAlignment="Left" Height="303" VerticalAlignment="Top" Width="929" Margin="41,49,0,0" SelectionChanged="ListView_SelectionChanged" Background="#FF8F7575">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
-                        <CheckBox Name="Chek" Checked="CheckBox_Checked"></CheckBox>
-                        <TextBlock Text="Nombre: "/>
-                        <TextBlock Text="{Binding Nombre}" FontWeight="Bold"/>
+                        <TextBlock Text="Nombre: " FontSize="14" FontWeight="Bold" />
+                        <TextBlock Text="{Binding Nombre}" FontSize="14"/>
                         <TextBlock Text=", "/>
-                        <TextBlock Text="Descripción: "/>
-                        <TextBlock Text="{Binding Descripcion}" FontWeight="Bold"/>
+                        <TextBlock Text="Descripción: " FontSize="14" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Descripcion}" FontSize="14"/>
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Content="Modificar" HorizontalAlignment="Left" Margin="693,381,0,0" VerticalAlignment="Top" Width="118" Height="34" Click="Button_Click_2" Background="#FFFF5F03" FontStyle="Italic" FontWeight="Bold"/>
-        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="869,381,0,0" VerticalAlignment="Top" Width="118" Height="34" Background="#FFFF5F03" FontStyle="Italic" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="727,10,0,0" TextWrapping="Wrap" Text="Filtro por Clase:" VerticalAlignment="Top" Height="34" Width="151" FontSize="18" FontWeight="Bold"/>
-        <ComboBox Name="ComboClase" HorizontalAlignment="Left" Margin="867,10,0,0" VerticalAlignment="Top" Width="120" Height="24" SelectionChanged="ComboClase_SelectionChanged"/>
-        <Button Content="Reagresar al Menú" HorizontalAlignment="Left" Margin="534,381,0,0" VerticalAlignment="Top" Width="118" Height="34" Click="Button_Click_2" Background="#FFFF5F03" FontStyle="Italic" FontWeight="Bold"/>
+        <Button Content="Modificar" HorizontalAlignment="Left" Margin="719,381,0,0" VerticalAlignment="Top" Width="118" Height="34" Click="Button_Click_2" FontStyle="Italic" FontWeight="Bold" Foreground="White">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF876969" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="849,381,0,0" VerticalAlignment="Top" Width="118" Height="34" FontStyle="Italic" FontWeight="Bold" Click="Button_Click" Foreground="White">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF876969" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="703,10,0,0" TextWrapping="Wrap" Text="Filtro por Clase:" VerticalAlignment="Top" Height="34" Width="151" FontSize="18" FontWeight="Bold"/>
+        <ComboBox Name="ComboClase" HorizontalAlignment="Left" Margin="843,10,0,0" VerticalAlignment="Top" Width="120" Height="24" SelectionChanged="ComboClase_SelectionChanged"/>
+        <Button Content="Reagresar al Menú" HorizontalAlignment="Left" Margin="512,381,0,0" VerticalAlignment="Top" Width="118" Height="34" Click="Button_Click_x" FontStyle="Italic" FontWeight="Bold" Foreground="White">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF876969" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

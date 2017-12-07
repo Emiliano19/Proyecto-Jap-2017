@@ -99,6 +99,9 @@
     <Compile Include="Clase\Ver Detalles.xaml.cs">
       <DependentUpon>Ver Detalles.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Habilidad\Modificar.xaml.cs">
+      <DependentUpon>Modificar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Personaje\Fijas.xaml.cs">
       <DependentUpon>Fijas.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
     <Page Include="Habilidad\Listar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Habilidad\Modificar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MenuPrincipal.xaml">
       <SubType>Designer</SubType>

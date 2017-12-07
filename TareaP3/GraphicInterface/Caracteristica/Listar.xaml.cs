@@ -109,5 +109,10 @@ namespace GraphicInterface.Caracteristica
             }
            
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new MenuPrincipal());
+        }
     }
 }

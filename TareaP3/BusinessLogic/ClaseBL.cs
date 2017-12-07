@@ -45,12 +45,27 @@ namespace BusinessLogic
         public static int Eliminar(int IdC)
         {
             int result = -1;
-            foreach(Domain.Habilidad_Especial HC in BusinessLogic.HabilidadEspecialBL.Listar())
+            if(BusinessLogic.HabilidadEspecialBL.Listar() != null)
             {
-                Domain.Clase_HE H = BusinessLogic.Clase_HEBL.Obtener(IdC, HC.Id);
-                if(H != null)
+                foreach (Domain.Habilidad_Especial HC in BusinessLogic.HabilidadEspecialBL.Listar())
                 {
-                    BusinessLogic.Clase_HEBL.Eliminar(IdC, HC.Id);
+                    Domain.Clase_HE H = BusinessLogic.Clase_HEBL.Obtener(IdC, HC.Id);
+                    if (H != null)
+                    {
+                        BusinessLogic.Clase_HEBL.Eliminar(IdC, HC.Id);
+                    }
+                }
+            }
+            if(BusinessLogic.PersonajeBL.Listar() != null)
+            {
+                foreach(Domain.Personaje P in BusinessLogic.PersonajeBL.Listar())
+                {
+                    if(P.ClaseAtributo.Id == IdC)
+                    {
+                        int Idc = 10;
+                        int IDr = P.RazaAtributo.Id;
+                        BusinessLogic.PersonajeBL.Modificar(P, IDr, Idc);
+                    }
                 }
             }
 
